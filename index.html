@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cansu & Daniel — 11 Octubre 2026 — Mas de Sant Lleí, Barcelona" />
+  <title>Cansu &amp; Daniel — 11 · X · 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Prevent intro flash on return visits — runs before first paint -->
+  <script>if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-skip');</script>
+
+  <!-- ── Intro Envelope Overlay ── -->
+  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Wedding invitation">
+    <div class="intro-scene">
+      <div
+        class="intro-envelope"
+        id="introEnvelope"
+        role="button"
+        tabindex="0"
+        aria-label="Open the invitation"
+      >
+        <!-- Envelope body with subtle fold lines -->
+        <div class="env-body" aria-hidden="true"></div>
+
+        <!-- Triangular flap — rotates backward on open -->
+        <div class="env-flap-wrap" aria-hidden="true">
+          <div class="env-flap" id="envFlap"></div>
+        </div>
+
+        <!-- Face: seal + names + hint -->
+        <div class="env-face">
+          <div class="env-seal" aria-hidden="true">C · D</div>
+          <h2 class="env-title">Cansu &amp; Daniel</h2>
+          <p class="env-dateline">11 · X · 2026</p>
+          <p class="env-hint" id="envHint"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language Switcher -->
+  <nav class="lang-switcher" aria-label="Language selector">
+    <button class="lang-btn active" data-lang="es" aria-current="true">ES</button>
+    <span class="lang-sep" aria-hidden="true">·</span>
+    <button class="lang-btn" data-lang="de">DE</button>
+    <span class="lang-sep" aria-hidden="true">·</span>
+    <button class="lang-btn" data-lang="tr">TR</button>
+  </nav>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow animate-in" data-i18n="hero.eyebrow"></p>
+          <div class="hero-rule animate-in delay-1" aria-hidden="true"></div>
+          <h1 class="hero-names animate-in delay-2">
+            <span class="name-first">Cansu</span>
+            <span class="name-amp" aria-hidden="true">&amp;</span>
+            <span class="name-second">Daniel</span>
+          </h1>
+          <div class="hero-rule animate-in delay-3" aria-hidden="true"></div>
+          <p class="hero-date animate-in delay-4">
+            <time datetime="2026-10-11">11 · X · 2026</time>
+          </p>
+          <p class="hero-location animate-in delay-5">Mas de Sant Lleí · Barcelona</p>
+        </div>
+      </div>
+      <a href="#countdown" class="hero-scroll" aria-label="Scroll to countdown">
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ── Countdown ── -->
+    <section id="countdown" class="section section-warm fade-in">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="countdown.label"></span>
+          <h2 class="section-title" data-i18n="countdown.title"></h2>
+        </header>
+        <div class="countdown-grid" aria-live="polite" aria-atomic="true">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">560</span>
+            <span class="countdown-unit" data-i18n="countdown.days"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">00</span>
+            <span class="countdown-unit" data-i18n="countdown.hours"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-minutes">00</span>
+            <span class="countdown-unit" data-i18n="countdown.minutes"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-seconds">00</span>
+            <span class="countdown-unit" data-i18n="countdown.seconds"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Program ── -->
+    <section id="program" class="section fade-in">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="program.label"></span>
+          <h2 class="section-title" data-i18n="program.title"></h2>
+        </header>
+        <div class="timeline" id="timeline" role="list">
+          <!-- Built by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Location ── -->
+    <section id="location" class="section section-warm fade-in">
+
+      <!-- Photo slideshow background (populated by script.js) -->
+      <div class="slideshow-bg" id="locationSlideshow" aria-hidden="true">
+        <div class="slideshow-overlay"></div>
+      </div>
+
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="location.label"></span>
+          <h2 class="section-title" data-i18n="location.title"></h2>
+        </header>
+        <div class="location-layout">
+          <div class="location-info">
+            <h3 class="location-venue">Mas de Sant Lleí</h3>
+            <p class="location-address" data-i18n="location.address"></p>
+            <a
+              class="location-link"
+              href="https://maps.google.com/?q=Mas+de+Sant+Llei+Barcelona"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="location.directions"
+            ></a>
+          </div>
+          <div class="map-wrapper">
+            <!--
+              Replace the src below with your own embed code:
+              Google Maps → find the venue → Share → Embed a map → copy src URL
+            -->
+            <iframe
+              src="https://maps.google.com/maps?q=Mas+de+Sant+Llei+Barcelona&output=embed"
+              title="Mas de Sant Lleí location"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Accommodation ── -->
+    <section id="accommodation" class="section fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="accommodation.label"></span>
+          <h2 class="section-title" data-i18n="accommodation.title"></h2>
+        </header>
+        <p class="section-prose" data-i18n="accommodation.body"></p>
+      </div>
+    </section>
+
+    <!-- ── Transport ── -->
+    <section id="transport" class="section section-warm fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="transport.label"></span>
+          <h2 class="section-title" data-i18n="transport.title"></h2>
+        </header>
+        <p class="section-prose" data-i18n="transport.body"></p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section id="faq" class="section fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="faq.label"></span>
+          <h2 class="section-title" data-i18n="faq.title"></h2>
+        </header>
+        <div class="faq-list" id="faqList">
+          <!-- Built by script.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer fade-in">
+    <div class="footer-inner">
+      <p class="footer-names">Cansu &amp; Daniel</p>
+      <p class="footer-date">11 · X · 2026</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
