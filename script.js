@@ -22,8 +22,8 @@ const SLIDESHOW_IMAGES = [
   'assets/venue-3.jpg',
 ];
 
-/* Seconds each photo stays visible before crossfading to the next */
-const SLIDESHOW_INTERVAL_MS = 5000;
+/* Milliseconds each photo stays visible before crossfading to the next */
+const SLIDESHOW_INTERVAL_MS = 3500;
 
 /* ============================================================
    TRANSLATIONS
@@ -433,9 +433,9 @@ function initLangSwitcher() {
 
 /* Hint text by language — shown on the sealed envelope */
 const INTRO_HINTS = {
-  es: 'Toca para abrir',
-  de: 'Zum Öffnen tippen',
-  tr: 'Açmak için dokun',
+  es: 'Open',
+  de: 'Open',
+  tr: 'Open',
 };
 
 function initIntro() {
@@ -476,7 +476,8 @@ function initIntro() {
     envelope.classList.add('open');
 
     // Start fading the overlay while the flap is still opening
-    setTimeout(dismissOverlay, 720);
+    // Timed to match the slower 1.85s flap transition
+    setTimeout(dismissOverlay, 950);
   }
 
   envelope.addEventListener('click', openEnvelope);

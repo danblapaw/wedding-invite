@@ -770,8 +770,8 @@ iframe { border: 0; }
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: bottom center;
   transform: rotateX(0deg);
-  /* Slow, unhurried — a luxury letter being opened, not a UI interaction */
-  transition: transform 1.1s cubic-bezier(0.4, 0, 0.6, 1);
+  /* Cinematic, unhurried — slow start creates a breath of anticipation */
+  transition: transform 1.85s cubic-bezier(0.65, 0, 0.25, 1);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -839,16 +839,16 @@ iframe { border: 0; }
   color: rgba(237, 232, 223, 0.45);
 }
 
-/* "Tap to open" hint */
+/* "Open" hint — universally legible, elegantly restrained */
 .env-hint {
   position: absolute;
   bottom: 0.7rem;
   font-family: var(--font-sc);
-  font-size: clamp(0.42rem, 1.2vw, 0.5rem);
-  letter-spacing: 0.34em;
-  color: rgba(237, 232, 223, 0.32);
+  font-size: clamp(0.5rem, 1.4vw, 0.6rem);
+  letter-spacing: 0.48em;
+  color: rgba(237, 232, 223, 0.72);
   text-transform: uppercase;
-  animation: hintPulse 3.5s ease infinite;
+  animation: hintPulse 2.8s ease-in-out infinite;
   transition: opacity 0.4s ease;
 }
 
@@ -858,8 +858,8 @@ iframe { border: 0; }
 }
 
 @keyframes hintPulse {
-  0%, 100% { opacity: 0.18; }
-  50%       { opacity: 0.45; }
+  0%, 100% { opacity: 0.50; }
+  50%       { opacity: 1;    }
 }
 
 /* ============================================================
@@ -904,6 +904,13 @@ iframe { border: 0; }
 
 .slide-frame.active {
   opacity: 1;
+  /* Very subtle slow zoom — atmospheric, not hotel-promo */
+  animation: slideZoom 7s ease-in-out forwards;
+}
+
+@keyframes slideZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1.09); }
 }
 
 /* Section content sits above the slideshow */
