@@ -276,6 +276,20 @@ function applyTranslations(lang) {
 }
 
 /* ============================================================
+   TIMELINE ICONS — monochrome, thin-stroke SVG
+   ============================================================ */
+const TL_ICONS = [
+  // 0 — Ceremony: chapel arch with cross
+  `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16 L3 8 Q3 2 9 2 Q15 2 15 8 L15 16"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="7.2" y1="3.5" x2="10.8" y2="3.5"/></svg>`,
+  // 1 — Cocktail: champagne flute
+  `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2 L13 2 L10 11 L10 16"/><line x1="7.5" y1="16" x2="12.5" y2="16"/><path d="M7 5.5 Q9 4 11 5.5" opacity="0.5"/></svg>`,
+  // 2 — Dinner: fork and knife
+  `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="16"/><line x1="5" y1="2" x2="5" y2="7"/><line x1="9" y1="2" x2="9" y2="7"/><line x1="5" y1="7" x2="9" y2="7"/><path d="M12 2 L14 4 Q14.5 7 12 7.5 L12 16"/></svg>`,
+  // 3 — Celebration: starburst with circle
+  `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><line x1="9" y1="1" x2="9" y2="4"/><line x1="9" y1="14" x2="9" y2="17"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="14" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="5.6" y2="5.6"/><line x1="12.4" y1="12.4" x2="14.5" y2="14.5"/><line x1="14.5" y1="3.5" x2="12.4" y2="5.6"/><line x1="5.6" y1="12.4" x2="3.5" y2="14.5"/><circle cx="9" cy="9" r="2.6"/></svg>`,
+];
+
+/* ============================================================
    TIMELINE — build from translation data
    ============================================================ */
 function buildTimeline(lang) {
@@ -285,13 +299,16 @@ function buildTimeline(lang) {
   const events = TRANSLATIONS[lang].program.events;
 
   container.innerHTML = events.map((ev, i) => `
-    <div class="timeline-item fade-in" role="listitem" style="transition-delay:${i * 0.08}s">
+    <div class="timeline-item fade-in" role="listitem" style="transition-delay:${i * 0.09}s">
       <div class="tl-time">${ev.time}</div>
       <div class="tl-axis">
         <div class="tl-dot"></div>
       </div>
       <div class="tl-body">
-        <p class="tl-name">${ev.name}</p>
+        <div class="tl-event-row">
+          <span class="tl-icon">${TL_ICONS[i % TL_ICONS.length]}</span>
+          <p class="tl-name">${ev.name}</p>
+        </div>
         ${ev.desc ? `<p class="tl-desc">${ev.desc}</p>` : ''}
       </div>
     </div>
@@ -478,9 +495,9 @@ function initIntro() {
 
     envelope.classList.add('open');
 
-    // Start fading the overlay while the flap is still opening
-    // Timed to match the slower 1.85s flap transition
-    setTimeout(dismissOverlay, 950);
+    // Wait for card to rise before fading the overlay
+    // Card transition: delay 0.6s + duration 1.55s ≈ 2.15s total
+    setTimeout(dismissOverlay, 1700);
   }
 
   envelope.addEventListener('click', openEnvelope);

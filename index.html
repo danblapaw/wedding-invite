@@ -15,6 +15,9 @@
   <!-- Prevent intro flash on return visits — runs before first paint -->
   <script>if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-skip');</script>
 
+  <!-- Very subtle lace border frame — fixed, decorative only -->
+  <div class="page-lace-border" aria-hidden="true"></div>
+
   <!-- ── Intro Envelope Overlay ── -->
   <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Wedding invitation">
     <div class="intro-scene">
@@ -25,17 +28,27 @@
         tabindex="0"
         aria-label="Open the invitation"
       >
-        <!-- Envelope body with subtle fold lines -->
-        <div class="env-body" aria-hidden="true"></div>
+        <!-- Envelope body — cream/warm white with lace edge -->
+        <div class="env-body" aria-hidden="true">
+          <div class="env-lace" aria-hidden="true"></div>
+        </div>
+
+        <!-- Invitation card — rises from envelope on open -->
+        <div class="env-card" aria-hidden="true">
+          <div class="env-card-monogram">C · D</div>
+          <p class="env-card-names">Cansu &amp; Daniel</p>
+        </div>
 
         <!-- Triangular flap — rotates backward on open -->
         <div class="env-flap-wrap" aria-hidden="true">
           <div class="env-flap" id="envFlap"></div>
         </div>
 
-        <!-- Face: seal + names + hint -->
+        <!-- Face: wax seal + names + hint -->
         <div class="env-face">
-          <div class="env-seal" aria-hidden="true">C · D</div>
+          <div class="env-seal" aria-hidden="true">
+            <span class="env-seal-text">C · D</span>
+          </div>
           <h2 class="env-title">Cansu &amp; Daniel</h2>
           <p class="env-dateline">11 · X · 2026</p>
           <p class="env-hint" id="envHint"></p>
@@ -58,6 +71,14 @@
     <!-- ── Hero ── -->
     <section id="hero" class="hero" aria-label="Hero">
       <div class="hero-inner">
+
+        <!-- Monogram — embossed / engraved look -->
+        <div class="hero-monogram" aria-hidden="true">
+          <span class="hero-monogram-rule"></span>
+          <span class="hero-monogram-text">C · D</span>
+          <span class="hero-monogram-rule"></span>
+        </div>
+
         <div class="hero-content">
           <p class="hero-eyebrow animate-in" data-i18n="hero.eyebrow"></p>
           <div class="hero-rule animate-in delay-1" aria-hidden="true"></div>
@@ -76,6 +97,17 @@
       <a href="#countdown" class="hero-scroll" aria-label="Scroll to countdown">
         <span class="hero-scroll-line" aria-hidden="true"></span>
       </a>
+    </section>
+
+    <!-- ── Intro Prose ── -->
+    <section id="intro" class="section section-intro fade-in">
+      <div class="container container--narrow">
+        <div class="intro-prose">
+          <p>Con mucho amor en el corazón y llenos de ilusión por lo que está por venir, os invitamos a formar parte de uno de los días más especiales de nuestras vidas.</p>
+          <p>El 11 de Octubre de 2026 nos daremos el "sí, quiero" y comenzaremos un nuevo capítulo — uno que queremos celebrar junto a las personas que más significan para nosotros.</p>
+          <p>Entre luz, música y todos esos pequeños momentos llenos de significado, queremos crear recuerdos que perduren para siempre.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ── Countdown ── -->

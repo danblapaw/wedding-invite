@@ -56,6 +56,20 @@ iframe { border: 0; }
   to   { opacity: 1; }
 }
 
+/* ── Page Lace Border (very subtle, fixed) ──────────────── */
+.page-lace-border {
+  position: fixed;
+  inset: 14px;
+  pointer-events: none;
+  z-index: 900;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 8 Q4 0 8 8 Q12 0 16 8' fill='none' stroke='%23C4B49A' stroke-width='0.9'/%3E%3C/svg%3E") top left / 16px 8px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 0 Q4 8 8 0 Q12 8 16 0' fill='none' stroke='%23C4B49A' stroke-width='0.9'/%3E%3C/svg%3E") bottom left / 16px 8px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='16' viewBox='0 0 8 16'%3E%3Cpath d='M8 0 Q0 4 8 8 Q0 12 8 16' fill='none' stroke='%23C4B49A' stroke-width='0.9'/%3E%3C/svg%3E") left top / 8px 16px repeat-y,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='16' viewBox='0 0 8 16'%3E%3Cpath d='M0 0 Q8 4 0 8 Q8 12 0 16' fill='none' stroke='%23C4B49A' stroke-width='0.9'/%3E%3C/svg%3E") right top / 8px 16px repeat-y;
+  opacity: 0.18;
+}
+
 /* ── Layout ─────────────────────────────────────────────── */
 .container {
   width: 100%;
@@ -163,7 +177,6 @@ iframe { border: 0; }
   overflow: hidden;
 }
 
-/* Subtle warm glow at the top */
 .hero::before {
   content: '';
   position: absolute;
@@ -177,8 +190,44 @@ iframe { border: 0; }
   max-width: 680px;
   text-align: center;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }
 
+/* ── Hero Monogram — embossed / engraved look ── */
+.hero-monogram {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  opacity: 0;
+  animation: fadeUp 1.2s var(--ease) 0.08s forwards;
+}
+
+.hero-monogram-text {
+  font-family: var(--font-sc);
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  /* Embossed: color sits just below the background tone; shadows create depth */
+  color: #D8D3CC;
+  text-shadow:
+    0  1px 2px rgba(255, 255, 255, 0.92),
+    0 -1px 1px rgba(140, 128, 115, 0.22),
+    1px 1px 3px rgba(0, 0, 0, 0.04);
+  user-select: none;
+}
+
+.hero-monogram-rule {
+  display: block;
+  width: clamp(28px, 6vw, 48px);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(107, 31, 42, 0.16), transparent);
+  flex-shrink: 0;
+}
+
+/* ── Hero content ── */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -282,6 +331,31 @@ iframe { border: 0; }
 .delay-4 { animation-delay: 0.95s; }
 .delay-5 { animation-delay: 1.1s;  }
 
+/* ── Intro Prose Section ─────────────────────────────────── */
+.section-intro {
+  background-color: var(--bg);
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+}
+
+.intro-prose {
+  max-width: 580px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+}
+
+.intro-prose p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 2.05;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
 /* ── Countdown ───────────────────────────────────────────── */
 .countdown-grid {
   display: flex;
@@ -346,7 +420,7 @@ iframe { border: 0; }
 .timeline-item {
   display: grid;
   grid-template-columns: var(--tl-time) var(--tl-axis) 1fr;
-  padding-bottom: 3rem;
+  padding-bottom: 3.2rem;
   position: relative;
 }
 
@@ -396,6 +470,29 @@ iframe { border: 0; }
   padding-left: 0.5rem;
 }
 
+/* Icon + name row */
+.tl-event-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.tl-icon {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+  opacity: 0.55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tl-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
 .tl-name {
   font-family: var(--font-serif);
   font-size: 1rem;
@@ -411,12 +508,11 @@ iframe { border: 0; }
   font-style: italic;
   color: var(--text-muted);
   margin-top: 0.12rem;
+  padding-left: calc(15px + 0.55rem);
   opacity: 0.75;
 }
 
 /* ── Location ────────────────────────────────────────────── */
-
-/* Always position relative so the slideshow can be absolute inside */
 #location {
   position: relative;
   overflow: hidden;
@@ -519,7 +615,6 @@ iframe { border: 0; }
   color: var(--accent);
 }
 
-/* +/– icon */
 .faq-icon {
   flex-shrink: 0;
   width: 14px;
@@ -628,7 +723,6 @@ iframe { border: 0; }
   transform: translateY(0);
 }
 
-/* Timeline items stagger */
 .timeline-item.fade-in {
   transition-duration: 0.65s;
 }
@@ -637,7 +731,6 @@ iframe { border: 0; }
    INTRO ENVELOPE OVERLAY
    ============================================================ */
 
-/* Skip overlay instantly when sessionStorage already set */
 .intro-skip #introOverlay {
   display: none !important;
 }
@@ -650,35 +743,34 @@ iframe { border: 0; }
   align-items: center;
   justify-content: center;
   background: #0C0709;
-  transition: opacity 1.1s var(--ease);
+  transition: opacity 1.2s var(--ease);
 }
 
-/* Venue image — barely there, just a warm hint of place */
+/* Venue image — barely there, warm hint of place */
 .intro-overlay::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('assets/venue-1.jpg') center / cover no-repeat;
   filter: blur(6px) saturate(0.55) brightness(0.72);
-  transform: scale(1.04); /* absorbs blur edge bleed */
+  transform: scale(1.04);
   opacity: 0.7;
   pointer-events: none;
 }
 
-/* Warm vignette — keeps the envelope the sole focal point */
+/* Warm vignette */
 .intro-overlay::after {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 90% 90% at 50% 50%,
-    rgba(48, 14, 20, 0.15) 0%,
-    rgba(8, 3, 6, 0.48) 100%
+    rgba(48, 14, 20, 0.12) 0%,
+    rgba(8, 3, 6, 0.54) 100%
   );
   pointer-events: none;
 }
 
-/* State: fading out */
 .intro-overlay.hiding {
   opacity: 0;
   pointer-events: none;
@@ -687,9 +779,9 @@ iframe { border: 0; }
 /* ── Envelope container ── */
 .intro-scene {
   position: relative;
-  z-index: 1; /* above ::before / ::after pseudo-elements on the overlay */
-  width: min(360px, 82vw);
-  height: min(240px, 55vw);
+  z-index: 1;
+  width: min(390px, 88vw);
+  height: min(258px, 59vw);
 }
 
 .intro-envelope {
@@ -701,46 +793,29 @@ iframe { border: 0; }
   outline: none;
 }
 
-/* Hover lift — very subtle */
 .intro-envelope:not(.open) {
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.5s var(--ease);
 }
 .intro-envelope:not(.open):hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
-/* ── Envelope body ── */
+/* ── Envelope body — warm cream ── */
 .env-body {
   position: absolute;
   inset: 0;
-  /* Deep muted burgundy — less saturated than --accent, more like aged wine */
-  background-color: #481520;
+  background-color: #F6F1E9;
   background-image:
-    /* Very faint top-light for a slight sense of surface depth */
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      transparent 30%,
-      rgba(0, 0, 0, 0.06) 100%
-    ),
-    /* Fold lines — barely perceptible, purely structural */
-    linear-gradient(
-      to bottom right,
-      transparent 49.6%,
-      rgba(255, 255, 255, 0.035) 50%,
-      transparent 50.4%
-    ),
-    linear-gradient(
-      to bottom left,
-      transparent 49.6%,
-      rgba(255, 255, 255, 0.035) 50%,
-      transparent 50.4%
-    );
-  /* Faint outline so the envelope reads clearly against the dark backdrop */
-  box-shadow: inset 0 0 0 1px rgba(237, 232, 223, 0.07);
+    linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 32%, rgba(0,0,0,0.016) 100%),
+    linear-gradient(to bottom right, transparent 49.6%, rgba(0,0,0,0.028) 50%, transparent 50.4%),
+    linear-gradient(to bottom left,  transparent 49.6%, rgba(0,0,0,0.028) 50%, transparent 50.4%);
+  box-shadow:
+    0 16px 52px rgba(0, 0, 0, 0.2),
+    0 4px 18px rgba(0, 0, 0, 0.11),
+    inset 0 0 0 1px rgba(175, 158, 138, 0.2);
 }
 
-/* Bottom flap triangle — slightly darker shade */
+/* Bottom fold triangle — slightly deeper cream */
 .env-body::after {
   content: '';
   position: absolute;
@@ -749,18 +824,79 @@ iframe { border: 0; }
   right: 0;
   height: 50%;
   clip-path: polygon(0 100%, 50% 0, 100% 100%);
-  background: rgba(0, 0, 0, 0.13);
+  background: rgba(0, 0, 0, 0.032);
   pointer-events: none;
 }
 
-/* ── Flap (top triangular, opens on click) ── */
+/* ── Lace edge — delicate scallop pattern inside envelope ── */
+.env-lace {
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath d='M0 6 Q3 0 6 6 Q9 0 12 6' fill='none' stroke='%23B09880' stroke-width='0.8'/%3E%3C/svg%3E") top left / 12px 6px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='6' viewBox='0 0 12 6'%3E%3Cpath d='M0 0 Q3 6 6 0 Q9 6 12 0' fill='none' stroke='%23B09880' stroke-width='0.8'/%3E%3C/svg%3E") bottom left / 12px 6px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='12' viewBox='0 0 6 12'%3E%3Cpath d='M6 0 Q0 3 6 6 Q0 9 6 12' fill='none' stroke='%23B09880' stroke-width='0.8'/%3E%3C/svg%3E") left top / 6px 12px repeat-y,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='12' viewBox='0 0 6 12'%3E%3Cpath d='M0 0 Q6 3 0 6 Q6 9 0 12' fill='none' stroke='%23B09880' stroke-width='0.8'/%3E%3C/svg%3E") right top / 6px 12px repeat-y;
+  opacity: 0.42;
+}
+
+/* ── Invitation card — rises from envelope when opened ── */
+.env-card {
+  position: absolute;
+  bottom: 11%;
+  left: 8%;
+  width: 84%;
+  height: 80%;
+  background: #FEFCF9;
+  border: 1px solid rgba(185, 172, 153, 0.18);
+  box-shadow:
+    0 -3px 20px rgba(0, 0, 0, 0.07),
+    0 0 0 0.5px rgba(175, 158, 138, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  z-index: 5;
+  transform: translateY(108%);
+  opacity: 0;
+  transition:
+    transform 1.55s cubic-bezier(0.22, 0.68, 0.36, 1) 0.6s,
+    opacity   0.55s ease 0.6s;
+}
+
+.intro-envelope.open .env-card {
+  transform: translateY(-24%);
+  opacity: 1;
+}
+
+.env-card-monogram {
+  font-family: var(--font-sc);
+  font-size: clamp(1.1rem, 4vw, 1.65rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--text);
+}
+
+.env-card-names {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(0.52rem, 2vw, 0.72rem);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+/* ── Triangular flap ── */
 .env-flap-wrap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 50%;
-  /* Higher perspective value = gentler, less dramatic 3D foreshortening */
   perspective: 1800px;
   perspective-origin: 50% 100%;
   z-index: 3;
@@ -769,31 +905,27 @@ iframe { border: 0; }
 .env-flap {
   position: absolute;
   inset: 0;
-  /* Slightly deeper than the body — creates a natural shadow at the fold */
-  background: #360F1A;
+  background: #EEE7DC;
   background-image: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.05) 100%
+    rgba(255, 255, 255, 0.22) 0%,
+    transparent 48%,
+    rgba(0, 0, 0, 0.025) 100%
   );
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: bottom center;
   transform: rotateX(0deg);
-  /* Cinematic, unhurried — slow start creates a breath of anticipation */
   transition: transform 1.85s cubic-bezier(0.65, 0, 0.25, 1);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-/* Open state: flap rotates backward (top goes away from viewer) */
 .intro-envelope.open .env-flap {
   transform: rotateX(180deg);
 }
 
 /* ── Envelope face: seal + names + hint ── */
 .env-face {
-  /* Positioned in the lower half, below the fold line */
   position: absolute;
   top: 48%;
   left: 0;
@@ -803,27 +935,29 @@ iframe { border: 0; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.22rem;
   z-index: 2;
   pointer-events: none;
-  padding: 0 1rem 1.5rem;
+  padding: 0 1rem 1rem;
 }
 
-/* Seal — minimal, typographic, no ornamentation */
+/* Wax seal — burgundy disc */
 .env-seal {
-  width: clamp(34px, 9.5vw, 42px);
-  height: clamp(34px, 9.5vw, 42px);
+  width: clamp(46px, 12.5vw, 56px);
+  height: clamp(46px, 12.5vw, 56px);
   border-radius: 50%;
-  border: 0.5px solid rgba(240, 235, 227, 0.22);
+  background: radial-gradient(circle at 36% 30%, #8E2636 0%, #5C1322 52%, #3E0C15 100%);
+  box-shadow:
+    0 3px 12px rgba(62, 12, 21, 0.42),
+    0 1px 4px rgba(0, 0, 0, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-sc);
-  font-size: clamp(0.44rem, 1.4vw, 0.54rem);
-  letter-spacing: 0.22em;
-  color: rgba(240, 235, 227, 0.55);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   transition: transform 0.4s ease, opacity 0.35s ease;
+  flex-shrink: 0;
 }
 
 .intro-envelope.open .env-seal {
@@ -831,32 +965,40 @@ iframe { border: 0; }
   opacity: 0;
 }
 
-/* Names on the envelope */
+.env-seal-text {
+  font-family: var(--font-sc);
+  font-size: clamp(0.4rem, 1.25vw, 0.52rem);
+  letter-spacing: 0.12em;
+  color: rgba(242, 232, 220, 0.88);
+  line-height: 1;
+}
+
+/* Names on the envelope — dark text on cream */
 .env-title {
   font-family: var(--font-serif);
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(1rem, 4.5vw, 1.55rem);
-  color: #EDE8DF;
+  font-size: clamp(0.92rem, 3.8vw, 1.4rem);
+  color: #2B231F;
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
 
 .env-dateline {
   font-family: var(--font-sc);
-  font-size: clamp(0.48rem, 1.5vw, 0.58rem);
+  font-size: clamp(0.44rem, 1.38vw, 0.54rem);
   letter-spacing: 0.28em;
-  color: rgba(237, 232, 223, 0.45);
+  color: rgba(43, 35, 31, 0.42);
 }
 
-/* "Open" hint — universally legible, elegantly restrained */
+/* "Open" hint */
 .env-hint {
   position: absolute;
-  bottom: 0.7rem;
+  bottom: 0.55rem;
   font-family: var(--font-sc);
-  font-size: clamp(0.5rem, 1.4vw, 0.6rem);
+  font-size: clamp(0.44rem, 1.3vw, 0.54rem);
   letter-spacing: 0.48em;
-  color: rgba(237, 232, 223, 0.72);
+  color: rgba(43, 35, 31, 0.48);
   text-transform: uppercase;
   animation: hintPulse 2.8s ease-in-out infinite;
   transition: opacity 0.4s ease;
@@ -868,37 +1010,29 @@ iframe { border: 0; }
 }
 
 @keyframes hintPulse {
-  0%, 100% { opacity: 0.50; }
-  50%       { opacity: 1;    }
+  0%, 100% { opacity: 0.38; }
+  50%       { opacity: 0.85; }
 }
 
 /* ============================================================
    LOCATION SLIDESHOW BACKGROUND
    ============================================================ */
 
-/* Slideshow container — fills the section behind all content */
 .slideshow-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Invisible until JS adds images + has-slideshow class */
 }
 
-/* Dark warm overlay — hidden by default, shown when has-slideshow is active */
 .slideshow-overlay {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(
-    170deg,
-    rgba(7, 2, 4, 0.55) 0%,
-    rgba(10, 4, 7, 0.50) 100%
-  );
+  background: linear-gradient(170deg, rgba(7, 2, 4, 0.55) 0%, rgba(10, 4, 7, 0.50) 100%);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-/* Individual photo slides */
 .slide-frame {
   position: absolute;
   inset: 0;
@@ -906,7 +1040,6 @@ iframe { border: 0; }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  /* Softened, warm atmosphere — visible but not photographic */
   filter: blur(2px) saturate(0.8) brightness(0.88);
   transform: scale(1.04);
   transition: opacity 2.2s ease;
@@ -914,7 +1047,6 @@ iframe { border: 0; }
 
 .slide-frame.active {
   opacity: 1;
-  /* Very subtle slow zoom — atmospheric, not hotel-promo */
   animation: slideZoom 7s ease-in-out forwards;
 }
 
@@ -923,56 +1055,24 @@ iframe { border: 0; }
   to   { transform: scale(1.09); }
 }
 
-/* Section content sits above the slideshow */
 #location .container {
   position: relative;
   z-index: 3;
 }
 
-/* ── has-slideshow: activate overlay + restyle text to light ── */
 #location.has-slideshow {
   background-color: #1A0E12;
 }
 
-#location.has-slideshow .slideshow-overlay {
-  opacity: 1;
-}
-
-#location.has-slideshow .section-label {
-  color: rgba(237, 232, 223, 0.62);
-}
-
-#location.has-slideshow .section-title {
-  color: #EDE8DF;
-}
-
-#location.has-slideshow .location-venue {
-  color: #EDE8DF;
-}
-
-#location.has-slideshow .location-address {
-  color: rgba(237, 232, 223, 0.58);
-}
-
-#location.has-slideshow .location-link {
-  color: rgba(237, 232, 223, 0.72);
-  border-bottom-color: rgba(237, 232, 223, 0.28);
-}
-
-#location.has-slideshow .location-link:hover {
-  opacity: 0.65;
-}
-
-#location.has-slideshow .map-wrapper {
-  border-color: rgba(237, 232, 223, 0.1);
-  /* Soft inner glow to help it read as a composed element */
-  box-shadow: 0 0 0 4px rgba(237, 232, 223, 0.04), 0 2px 24px rgba(0, 0, 0, 0.35);
-}
-
-#location.has-slideshow .map-wrapper iframe {
-  filter: grayscale(30%) contrast(0.9) brightness(0.88);
-  opacity: 0.9;
-}
+#location.has-slideshow .slideshow-overlay { opacity: 1; }
+#location.has-slideshow .section-label     { color: rgba(237, 232, 223, 0.62); }
+#location.has-slideshow .section-title     { color: #EDE8DF; }
+#location.has-slideshow .location-venue    { color: #EDE8DF; }
+#location.has-slideshow .location-address  { color: rgba(237, 232, 223, 0.58); }
+#location.has-slideshow .location-link     { color: rgba(237, 232, 223, 0.72); border-bottom-color: rgba(237, 232, 223, 0.28); }
+#location.has-slideshow .location-link:hover { opacity: 0.65; }
+#location.has-slideshow .map-wrapper       { border-color: rgba(237, 232, 223, 0.1); box-shadow: 0 0 0 4px rgba(237, 232, 223, 0.04), 0 2px 24px rgba(0, 0, 0, 0.35); }
+#location.has-slideshow .map-wrapper iframe { filter: grayscale(30%) contrast(0.9) brightness(0.88); opacity: 0.9; }
 
 /* ── Utility ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
