@@ -71,41 +71,51 @@
     <section id="hero" class="hero" aria-label="Hero">
       <div class="hero-inner">
 
-        <p class="hero-eyebrow animate-in" data-i18n="hero.eyebrow"></p>
+        <!-- Introduction text — first visible content after opening -->
+        <div class="intro-prose animate-in">
+          <p data-i18n="intro.p1"></p>
+          <p data-i18n="intro.p2"></p>
+          <p data-i18n="intro.p3"></p>
+        </div>
 
-        <!-- Monogram — ornamental embossed crest -->
+        <!-- Monogram — ornamental embossed crest, square & perfectly centred -->
         <div class="hero-monogram" aria-hidden="true">
           <div class="hero-monogram-crest">
-            <svg class="hero-crest-frame" viewBox="0 0 240 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" overflow="visible" aria-hidden="true">
-              <!-- Outer diamond frame -->
-              <path d="M120 10 L228 100 L120 190 L12 100 Z" stroke-width="0.7"/>
-              <!-- Inner diamond frame -->
-              <path d="M120 24 L214 100 L120 176 L26 100 Z" stroke-width="0.4"/>
-              <!-- Top ornament -->
-              <path d="M113 13 C110 8 107 10 109 14" stroke-width="0.6"/>
-              <path d="M127 13 C130 8 133 10 131 14" stroke-width="0.6"/>
-              <path d="M117 9 L120 5 L123 9" stroke-width="0.65"/>
-              <circle cx="120" cy="4.5" r="1.3" fill="currentColor" stroke="none"/>
-              <!-- Bottom ornament -->
-              <path d="M113 187 C110 192 107 190 109 186" stroke-width="0.6"/>
-              <path d="M127 187 C130 192 133 190 131 186" stroke-width="0.6"/>
-              <path d="M117 191 L120 195 L123 191" stroke-width="0.65"/>
-              <circle cx="120" cy="195.5" r="1.3" fill="currentColor" stroke="none"/>
-              <!-- Right ornament -->
-              <path d="M225 94 C231 91 231 88 226 89" stroke-width="0.6"/>
-              <path d="M225 106 C231 109 231 112 226 111" stroke-width="0.6"/>
-              <path d="M230 97 L234 100 L230 103" stroke-width="0.65"/>
-              <circle cx="235.5" cy="100" r="1.3" fill="currentColor" stroke="none"/>
-              <!-- Left ornament -->
-              <path d="M15 94 C9 91 9 88 14 89" stroke-width="0.6"/>
-              <path d="M15 106 C9 109 9 112 14 111" stroke-width="0.6"/>
-              <path d="M10 97 L6 100 L10 103" stroke-width="0.65"/>
-              <circle cx="4.5" cy="100" r="1.3" fill="currentColor" stroke="none"/>
-              <!-- Midpoint accent dots on each side -->
-              <circle cx="174" cy="55" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
-              <circle cx="66"  cy="55" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
-              <circle cx="174" cy="145" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
-              <circle cx="66"  cy="145" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
+            <!--
+              viewBox 200×200, centre (100,100).
+              All four ornaments are computed via exact 90° rotations so every
+              axis is mathematically and optically symmetric.
+            -->
+            <svg class="hero-crest-frame" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <!-- Outer diamond — equal diagonals 184 × 184 -->
+              <path d="M100 8 L192 100 L100 192 L8 100 Z" stroke-width="0.7"/>
+              <!-- Inner diamond — equal diagonals 156 × 156 -->
+              <path d="M100 22 L178 100 L100 178 L22 100 Z" stroke-width="0.4"/>
+              <!-- TOP ornament -->
+              <path d="M93 11 C90 6 87 8 89 12"    stroke-width="0.6"/>
+              <path d="M107 11 C110 6 113 8 111 12" stroke-width="0.6"/>
+              <path d="M97 8 L100 4 L103 8"         stroke-width="0.65"/>
+              <circle cx="100" cy="3.5" r="1.3" fill="currentColor" stroke="none"/>
+              <!-- BOTTOM ornament — top mirrored through y=100 -->
+              <path d="M93 189 C90 194 87 192 89 188"    stroke-width="0.6"/>
+              <path d="M107 189 C110 194 113 192 111 188" stroke-width="0.6"/>
+              <path d="M97 192 L100 196 L103 192"         stroke-width="0.65"/>
+              <circle cx="100" cy="196.5" r="1.3" fill="currentColor" stroke="none"/>
+              <!-- RIGHT ornament — top rotated 90° CCW -->
+              <path d="M189 93 C194 90 192 87 188 89"    stroke-width="0.6"/>
+              <path d="M189 107 C194 110 192 113 188 111" stroke-width="0.6"/>
+              <path d="M192 97 L196 100 L192 103"         stroke-width="0.65"/>
+              <circle cx="196.5" cy="100" r="1.3" fill="currentColor" stroke="none"/>
+              <!-- LEFT ornament — top rotated 90° CW -->
+              <path d="M11 93 C6 90 8 87 12 89"    stroke-width="0.6"/>
+              <path d="M11 107 C6 110 8 113 12 111" stroke-width="0.6"/>
+              <path d="M8 103 L4 100 L8 97"         stroke-width="0.65"/>
+              <circle cx="3.5" cy="100" r="1.3" fill="currentColor" stroke="none"/>
+              <!-- Midpoint accent dots — all four at equal distance from centre -->
+              <circle cx="146" cy="54"  r="1" fill="currentColor" stroke="none" opacity="0.5"/>
+              <circle cx="54"  cy="54"  r="1" fill="currentColor" stroke="none" opacity="0.5"/>
+              <circle cx="146" cy="146" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
+              <circle cx="54"  cy="146" r="1" fill="currentColor" stroke="none" opacity="0.5"/>
             </svg>
             <span class="hero-monogram-text">C · D</span>
           </div>
@@ -128,17 +138,6 @@
       <a href="#countdown" class="hero-scroll" aria-label="Scroll to countdown">
         <span class="hero-scroll-line" aria-hidden="true"></span>
       </a>
-    </section>
-
-    <!-- ── Intro Prose ── -->
-    <section id="intro" class="section section-intro fade-in">
-      <div class="container container--narrow">
-        <div class="intro-prose">
-          <p data-i18n="intro.p1"></p>
-          <p data-i18n="intro.p2"></p>
-          <p data-i18n="intro.p3"></p>
-        </div>
-      </div>
     </section>
 
     <!-- ── Countdown ── -->
