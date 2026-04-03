@@ -34,7 +34,7 @@ const SLIDESHOW_INTERVAL_MS = 3500;
 const TRANSLATIONS = {
   es: {
     hero: {
-      eyebrow: 'Boda · 11 de Octubre de 2026',
+      eyebrow: 'Os invitamos a celebrar con nosotros',
     },
     countdown: {
       label:   'Hasta el gran día',
@@ -48,17 +48,15 @@ const TRANSLATIONS = {
       label:  'La Celebración',
       title:  'El Día',
       events: [
-        { time: '15:30', name: 'Llegada de los invitados' },
         { time: '16:00', name: 'Ceremonia' },
         { time: '17:00', name: 'Aperitivo', desc: '17:00 – 19:00' },
-        { time: '19:00', name: 'Sesión de fotos', desc: '19:00 – 19:30' },
         { time: '20:00', name: 'Cena' },
         { time: '22:00', name: 'Celebración' },
       ],
     },
     location: {
       label:      'El Lugar',
-      title:      'Dónde nos casamos',
+      title:      'Un lugar para reunirse, celebrar y recordar',
       address:    'Barcelona, España',
       directions: 'Ver en Google Maps',
     },
@@ -71,6 +69,9 @@ const TRANSLATIONS = {
       label: 'Transporte',
       title: 'Cómo llegar',
       body:  'Próximamente os informaremos sobre las opciones de transporte disponibles para llegar al lugar de la boda y regresar cómodamente.',
+    },
+    footer: {
+      closing: 'Esperamos compartir este momento con vosotros',
     },
     faq: {
       label: 'Preguntas',
@@ -98,7 +99,7 @@ const TRANSLATIONS = {
 
   de: {
     hero: {
-      eyebrow: 'Hochzeit · 11. Oktober 2026',
+      eyebrow: 'Wir laden euch ein, mit uns zu feiern',
     },
     countdown: {
       label:   'Bis zum großen Tag',
@@ -112,17 +113,15 @@ const TRANSLATIONS = {
       label:  'Die Feier',
       title:  'Der Tag',
       events: [
-        { time: '15:30', name: 'Ankunft der Gäste' },
         { time: '16:00', name: 'Zeremonie' },
-        { time: '17:00', name: 'Aperitif', desc: '17:00 – 19:00 Uhr' },
-        { time: '19:00', name: 'Fotoaufnahmen', desc: '19:00 – 19:30 Uhr' },
+        { time: '17:00', name: 'Aperitif', desc: '17:00 – 19:00' },
         { time: '20:00', name: 'Abendessen' },
         { time: '22:00', name: 'Feier' },
       ],
     },
     location: {
       label:      'Der Ort',
-      title:      'Wo wir heiraten',
+      title:      'Ein Ort zum Zusammenkommen, Feiern und Erinnern',
       address:    'Barcelona, Spanien',
       directions: 'In Google Maps anzeigen',
     },
@@ -135,6 +134,9 @@ const TRANSLATIONS = {
       label: 'Anreise',
       title: 'Wie man anreist',
       body:  'Informationen zu den Transportmöglichkeiten zur Hochzeitslocation werden in Kürze bekannt gegeben.',
+    },
+    footer: {
+      closing: 'Wir freuen uns, diesen Moment mit euch zu teilen',
     },
     faq: {
       label: 'Fragen',
@@ -162,7 +164,7 @@ const TRANSLATIONS = {
 
   tr: {
     hero: {
-      eyebrow: 'Düğün · 11 Ekim 2026',
+      eyebrow: 'Sizi bizimle kutlamaya davet ediyoruz',
     },
     countdown: {
       label:   'O Büyük Güne Kadar',
@@ -176,17 +178,15 @@ const TRANSLATIONS = {
       label:  'Kutlama',
       title:  'O Gün',
       events: [
-        { time: '15:30', name: 'Misafirlerin Gelişi' },
         { time: '16:00', name: 'Tören' },
         { time: '17:00', name: 'Aperitif', desc: '17:00 – 19:00' },
-        { time: '19:00', name: 'Fotoğraf Çekimi', desc: '19:00 – 19:30' },
         { time: '20:00', name: 'Akşam Yemeği' },
         { time: '22:00', name: 'Kutlama' },
       ],
     },
     location: {
       label:      'Mekan',
-      title:      'Nerede Evleniyoruz',
+      title:      'Buluşmak, kutlamak ve hatırlamak için bir yer',
       address:    'Barselona, İspanya',
       directions: 'Google Maps\'te Görüntüle',
     },
@@ -199,6 +199,9 @@ const TRANSLATIONS = {
       label: 'Ulaşım',
       title: 'Nasıl Gelinir',
       body:  'Düğün mekanına ulaşım seçenekleri hakkında bilgiler yakında paylaşılacaktır.',
+    },
+    footer: {
+      closing: 'Bu anı sizinle paylaşmaktan mutluluk duyacağız',
     },
     faq: {
       label: 'Sorular',
