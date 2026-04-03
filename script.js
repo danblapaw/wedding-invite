@@ -36,6 +36,11 @@ const TRANSLATIONS = {
     hero: {
       eyebrow: 'Os invitamos a celebrar con nosotros',
     },
+    intro: {
+      p1: 'Con mucho amor en el corazón y llenos de ilusión por lo que está por venir, os invitamos a formar parte de uno de los días más especiales de nuestras vidas.',
+      p2: 'El 11 de Octubre de 2026 nos daremos el «sí, quiero» y comenzaremos un nuevo capítulo — uno que queremos celebrar junto a las personas que más significan para nosotros.',
+      p3: 'Entre luz, música y todos esos pequeños momentos llenos de significado, queremos crear recuerdos que perduren para siempre.',
+    },
     countdown: {
       label:   'Hasta el gran día',
       title:   'Cuenta Atrás',
@@ -48,8 +53,9 @@ const TRANSLATIONS = {
       label:  'La Celebración',
       title:  'El Día',
       events: [
+        { time: '15:30', name: 'Llegada de invitados' },
         { time: '16:00', name: 'Ceremonia' },
-        { time: '17:00', name: 'Aperitivo', desc: '17:00 – 19:00' },
+        { time: '17:00', name: 'Aperitivo' },
         { time: '20:00', name: 'Cena' },
         { time: '22:00', name: 'Celebración' },
       ],
@@ -101,6 +107,11 @@ const TRANSLATIONS = {
     hero: {
       eyebrow: 'Wir laden euch ein, mit uns zu feiern',
     },
+    intro: {
+      p1: 'Mit viel Liebe im Herzen und voller Vorfreude auf das, was vor uns liegt, laden wir euch ein, Teil unseres besonderen Tages zu sein.',
+      p2: 'Am 11. Oktober 2026 werden wir uns das Ja-Wort geben und ein neues Kapitel beginnen — eines, das wir am liebsten mit den Menschen feiern möchten, die uns am nächsten stehen.',
+      p3: 'Zwischen Licht, Musik und all den kleinen, bedeutungsvollen Momenten möchten wir gemeinsam mit euch Erinnerungen schaffen, die bleiben.',
+    },
     countdown: {
       label:   'Bis zum großen Tag',
       title:   'Countdown',
@@ -113,8 +124,9 @@ const TRANSLATIONS = {
       label:  'Die Feier',
       title:  'Der Tag',
       events: [
+        { time: '15:30', name: 'Ankunft der Gäste' },
         { time: '16:00', name: 'Zeremonie' },
-        { time: '17:00', name: 'Aperitif', desc: '17:00 – 19:00' },
+        { time: '17:00', name: 'Aperitif' },
         { time: '20:00', name: 'Abendessen' },
         { time: '22:00', name: 'Feier' },
       ],
@@ -166,6 +178,11 @@ const TRANSLATIONS = {
     hero: {
       eyebrow: 'Sizi bizimle kutlamaya davet ediyoruz',
     },
+    intro: {
+      p1: 'Kalbimiz sevgiyle dolu ve bizi bekleyen her şeye büyük bir heyecanla bakarken, hayatımızın en özel günlerinden birine sizi de davet ediyoruz.',
+      p2: '11 Ekim 2026 tarihinde «evet» diyerek yeni bir başlangıç yapacağız — ve bu anı, bizim için en değerli olan insanlarla birlikte kutlamak istiyoruz.',
+      p3: 'Işık, müzik ve anlam yüklü o küçük anların arasında, birlikte kalıcı hatıralar yaratmayı diliyoruz.',
+    },
     countdown: {
       label:   'O Büyük Güne Kadar',
       title:   'Geri Sayım',
@@ -178,8 +195,9 @@ const TRANSLATIONS = {
       label:  'Kutlama',
       title:  'O Gün',
       events: [
+        { time: '15:30', name: 'Misafirlerin Gelişi' },
         { time: '16:00', name: 'Tören' },
-        { time: '17:00', name: 'Aperitif', desc: '17:00 – 19:00' },
+        { time: '17:00', name: 'Aperitif' },
         { time: '20:00', name: 'Akşam Yemeği' },
         { time: '22:00', name: 'Kutlama' },
       ],
@@ -279,13 +297,15 @@ function applyTranslations(lang) {
    TIMELINE ICONS — monochrome, thin-stroke SVG
    ============================================================ */
 const TL_ICONS = [
-  // 0 — Ceremony: chapel arch with cross
+  // 0 — Arrival: elegant downward arrow with baseline
+  `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="9" y1="2" x2="9" y2="11"/><path d="M6 8.5 L9 11.5 L12 8.5"/><line x1="3" y1="15" x2="15" y2="15"/></svg>`,
+  // 1 — Ceremony: chapel arch with cross
   `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16 L3 8 Q3 2 9 2 Q15 2 15 8 L15 16"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="7.2" y1="3.5" x2="10.8" y2="3.5"/></svg>`,
-  // 1 — Cocktail: champagne flute
+  // 2 — Cocktail: champagne flute
   `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2 L13 2 L10 11 L10 16"/><line x1="7.5" y1="16" x2="12.5" y2="16"/><path d="M7 5.5 Q9 4 11 5.5" opacity="0.5"/></svg>`,
-  // 2 — Dinner: fork and knife
+  // 3 — Dinner: fork and knife
   `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="2" x2="7" y2="16"/><line x1="5" y1="2" x2="5" y2="7"/><line x1="9" y1="2" x2="9" y2="7"/><line x1="5" y1="7" x2="9" y2="7"/><path d="M12 2 L14 4 Q14.5 7 12 7.5 L12 16"/></svg>`,
-  // 3 — Celebration: starburst with circle
+  // 4 — Celebration: starburst with circle
   `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><line x1="9" y1="1" x2="9" y2="4"/><line x1="9" y1="14" x2="9" y2="17"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="14" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="5.6" y2="5.6"/><line x1="12.4" y1="12.4" x2="14.5" y2="14.5"/><line x1="14.5" y1="3.5" x2="12.4" y2="5.6"/><line x1="5.6" y1="12.4" x2="3.5" y2="14.5"/><circle cx="9" cy="9" r="2.6"/></svg>`,
 ];
 
