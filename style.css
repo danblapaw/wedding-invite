@@ -7,8 +7,8 @@
 :root {
   --bg:          #FAFAF8;
   --bg-warm:     #F5F1EA;
-  --text:        #1E1916;
-  --text-muted:  #7A7168;
+  --text:        #191411;
+  --text-muted:  #645D56;
   --accent:      #6B1F2A;
   --border:      #E2DDD6;
 
@@ -123,7 +123,7 @@ iframe { border: 0; }
   font-size: 1.05rem;
   font-style: italic;
   font-weight: 300;
-  color: var(--text-muted);
+  color: #4A4540;
   line-height: 2;
   text-align: center;
 }
@@ -365,7 +365,7 @@ iframe { border: 0; }
   font-weight: 300;
   font-style: italic;
   line-height: 2.1;
-  color: rgba(122, 113, 104, 0.78);
+  color: rgba(68, 62, 57, 0.9);
   letter-spacing: 0.01em;
 }
 
@@ -403,7 +403,7 @@ iframe { border: 0; }
   color: var(--text-muted);
   text-transform: uppercase;
   white-space: nowrap;
-  opacity: 0.75;
+  opacity: 0.88;
 }
 
 .countdown-sep {
@@ -448,7 +448,7 @@ iframe { border: 0; }
   font-family: var(--font-sc);
   font-size: 0.6rem;
   letter-spacing: 0.06em;
-  color: rgba(107, 31, 42, 0.65);
+  color: rgba(107, 31, 42, 0.82);
   line-height: 1;
 }
 
@@ -522,7 +522,7 @@ iframe { border: 0; }
   color: var(--text-muted);
   margin-top: 0.12rem;
   padding-left: calc(20px + 0.55rem);
-  opacity: 0.75;
+  opacity: 0.9;
 }
 
 /* ── Location ────────────────────────────────────────────── */
@@ -711,7 +711,7 @@ iframe { border: 0; }
   font-family: var(--font-sc);
   font-size: 0.6rem;
   letter-spacing: 0.32em;
-  color: rgba(250, 250, 248, 0.4);
+  color: rgba(250, 250, 248, 0.55);
 }
 
 .footer-closing {
@@ -719,7 +719,7 @@ iframe { border: 0; }
   font-weight: 300;
   font-style: italic;
   font-size: 0.88rem;
-  color: rgba(250, 250, 248, 0.42);
+  color: rgba(250, 250, 248, 0.55);
   letter-spacing: 0.02em;
   margin-top: 0.6rem;
 }
