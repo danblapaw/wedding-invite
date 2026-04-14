@@ -209,6 +209,22 @@
     </div>
   </footer>
 
+  <!-- Background audio — preload="none" keeps initial load fast -->
+  <audio id="bgAudio" loop preload="none" src="assets/musica-invitacion.mpeg"></audio>
+
+  <!-- Floating audio control — fixed bottom-left, mirrors the lang switcher style -->
+  <button class="audio-btn" id="audioBtn" aria-label="Reproducir música" title="Música">
+    <!-- Play icon: visible when paused -->
+    <svg class="audio-icon audio-icon--play" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+      <polygon points="5,3.5 14.5,9 5,14.5" opacity="0.78"/>
+    </svg>
+    <!-- Pause icon: visible when playing -->
+    <svg class="audio-icon audio-icon--pause" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <line x1="6"  y1="4.5" x2="6"  y2="13.5"/>
+      <line x1="12" y1="4.5" x2="12" y2="13.5"/>
+    </svg>
+  </button>
+
   <script src="script.js"></script>
 </body>
 </html>

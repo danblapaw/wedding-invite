@@ -1003,6 +1003,48 @@ iframe { border: 0; }
 #location.has-slideshow .map-wrapper       { border-color: rgba(237, 232, 223, 0.1); box-shadow: 0 0 0 4px rgba(237, 232, 223, 0.04), 0 2px 24px rgba(0, 0, 0, 0.35); }
 #location.has-slideshow .map-wrapper iframe { filter: grayscale(30%) contrast(0.9) brightness(0.88); opacity: 0.9; }
 
+/* ── Audio Control Button ────────────────────────────────── */
+.audio-btn {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 200;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(250, 250, 248, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.audio-btn:hover {
+  color: var(--accent);
+}
+
+.audio-btn:focus-visible {
+  outline: 1px solid rgba(107, 31, 42, 0.3);
+  outline-offset: 3px;
+}
+
+.audio-icon {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  transition: opacity 0.25s ease;
+}
+
+.audio-icon--play  { opacity: 1; }
+.audio-icon--pause { opacity: 0; }
+
+.audio-btn.playing .audio-icon--play  { opacity: 0; }
+.audio-btn.playing .audio-icon--pause { opacity: 1; }
+
 /* ── Utility ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

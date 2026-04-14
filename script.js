@@ -538,6 +538,56 @@ function initIntro() {
 }
 
 /* ============================================================
+   AUDIO
+   ============================================================ */
+function initAudio() {
+  const audio = document.getElementById('bgAudio');
+  const btn   = document.getElementById('audioBtn');
+  if (!audio || !btn) return;
+
+  audio.volume = 0.45;
+
+  let started = false;
+
+  function startAudio() {
+    if (started) return;
+    started = true;
+    audio.play().catch(() => {
+      // Playback rejected (browser policy) — site continues normally
+      started = false;
+    });
+  }
+
+  // Piggyback on the intro overlay click — the first real user interaction.
+  // This satisfies mobile browser autoplay restrictions without a second tap.
+  const overlay = document.getElementById('introOverlay');
+  if (overlay && !sessionStorage.getItem('introSeen')) {
+    overlay.addEventListener('click', startAudio, { once: true });
+  }
+
+  // Toggle play / pause via the control button
+  btn.addEventListener('click', e => {
+    e.stopPropagation(); // prevent bubbling to any underlying element
+    if (!started || audio.paused) {
+      audio.play().catch(() => {});
+      started = true;
+    } else {
+      audio.pause();
+    }
+  });
+
+  // Keep button icon in sync with actual playback state
+  audio.addEventListener('play', () => {
+    btn.classList.add('playing');
+    btn.setAttribute('aria-label', 'Pausar música');
+  });
+  audio.addEventListener('pause', () => {
+    btn.classList.remove('playing');
+    btn.setAttribute('aria-label', 'Reproducir música');
+  });
+}
+
+/* ============================================================
    LOCATION PHOTO SLIDESHOW
    ============================================================ */
 function initSlideshow() {
@@ -579,6 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangSwitcher();
   initCountdown();
   initIntro();
+  initAudio();
   initSlideshow();
 
   // Small delay so the newly-built timeline/faq elements are in the DOM
