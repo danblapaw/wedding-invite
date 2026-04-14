@@ -319,7 +319,7 @@ function buildTimeline(lang) {
   const events = TRANSLATIONS[lang].program.events;
 
   container.innerHTML = events.map((ev, i) => `
-    <div class="timeline-item fade-in" role="listitem" style="transition-delay:${i * 0.09}s">
+    <div class="timeline-item fade-in" role="listitem" style="transition-delay:${i * 0.12}s">
       <div class="tl-time">${ev.time}</div>
       <div class="tl-axis">
         <div class="tl-dot"></div>
@@ -444,8 +444,14 @@ function observeFadeIns() {
       });
     },
     {
-      threshold:  0.07,
-      rootMargin: '0px 0px -32px 0px',
+      /*
+       * threshold 0.08: fire when ~8% of the element is in the viewport.
+       * rootMargin clips 60px from the bottom — animations trigger a
+       * beat before the element fully arrives, so they complete
+       * naturally as the user reads rather than lagging behind the scroll.
+       */
+      threshold:  0.08,
+      rootMargin: '0px 0px -60px 0px',
     }
   );
 

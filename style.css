@@ -714,19 +714,102 @@ iframe { border: 0; }
 }
 
 /* ── Scroll-reveal animations ────────────────────────────── */
+
+/*
+ * Generic: footer and any standalone .fade-in elements.
+ * Ease-out cubic — decelerates softly into place, no bounce.
+ */
 .fade-in {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  transform: translateY(16px);
+  transition:
+    opacity  1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fade-in.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
+/*
+ * Sections: transparent scroll triggers.
+ * The section background is always visible; only the content
+ * children animate in. This lets a warm-toned section background
+ * scroll naturally into view, then the text settles on top.
+ */
+.section.fade-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Section content atoms — start hidden */
+.section.fade-in .section-label,
+.section.fade-in .section-title,
+.section.fade-in .section-prose,
+.section.fade-in .countdown-grid,
+.section.fade-in .location-layout,
+.section.fade-in .faq-list {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity  1.0s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.0s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Staggered reveal when section enters viewport */
+.section.fade-in.visible .section-label {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.06s;
+}
+
+.section.fade-in.visible .section-title {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.22s;
+}
+
+.section.fade-in.visible .section-prose {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.38s;
+}
+
+.section.fade-in.visible .countdown-grid {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.28s;
+}
+
+.section.fade-in.visible .location-layout {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.28s;
+}
+
+.section.fade-in.visible .faq-list {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.28s;
+}
+
+/*
+ * Timeline items: each has its own .fade-in and an inline
+ * transition-delay from buildTimeline() — they appear sequentially.
+ */
 .timeline-item.fade-in {
-  transition-duration: 0.65s;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity  0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timeline-item.fade-in.visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ============================================================
@@ -882,4 +965,15 @@ iframe { border: 0; }
   }
   .animate-in { opacity: 1; }
   .fade-in    { opacity: 1; transform: none; }
+  /* Section children: always visible, no animation */
+  .section.fade-in .section-label,
+  .section.fade-in .section-title,
+  .section.fade-in .section-prose,
+  .section.fade-in .countdown-grid,
+  .section.fade-in .location-layout,
+  .section.fade-in .faq-list,
+  .timeline-item.fade-in {
+    opacity: 1;
+    transform: none;
+  }
 }
