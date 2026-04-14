@@ -859,6 +859,50 @@ iframe { border: 0; }
   transform: scale(1.14);
 }
 
+/* ── Wax seal ring — positioned over the real seal in the background photo ── */
+/*
+ * The photo is portrait; when shown as cover on landscape viewports the seal
+ * lands at ~39% from top. On mobile portrait it sits at ~45%.
+ * top: 42% is the balanced mid-point across both.
+ * Size matches the seal diameter at typical viewport widths.
+ */
+.env-wax-ring {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(82px, 18vmin, 118px);
+  height: clamp(82px, 18vmin, 118px);
+  border-radius: 50%;
+  border: 1px solid rgba(215, 198, 175, 0.28);
+  box-shadow:
+    0 0 0 3px rgba(215, 198, 175, 0.06),
+    0 0 22px rgba(215, 198, 175, 0.08);
+  z-index: 2;
+  pointer-events: none;
+  animation: waxRingPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes waxRingPulse {
+  0%, 100% { opacity: 0.45; transform: translate(-50%, -50%) scale(1);    }
+  50%       { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Seal ring compresses on press, disappears on open */
+.intro-overlay.pressing .env-wax-ring {
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(0.94);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  animation: none;
+}
+
+.intro-overlay.opening .env-wax-ring {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.18);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  animation: none;
+}
+
 /* ── OPEN CTA ── */
 .env-hero-open {
   position: absolute;
@@ -870,7 +914,7 @@ iframe { border: 0; }
   letter-spacing: 0.48em;
   padding-left: 0.48em; /* compensate trailing letter-spacing */
   text-transform: uppercase;
-  color: rgba(43, 35, 31, 0.68);
+  color: rgba(43, 35, 31, 0.84);
   background: none;
   border: none;
   outline: none;
@@ -895,8 +939,8 @@ iframe { border: 0; }
 }
 
 @keyframes envOpenPulse {
-  0%, 100% { opacity: 0.50; }
-  50%       { opacity: 0.92; }
+  0%, 100% { opacity: 0.62; }
+  50%       { opacity: 1; }
 }
 
 /* ============================================================
