@@ -138,14 +138,24 @@ iframe { border: 0; }
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   color: var(--text-muted);
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
   padding: 0.1em 0;
   line-height: 1;
+  opacity: 0.45;
+}
+
+.lang-btn img {
+  display: block;
+  width: 28px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 1px;
 }
 
 .lang-btn:hover,
 .lang-btn.active {
   color: var(--accent);
+  opacity: 1;
 }
 
 .lang-sep {
