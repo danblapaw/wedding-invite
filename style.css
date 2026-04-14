@@ -826,6 +826,7 @@ iframe { border: 0; }
   z-index: 1000;
   overflow: hidden;
   background: #1A1108;
+  cursor: pointer;
   transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -840,8 +841,13 @@ iframe { border: 0; }
   inset: 0;
   background: url('assets/venue-5.png') center center / cover no-repeat;
   transform: scale(1);
-  transition: transform 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.18s ease;
   will-change: transform;
+}
+
+/* Tactile press feedback — dims the photo very slightly on touch/click */
+.intro-overlay.pressing .env-hero-base {
+  opacity: 0.90;
 }
 
 /*
@@ -860,24 +866,21 @@ iframe { border: 0; }
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-sc);
-  font-size: clamp(0.5rem, 1.4vw, 0.58rem);
+  font-size: clamp(0.56rem, 1.6vw, 0.64rem);
   letter-spacing: 0.48em;
   padding-left: 0.48em; /* compensate trailing letter-spacing */
   text-transform: uppercase;
-  color: rgba(43, 35, 31, 0.48);
+  color: rgba(43, 35, 31, 0.68);
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+  pointer-events: none; /* whole overlay is the tap target */
   user-select: none;
   z-index: 3;
   padding-block: 1.2rem;
   animation: envOpenPulse 3s ease-in-out infinite;
   transition: opacity 0.4s ease;
-}
-
-.env-hero-open:hover {
-  color: rgba(43, 35, 31, 0.78);
 }
 
 .env-hero-open:focus-visible {
@@ -892,8 +895,8 @@ iframe { border: 0; }
 }
 
 @keyframes envOpenPulse {
-  0%, 100% { opacity: 0.35; }
-  50%       { opacity: 0.75; }
+  0%, 100% { opacity: 0.50; }
+  50%       { opacity: 0.92; }
 }
 
 /* ============================================================

@@ -514,14 +514,27 @@ function initIntro() {
     setTimeout(dismissOverlay, 1500);
   }
 
-  cta.addEventListener('click', openInvitation);
+  // Whole overlay is the tap/click surface — CTA click bubbles up naturally.
+  overlay.addEventListener('click', openInvitation);
 
+  // Keyboard: keep CTA accessible for Tab users
   cta.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       openInvitation();
     }
   });
+
+  // Tactile press feedback — add/remove .pressing on the overlay
+  function addPressing()    { overlay.classList.add('pressing'); }
+  function removePressing() { overlay.classList.remove('pressing'); }
+
+  overlay.addEventListener('mousedown',  addPressing);
+  overlay.addEventListener('touchstart', addPressing,  { passive: true });
+  overlay.addEventListener('mouseup',    removePressing);
+  overlay.addEventListener('mouseleave', removePressing);
+  overlay.addEventListener('touchend',   removePressing);
+  overlay.addEventListener('touchcancel', removePressing);
 }
 
 /* ============================================================
