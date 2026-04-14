@@ -184,10 +184,10 @@ iframe { border: 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3.2rem);
+  gap: clamp(1.4rem, 3vw, 2.2rem);
 }
 
-/* ── Hero Monogram — wax seal disc, matching the envelope seal ── */
+/* ── Hero Monogram — small typographic ornament ── */
 .hero-monogram {
   display: flex;
   align-items: center;
@@ -197,55 +197,40 @@ iframe { border: 0; }
 }
 
 .hero-monogram-crest {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  /*
-   * Circular — matches the wax seal shape from the envelope photo.
-   * Gradient sampled from the pearl/ivory seal: warm highlight at top-left,
-   * deeper gold tone at the base.
-   */
-  width: clamp(130px, 34vw, 168px);
-  height: clamp(130px, 34vw, 168px);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 38% 32%,
-    #EDE5D8 0%,
-    #D4C4AC 48%,
-    #BCA88A 100%
-  );
-  box-shadow:
-    0 4px 18px rgba(140, 110, 75, 0.22),
-    0 1px 5px rgba(0, 0, 0, 0.08),
-    inset 0 2px 4px rgba(255, 255, 255, 0.52),
-    inset 0 -2px 6px rgba(100, 75, 50, 0.13);
+  gap: 1rem;
 }
 
-/* Embossed border ring — mirrors the incised ring on the wax seal */
-.hero-monogram-crest::before {
+/* Thin rules flanking the initials */
+.hero-monogram-crest::before,
+.hero-monogram-crest::after {
   content: '';
-  position: absolute;
-  inset: 10%;
-  border-radius: 50%;
-  border: 1px solid rgba(155, 130, 100, 0.22);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
-  pointer-events: none;
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(107, 31, 42, 0.30)
+  );
+}
+
+.hero-monogram-crest::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(107, 31, 42, 0.30)
+  );
 }
 
 .hero-monogram-text {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-sc);
-  font-size: clamp(1.1rem, 3.8vw, 1.6rem);
+  font-size: 0.65rem;
   font-weight: 400;
-  letter-spacing: 0.22em;
-  /* Compensate for trailing letter-spacing — keeps text optically centred */
-  padding-left: 0.22em;
-  color: rgba(52, 38, 22, 0.70);
-  text-shadow:
-    0  1px 2px rgba(255, 255, 255, 0.65),
-    0 -0.5px 1px rgba(80, 55, 30, 0.12);
+  letter-spacing: 0.32em;
+  padding-left: 0.32em; /* compensate trailing letter-spacing */
+  color: rgba(107, 31, 42, 0.50);
   user-select: none;
 }
 
@@ -355,22 +340,22 @@ iframe { border: 0; }
 
 /* ── Intro Prose — first content in hero ─────────────────── */
 .intro-prose {
-  max-width: 560px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1rem;
 }
 
 .intro-prose p {
   font-family: var(--font-serif);
-  font-size: clamp(0.88rem, 2.2vw, 0.98rem);
+  font-size: clamp(0.84rem, 2vw, 0.92rem);
   font-weight: 300;
   font-style: italic;
-  line-height: 2.1;
-  color: rgba(68, 62, 57, 0.9);
-  letter-spacing: 0.01em;
+  line-height: 1.95;
+  color: rgba(68, 62, 57, 0.82);
+  letter-spacing: 0.012em;
 }
 
 /* ── Countdown ───────────────────────────────────────────── */
@@ -757,16 +742,12 @@ iframe { border: 0; }
   inset: 0;
   z-index: 1000;
   overflow: hidden;
-  background: #1A1108; /* fallback while image loads */
-  transition:
-    opacity  1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: #1A1108;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .intro-overlay.hiding {
   opacity: 0;
-  /* Envelope drifts up softly as it's "set aside" after opening */
-  transform: translateY(-2%);
   pointer-events: none;
 }
 
@@ -775,134 +756,50 @@ iframe { border: 0; }
   position: absolute;
   inset: 0;
   background: url('assets/venue-5.png') center center / cover no-repeat;
-  transition: transform 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+  transition: transform 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
-}
-
-/* Very gentle zoom as the flap opens — adds depth without distraction */
-.intro-overlay.opening .env-hero-base {
-  transform: scale(1.04);
-}
-
-/* ── Flap: perspective container clipped to the upper fold area ── */
-.env-hero-flap-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /*
-   * Height = position of the fold line on the envelope photo.
-   * The fold sits at roughly 50% down — the wax seal marks the junction.
-   */
-  height: 50%;
-  overflow: hidden;
-  clip-path: inset(0); /* force clip on WebKit for 3D children */
-  z-index: 2;
-  perspective: 1800px;
-  perspective-origin: 50% 100%; /* vanishing point at the fold line */
-}
-
-/* Hairline crease at the fold — gives physical depth */
-.env-hero-flap-wrap::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  width: 90%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(120, 90, 60, 0.18) 20%,
-    rgba(120, 90, 60, 0.18) 80%,
-    transparent
-  );
-  pointer-events: none;
-  z-index: 4;
-  transition: opacity 0.4s ease;
-}
-
-.intro-overlay.opening .env-hero-flap-wrap::after {
-  opacity: 0;
 }
 
 /*
- * The flap panel — a cream paper triangle that rotates backward on open.
- *
- * Shape: polygon(0 0, 100% 0, 50% 100%) draws the classic envelope flap
- * (wide at top, tapers to the fold-line centre).
- *
- * The gradient uses warm ivory tones sampled from the envelope photo so
- * the overlay reads as the paper surface of the actual flap — not a
- * separate element. When it rotates away, the photo beneath (showing the
- * envelope body + wax seal) is naturally revealed.
- *
- * transform-origin: center bottom — rotation axis sits exactly on the
- * fold line (bottom edge of this element = bottom of the 50%-tall wrapper).
+ * On open: slow cinematic zoom toward the wax seal at centre.
+ * The overlay then fades away while the zoom is mid-motion — the
+ * page content dissolves in underneath.
  */
-.env-hero-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Envelope-paper cream, lit from the top-left like the photo */
-  background: linear-gradient(
-    158deg,
-    #F3EEE6 0%,
-    #EDE5D8 38%,
-    #E5DBCA 72%,
-    #DDD2BF 100%
-  );
-  /* Triangular flap — tapers from the full top edge to the fold point */
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: center bottom;
-  transform: rotateX(0deg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transition: transform 1.65s cubic-bezier(0.7, 0, 0.3, 1);
-  will-change: transform;
-  /* Soft shadow below the fold for physical depth */
-  filter: drop-shadow(0 6px 18px rgba(80, 55, 30, 0.14));
-}
-
-/* Flap lifts backward from the fold line — paper rotating away from viewer */
-.intro-overlay.opening .env-hero-flap {
-  transform: rotateX(-180deg);
+.intro-overlay.opening .env-hero-base {
+  transform: scale(1.14);
 }
 
 /* ── OPEN CTA ── */
 .env-hero-open {
   position: absolute;
-  bottom: clamp(2.5rem, 6vh, 4.5rem);
+  bottom: clamp(3rem, 7vh, 5rem);
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-sc);
-  font-size: clamp(0.52rem, 1.5vw, 0.62rem);
-  letter-spacing: 0.52em;
-  /* compensate for trailing letter-spacing so text is optically centred */
-  padding-left: 0.52em;
+  font-size: clamp(0.5rem, 1.4vw, 0.58rem);
+  letter-spacing: 0.48em;
+  padding-left: 0.48em; /* compensate trailing letter-spacing */
   text-transform: uppercase;
-  color: rgba(43, 35, 31, 0.52);
+  color: rgba(43, 35, 31, 0.48);
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
   user-select: none;
   z-index: 3;
-  animation: envOpenPulse 2.8s ease-in-out infinite;
-  transition: opacity 0.35s ease, color 0.3s ease;
-  /* Wide tap target without visible box */
-  padding-block: 1rem;
+  padding-block: 1.2rem;
+  animation: envOpenPulse 3s ease-in-out infinite;
+  transition: opacity 0.4s ease;
 }
 
 .env-hero-open:hover {
-  color: rgba(43, 35, 31, 0.82);
+  color: rgba(43, 35, 31, 0.78);
 }
 
 .env-hero-open:focus-visible {
-  outline: 1px solid rgba(43, 35, 31, 0.35);
-  outline-offset: 10px;
+  outline: 1px solid rgba(43, 35, 31, 0.3);
+  outline-offset: 12px;
 }
 
 .intro-overlay.opening .env-hero-open {
@@ -912,8 +809,8 @@ iframe { border: 0; }
 }
 
 @keyframes envOpenPulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 0.82; }
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.75; }
 }
 
 /* ============================================================

@@ -500,11 +500,12 @@ function initIntro() {
       return;
     }
 
+    // Start the slow zoom toward the wax seal
     overlay.classList.add('opening');
 
-    // Flap rotation takes 1.7s; begin fade-out at the 1.0s mark
-    // so the overlay is dissolving as the flap completes its arc.
-    setTimeout(dismissOverlay, 1000);
+    // Let the zoom breathe for ~1.5s before the overlay fades away.
+    // The photo continues zooming underneath as the page dissolves in.
+    setTimeout(dismissOverlay, 1500);
   }
 
   cta.addEventListener('click', openInvitation);
