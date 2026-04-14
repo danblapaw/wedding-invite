@@ -766,7 +766,7 @@ iframe { border: 0; }
 .env-hero-base {
   position: absolute;
   inset: 0;
-  background: url('assets/envelope-hero.jpg') center center / cover no-repeat;
+  background: url('assets/venue-5.png') center center / cover no-repeat;
   transition: transform 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
@@ -804,7 +804,7 @@ iframe { border: 0; }
   left: 0;
   width: 100%;
   height: 200%; /* = 100vh */
-  background: url('assets/envelope-hero.jpg') center center / cover no-repeat;
+  background: url('assets/venue-5.png') center center / cover no-repeat;
   transform-origin: center 50%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
