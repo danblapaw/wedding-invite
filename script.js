@@ -468,29 +468,17 @@ function initLangSwitcher() {
 }
 
 /* ============================================================
-   INTRO ENVELOPE
+   FULLSCREEN ENVELOPE INTRO
    ============================================================ */
 
-/* Hint text by language — shown on the sealed envelope */
-const INTRO_HINTS = {
-  es: 'Open',
-  de: 'Open',
-  tr: 'Open',
-};
-
 function initIntro() {
-  const overlay  = document.getElementById('introOverlay');
-  const envelope = document.getElementById('introEnvelope');
-  const hintEl   = document.getElementById('envHint');
+  const overlay = document.getElementById('introOverlay');
+  const cta     = document.getElementById('envHeroCta');
 
-  if (!overlay) return;
+  if (!overlay || !cta) return;
 
-  // Already seen this session — the <script> tag in HTML hides it via CSS,
-  // so there's nothing more to do here.
+  // Already seen this session — CSS hides the overlay immediately.
   if (sessionStorage.getItem('introSeen')) return;
-
-  // Set hint text
-  hintEl.textContent = INTRO_HINTS[currentLang] || INTRO_HINTS.es;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -504,28 +492,27 @@ function initIntro() {
     });
   }
 
-  function openEnvelope() {
-    if (envelope.classList.contains('open')) return;
+  function openInvitation() {
+    if (overlay.classList.contains('opening')) return;
 
     if (reducedMotion) {
-      // Skip animation for users who prefer reduced motion
       dismissOverlay();
       return;
     }
 
-    envelope.classList.add('open');
+    overlay.classList.add('opening');
 
-    // Wait for card to rise before fading the overlay
-    // Card transition: delay 0.6s + duration 1.55s ≈ 2.15s total
-    setTimeout(dismissOverlay, 1700);
+    // Flap rotation takes 1.7s; begin fade-out at the 1.0s mark
+    // so the overlay is dissolving as the flap completes its arc.
+    setTimeout(dismissOverlay, 1000);
   }
 
-  envelope.addEventListener('click', openEnvelope);
+  cta.addEventListener('click', openInvitation);
 
-  envelope.addEventListener('keydown', e => {
+  cta.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      openEnvelope();
+      openInvitation();
     }
   });
 }

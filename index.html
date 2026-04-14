@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="assets/envelope-hero.jpg" as="image" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -18,42 +19,16 @@
   <!-- Very subtle lace border frame — fixed, decorative only -->
   <div class="page-lace-border" aria-hidden="true"></div>
 
-  <!-- ── Intro Envelope Overlay ── -->
+  <!-- ── Fullscreen Envelope Intro ── -->
   <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Wedding invitation">
-    <div class="intro-scene">
-      <div
-        class="intro-envelope"
-        id="introEnvelope"
-        role="button"
-        tabindex="0"
-        aria-label="Open the invitation"
-      >
-        <!-- Envelope body — cream/warm white with lace edge -->
-        <div class="env-body" aria-hidden="true">
-          <div class="env-lace" aria-hidden="true"></div>
-        </div>
-
-        <!-- Portrait photo — rises from envelope on open -->
-        <div class="env-card" aria-hidden="true">
-          <img src="assets/venue-4.jpeg" alt="Cansu &amp; Daniel" class="env-card-photo" />
-        </div>
-
-        <!-- Triangular flap — rotates backward on open -->
-        <div class="env-flap-wrap" aria-hidden="true">
-          <div class="env-flap" id="envFlap"></div>
-        </div>
-
-        <!-- Face: wax seal + names + hint -->
-        <div class="env-face">
-          <div class="env-seal" aria-hidden="true">
-            <span class="env-seal-text">C · D</span>
-          </div>
-          <h2 class="env-title">Cansu &amp; Daniel</h2>
-          <p class="env-dateline">11 · X · 2026</p>
-          <p class="env-hint" id="envHint"></p>
-        </div>
-      </div>
+    <!-- Base: full-screen envelope photo (always visible) -->
+    <div class="env-hero-base" aria-hidden="true"></div>
+    <!-- Flap: top half of same image in a clipped container — rotates open in 3D -->
+    <div class="env-hero-flap-wrap" aria-hidden="true">
+      <div class="env-hero-flap"></div>
     </div>
+    <!-- OPEN CTA — minimal, printed-text feel -->
+    <button class="env-hero-open" id="envHeroCta" aria-label="Open the invitation">Open</button>
   </div>
 
   <!-- Language Switcher -->
