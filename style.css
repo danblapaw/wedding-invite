@@ -56,20 +56,9 @@ iframe { border: 0; }
   to   { opacity: 1; }
 }
 
-/* ── Page Lace Border — delicate, framed-invitation feel ── */
+/* ── Page border — removed ── */
 .page-lace-border {
-  position: fixed;
-  inset: 22px;
-  pointer-events: none;
-  z-index: 900;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 8 Q4 0 8 8 Q12 0 16 8' fill='none' stroke='%23B0987A' stroke-width='1.1'/%3E%3C/svg%3E") top left / 16px 8px repeat-x,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M0 0 Q4 8 8 0 Q12 8 16 0' fill='none' stroke='%23B0987A' stroke-width='1.1'/%3E%3C/svg%3E") bottom left / 16px 8px repeat-x,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='16' viewBox='0 0 8 16'%3E%3Cpath d='M8 0 Q0 4 8 8 Q0 12 8 16' fill='none' stroke='%23B0987A' stroke-width='1.1'/%3E%3C/svg%3E") left top / 8px 16px repeat-y,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='16' viewBox='0 0 8 16'%3E%3Cpath d='M0 0 Q8 4 0 8 Q8 12 0 16' fill='none' stroke='%23B0987A' stroke-width='1.1'/%3E%3C/svg%3E") right top / 8px 16px repeat-y;
-  opacity: 0.38;
-  /* Subtle inner emboss — pressed-paper quality */
-  box-shadow: inset 0 0 28px rgba(175, 155, 128, 0.09);
+  display: none;
 }
 
 /* ── Layout ─────────────────────────────────────────────── */
@@ -198,7 +187,7 @@ iframe { border: 0; }
   gap: clamp(2rem, 4vw, 3.2rem);
 }
 
-/* ── Hero Monogram — ornamental embossed crest ── */
+/* ── Hero Monogram — wax seal disc, matching the envelope seal ── */
 .hero-monogram {
   display: flex;
   align-items: center;
@@ -212,36 +201,51 @@ iframe { border: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Square container — matches 200×200 viewBox for perfect centering */
-  width: clamp(160px, 40vw, 210px);
-  height: clamp(160px, 40vw, 210px);
+  /*
+   * Circular — matches the wax seal shape from the envelope photo.
+   * Gradient sampled from the pearl/ivory seal: warm highlight at top-left,
+   * deeper gold tone at the base.
+   */
+  width: clamp(130px, 34vw, 168px);
+  height: clamp(130px, 34vw, 168px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #EDE5D8 0%,
+    #D4C4AC 48%,
+    #BCA88A 100%
+  );
+  box-shadow:
+    0 4px 18px rgba(140, 110, 75, 0.22),
+    0 1px 5px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.52),
+    inset 0 -2px 6px rgba(100, 75, 50, 0.13);
 }
 
-.hero-crest-frame {
+/* Embossed border ring — mirrors the incised ring on the wax seal */
+.hero-monogram-crest::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  color: #CCCABE;
-  filter:
-    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.97))
-    drop-shadow(0 -0.5px 0 rgba(165, 155, 140, 0.22));
+  inset: 10%;
+  border-radius: 50%;
+  border: 1px solid rgba(155, 130, 100, 0.22);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 }
 
 .hero-monogram-text {
   position: relative;
   z-index: 1;
   font-family: var(--font-sc);
-  font-size: clamp(1.7rem, 5.5vw, 2.6rem);
+  font-size: clamp(1.1rem, 3.8vw, 1.6rem);
   font-weight: 400;
-  letter-spacing: 0.24em;
-  /* Compensate for trailing letter-spacing so text is optically centred */
-  padding-left: 0.24em;
-  color: #D2CEC7;
+  letter-spacing: 0.22em;
+  /* Compensate for trailing letter-spacing — keeps text optically centred */
+  padding-left: 0.22em;
+  color: rgba(52, 38, 22, 0.70);
   text-shadow:
-    0  1px 2px rgba(255, 255, 255, 0.95),
-    0 -1px 1px rgba(140, 128, 115, 0.2),
-    1px 1px 3px rgba(0, 0, 0, 0.03);
+    0  1px 2px rgba(255, 255, 255, 0.65),
+    0 -0.5px 1px rgba(80, 55, 30, 0.12);
   user-select: none;
 }
 
@@ -754,11 +758,15 @@ iframe { border: 0; }
   z-index: 1000;
   overflow: hidden;
   background: #1A1108; /* fallback while image loads */
-  transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    opacity  1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .intro-overlay.hiding {
   opacity: 0;
+  /* Envelope drifts up softly as it's "set aside" after opening */
+  transform: translateY(-2%);
   pointer-events: none;
 }
 
@@ -767,52 +775,98 @@ iframe { border: 0; }
   position: absolute;
   inset: 0;
   background: url('assets/venue-5.png') center center / cover no-repeat;
-  transition: transform 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
 
-/* Subtle cinematic zoom on the base image as the flap opens */
+/* Very gentle zoom as the flap opens — adds depth without distraction */
 .intro-overlay.opening .env-hero-base {
-  transform: scale(1.07);
+  transform: scale(1.04);
 }
 
-/* ── Flap: clipping container (top 50% of viewport) ── */
+/* ── Flap: perspective container clipped to the upper fold area ── */
 .env-hero-flap-wrap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  /*
+   * Height = position of the fold line on the envelope photo.
+   * The fold sits at roughly 50% down — the wax seal marks the junction.
+   */
   height: 50%;
   overflow: hidden;
-  /* clip-path ensures 3D-transformed children don't bleed outside on WebKit */
-  clip-path: inset(0);
+  clip-path: inset(0); /* force clip on WebKit for 3D children */
   z-index: 2;
-  perspective: 2400px;
-  perspective-origin: 50% 100%;
+  perspective: 1800px;
+  perspective-origin: 50% 100%; /* vanishing point at the fold line */
+}
+
+/* Hairline crease at the fold — gives physical depth */
+.env-hero-flap-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(120, 90, 60, 0.18) 20%,
+    rgba(120, 90, 60, 0.18) 80%,
+    transparent
+  );
+  pointer-events: none;
+  z-index: 4;
+  transition: opacity 0.4s ease;
+}
+
+.intro-overlay.opening .env-hero-flap-wrap::after {
+  opacity: 0;
 }
 
 /*
- * Flap panel: sized at 100vw × 100vh (= 200% of 50vh parent).
- * Using the same image + same cover/center as .env-hero-base means
- * both layers render identical pixels — the seam is invisible.
- * transform-origin at 50% of this 100vh element = the 50vh mark =
- * the bottom edge of the clip container.  That's the fold axis.
+ * The flap panel — a cream paper triangle that rotates backward on open.
+ *
+ * Shape: polygon(0 0, 100% 0, 50% 100%) draws the classic envelope flap
+ * (wide at top, tapers to the fold-line centre).
+ *
+ * The gradient uses warm ivory tones sampled from the envelope photo so
+ * the overlay reads as the paper surface of the actual flap — not a
+ * separate element. When it rotates away, the photo beneath (showing the
+ * envelope body + wax seal) is naturally revealed.
+ *
+ * transform-origin: center bottom — rotation axis sits exactly on the
+ * fold line (bottom edge of this element = bottom of the 50%-tall wrapper).
  */
 .env-hero-flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%; /* = 100vh */
-  background: url('assets/venue-5.png') center center / cover no-repeat;
-  transform-origin: center 50%;
+  height: 100%;
+  /* Envelope-paper cream, lit from the top-left like the photo */
+  background: linear-gradient(
+    158deg,
+    #F3EEE6 0%,
+    #EDE5D8 38%,
+    #E5DBCA 72%,
+    #DDD2BF 100%
+  );
+  /* Triangular flap — tapers from the full top edge to the fold point */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: center bottom;
+  transform: rotateX(0deg);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: transform 1.7s cubic-bezier(0.65, 0, 0.25, 1);
+  transition: transform 1.65s cubic-bezier(0.7, 0, 0.3, 1);
   will-change: transform;
+  /* Soft shadow below the fold for physical depth */
+  filter: drop-shadow(0 6px 18px rgba(80, 55, 30, 0.14));
 }
 
-/* Flap rotates backward — top lifts up and away in 3D */
+/* Flap lifts backward from the fold line — paper rotating away from viewer */
 .intro-overlay.opening .env-hero-flap {
   transform: rotateX(-180deg);
 }
