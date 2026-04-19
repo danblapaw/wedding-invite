@@ -1192,21 +1192,20 @@ iframe { border: 0; }
 .audio-btn.playing .audio-icon--play  { opacity: 0; }
 .audio-btn.playing .audio-icon--pause { opacity: 1; }
 
-/* ── Mobile: replicate background-attachment:fixed via pseudo-element ─
-      iOS ignores background-attachment:fixed on body; a position:fixed
-      pseudo-element achieves the same "wallpaper" effect correctly.     */
+/* ── Mobile: lace fills the hero so text sits inside the composition ── */
 @media (max-width: 640px) {
   body {
-    background-image: none; /* handled by ::before below */
+    background-image: none;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: url('assets/venue-10.png') center center / contain no-repeat;
-    z-index: -1;
-    pointer-events: none;
+  .hero {
+    background-image: url('assets/venue-10.png');
+    background-size: cover;
+    background-position: center 18%; /* shift down slightly — shows more lace at top */
+    background-repeat: no-repeat;
+    /* Push content into the white paper area — clear of the lace border */
+    padding-top: clamp(6rem, 18vw, 9rem);
+    padding-bottom: clamp(4rem, 12vw, 6rem);
   }
 }
 
