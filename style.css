@@ -1192,12 +1192,18 @@ iframe { border: 0; }
 .audio-btn.playing .audio-icon--play  { opacity: 0; }
 .audio-btn.playing .audio-icon--pause { opacity: 1; }
 
-/* ── Mobile: lace frame — contain + scroll for iOS ───────── */
+/* ── Mobile: lace frame — move from body to hero so it isn't
+      hidden behind the full-height video hero section ───── */
 @media (max-width: 640px) {
   body {
-    background-size: 92%;
-    background-attachment: scroll;
-    background-position: center top;
+    background-image: none; /* lace lives on .hero below */
+  }
+
+  .hero {
+    background-image: url('assets/venue-10.png');
+    background-size: 90%;          /* show full lace frame — leaves ~5% on each side */
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 }
 
