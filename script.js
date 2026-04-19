@@ -76,6 +76,11 @@ const TRANSLATIONS = {
       title: 'Cómo llegar',
       body:  'Próximamente os informaremos sobre las opciones de transporte disponibles para llegar al lugar de la boda y regresar cómodamente.',
     },
+    dresscode: {
+      label:   'Dress Code',
+      title:   'Vestimenta de Boda',
+      viewPdf: 'Ver el dress code completo',
+    },
     footer: {
       closing: 'Esperamos compartir este momento con vosotros',
     },
@@ -147,6 +152,11 @@ const TRANSLATIONS = {
       title: 'Wie man anreist',
       body:  'Informationen zu den Transportmöglichkeiten zur Hochzeitslocation werden in Kürze bekannt gegeben.',
     },
+    dresscode: {
+      label:   'Dresscode',
+      title:   'Hochzeitskleidung',
+      viewPdf: 'Vollständigen Dresscode ansehen',
+    },
     footer: {
       closing: 'Wir freuen uns, diesen Moment mit euch zu teilen',
     },
@@ -217,6 +227,11 @@ const TRANSLATIONS = {
       label: 'Ulaşım',
       title: 'Nasıl Gelinir',
       body:  'Düğün mekanına ulaşım seçenekleri hakkında bilgiler yakında paylaşılacaktır.',
+    },
+    dresscode: {
+      label:   'Kıyafet Kodu',
+      title:   'Düğün Kıyafetleri',
+      viewPdf: 'Tüm kıyafet kodunu görüntüle',
     },
     footer: {
       closing: 'Bu anı sizinle paylaşmaktan mutluluk duyacağız',

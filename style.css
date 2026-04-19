@@ -39,8 +39,8 @@ html {
 body {
   background-color: var(--bg);
   background-image: url('assets/venue-10.png');
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: var(--text);
@@ -692,6 +692,62 @@ iframe { border: 0; }
   }
 }
 
+/* ── Dress Code ──────────────────────────────────────────── */
+#dresscode {
+  background-color: var(--bg-warm);
+}
+
+.dresscode-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.dresscode-frame {
+  width: 100%;
+  height: clamp(480px, 70vh, 720px);
+  border: 1px solid var(--border);
+  display: block;
+  background-color: var(--bg-warm);
+}
+
+.dresscode-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  width: 100%;
+}
+
+.dresscode-rule {
+  width: min(180px, 38vw);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(107, 31, 42, 0.35), transparent);
+}
+
+.dresscode-open-link {
+  display: inline-block;
+  font-family: var(--font-sc);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  padding-left: 0.26em;
+  color: var(--accent);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.1em;
+  transition: opacity 0.22s ease;
+}
+
+.dresscode-open-link:hover {
+  opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+  .dresscode-frame {
+    display: none;
+  }
+}
+
 /* ── FAQ ─────────────────────────────────────────────────── */
 #faq {
   background-color: var(--bg);
@@ -881,6 +937,7 @@ iframe { border: 0; }
 .section.fade-in .section-prose,
 .section.fade-in .countdown-grid,
 .section.fade-in .location-layout,
+.section.fade-in .dresscode-wrapper,
 .section.fade-in .faq-list {
   opacity: 0;
   transform: translateY(16px);
@@ -915,6 +972,12 @@ iframe { border: 0; }
 }
 
 .section.fade-in.visible .location-layout {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.28s;
+}
+
+.section.fade-in.visible .dresscode-wrapper {
   opacity: 1;
   transform: none;
   transition-delay: 0.28s;
@@ -1176,10 +1239,10 @@ iframe { border: 0; }
 .audio-btn.playing .audio-icon--play  { opacity: 0; }
 .audio-btn.playing .audio-icon--pause { opacity: 1; }
 
-/* ── Mobile background — show full lace border frame ─────── */
+/* ── Mobile: lace frame — contain + scroll for iOS ───────── */
 @media (max-width: 640px) {
   body {
-    background-size: contain;
+    background-size: 92%;
     background-attachment: scroll;
     background-position: center top;
   }
@@ -1200,6 +1263,7 @@ iframe { border: 0; }
   .section.fade-in .section-prose,
   .section.fade-in .countdown-grid,
   .section.fade-in .location-layout,
+  .section.fade-in .dresscode-wrapper,
   .section.fade-in .faq-list,
   .timeline-item.fade-in,
   .footer.fade-in .footer-inner {
