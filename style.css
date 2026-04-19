@@ -1192,18 +1192,21 @@ iframe { border: 0; }
 .audio-btn.playing .audio-icon--play  { opacity: 0; }
 .audio-btn.playing .audio-icon--pause { opacity: 1; }
 
-/* ── Mobile: lace frame — move from body to hero so it isn't
-      hidden behind the full-height video hero section ───── */
+/* ── Mobile: replicate background-attachment:fixed via pseudo-element ─
+      iOS ignores background-attachment:fixed on body; a position:fixed
+      pseudo-element achieves the same "wallpaper" effect correctly.     */
 @media (max-width: 640px) {
   body {
-    background-image: none; /* lace lives on .hero below */
+    background-image: none; /* handled by ::before below */
   }
 
-  .hero {
-    background-image: url('assets/venue-10.png');
-    background-size: 90%;          /* show full lace frame — leaves ~5% on each side */
-    background-repeat: no-repeat;
-    background-position: center center;
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('assets/venue-10.png') center center / contain no-repeat;
+    z-index: -1;
+    pointer-events: none;
   }
 }
 
