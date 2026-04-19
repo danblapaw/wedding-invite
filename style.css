@@ -396,7 +396,12 @@ iframe { border: 0; }
 .video-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(250, 248, 244, 0.22);
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 5, 3, 0.52) 0%,
+    rgba(8, 5, 3, 0.28) 45%,
+    rgba(8, 5, 3, 0.60) 100%
+  );
   z-index: 1;
   pointer-events: none;
 }
@@ -409,34 +414,36 @@ iframe { border: 0; }
   flex-direction: column;
   align-items: center;
   gap: 1.1rem;
+  margin-top: -8vh;
 }
 
 .video-hero-title {
   font-family: var(--font-sc);
-  font-size: clamp(0.72rem, 2.2vw, 0.92rem);
+  font-size: clamp(0.82rem, 2.6vw, 1.05rem);
   letter-spacing: 0.45em;
   padding-left: 0.45em;
   text-transform: uppercase;
-  color: var(--text);
+  color: rgba(248, 242, 234, 0.88);
   font-weight: 400;
 }
 
 .video-hero-names {
   font-family: var(--font-serif);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   font-size: clamp(3.2rem, 11vw, 6.5rem);
   line-height: 1.0;
   letter-spacing: -0.015em;
-  color: var(--text);
+  color: rgba(248, 242, 234, 0.96);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.18);
 }
 
 .video-hero-date {
   font-family: var(--font-sc);
-  font-size: clamp(0.65rem, 2vw, 0.8rem);
+  font-size: clamp(0.74rem, 2.2vw, 0.92rem);
   letter-spacing: 0.3em;
   padding-left: 0.3em;
-  color: var(--text);
+  color: rgba(248, 242, 234, 0.82);
 }
 
 /* ── Countdown ───────────────────────────────────────────── */
@@ -487,9 +494,26 @@ iframe { border: 0; }
   opacity: 0.6;
 }
 
+@media (max-width: 560px) {
+  .countdown-grid {
+    flex-wrap: nowrap;
+    gap: 0.15rem 0.3rem;
+  }
+  .countdown-item {
+    min-width: 0;
+    flex: 1;
+  }
+  .countdown-num {
+    font-size: clamp(1.45rem, 5.8vw, 2.2rem);
+  }
+  .countdown-sep {
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+  }
+}
+
 @media (max-width: 380px) {
   .countdown-sep { display: none; }
-  .countdown-item { min-width: 58px; }
 }
 
 /* ── Timeline ────────────────────────────────────────────── */
@@ -669,6 +693,12 @@ iframe { border: 0; }
 }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
+#faq {
+  background-color: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
 .faq-list {
   border-top: 1px solid var(--border);
 }
@@ -759,6 +789,26 @@ iframe { border: 0; }
   padding-block: 3.5rem;
   text-align: center;
   background-color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep footer background always solid — only animate the inner content */
+.footer.fade-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.footer.fade-in .footer-inner {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity  1.0s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.0s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.footer.fade-in.visible .footer-inner {
+  opacity: 1;
+  transform: none;
 }
 
 .footer-inner {
@@ -1126,6 +1176,15 @@ iframe { border: 0; }
 .audio-btn.playing .audio-icon--play  { opacity: 0; }
 .audio-btn.playing .audio-icon--pause { opacity: 1; }
 
+/* ── Mobile background — show full lace border frame ─────── */
+@media (max-width: 640px) {
+  body {
+    background-size: contain;
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
+
 /* ── Utility ─────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -1142,7 +1201,8 @@ iframe { border: 0; }
   .section.fade-in .countdown-grid,
   .section.fade-in .location-layout,
   .section.fade-in .faq-list,
-  .timeline-item.fade-in {
+  .timeline-item.fade-in,
+  .footer.fade-in .footer-inner {
     opacity: 1;
     transform: none;
   }
