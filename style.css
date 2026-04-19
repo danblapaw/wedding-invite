@@ -1199,25 +1199,63 @@ iframe { border: 0; }
   }
 
   /*
-   * contain → full image width, proportional height, no cropping.
-   * 100% auto → same effect but always fills the full mobile width.
-   * background-color fills any space below the image with the page cream.
-   * This preserves the card-on-lace composition without aggressive clipping.
+   * Image is 846 × 1095 px. We lock the hero to that exact aspect ratio
+   * and fill it with background-size: 100% 100% so the lace frame is never
+   * cropped or letterboxed. min-height is cleared so the viewport height no
+   * longer pushes content below the paper boundary.
+   * Padding percentages correspond to the lace border depth in the image
+   * (~13–15 % of image height on each side).
    */
   .hero {
     background-image: url('assets/venue-10.png');
-    background-size: 100% auto;
+    background-size: 100% 100%;
     background-position: center top;
     background-repeat: no-repeat;
     background-color: var(--bg);
-    /* Extra top/bottom padding keeps content inside the paper area */
-    padding-top: clamp(6rem, 22vw, 10rem);
-    padding-bottom: clamp(6rem, 20vw, 9rem);
+    min-height: unset;
+    aspect-ratio: 846 / 1095;
+    overflow: visible;
+    padding-top: 15%;
+    padding-bottom: 14%;
   }
 
-  /* Scroll indicator: lift slightly so it stays above the bottom lace zone */
+  /* Scroll indicator sits in the lower paper area, above the lace hem */
   .hero-scroll {
-    bottom: clamp(0.75rem, 3vw, 1.5rem);
+    bottom: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  /* ── Hero content: scale down so everything fits inside the white paper ── */
+  .hero-inner {
+    gap: 1rem;
+  }
+
+  .hero-names {
+    font-size: 2rem;
+  }
+
+  .name-amp {
+    margin-block: 0.18em;
+  }
+
+  .hero-content {
+    gap: 0.65rem;
+  }
+
+  .hero-rule {
+    width: min(140px, 32vw);
+  }
+
+  .hero-location {
+    font-size: 0.82rem;
+  }
+
+  .intro-prose {
+    gap: 0.35rem;
+  }
+
+  .intro-prose p {
+    font-size: 0.65rem;
+    line-height: 1.5;
   }
 
   /* ── Countdown: deliberate top spacing for a clean visual break ── */
@@ -1225,9 +1263,6 @@ iframe { border: 0; }
     padding-top: clamp(3.5rem, 9vw, 5rem);
     padding-bottom: clamp(3rem, 7vw, 4.5rem);
   }
-
-  /* ── Countdown numbers: already one-row via the 560px rule above ── */
-  /* No changes needed — just ensure the section feels balanced           */
 
   /* ── Timeline: tighten time column slightly on narrow screens ── */
   .timeline {
@@ -1238,6 +1273,35 @@ iframe { border: 0; }
   /* Keep icon + desc indent aligned to the narrower column */
   .tl-desc {
     padding-left: calc(18px + 0.5rem);
+  }
+}
+
+/* ── Mobile: section rhythm — each section reads as its own panel ── */
+@media (max-width: 640px) {
+
+  /*
+   * Sections are transparent by default (desktop lets the page background
+   * show through). On mobile we give each section a solid background so
+   * they feel like distinct blocks as the user scrolls down.
+   */
+  .section {
+    background-color: var(--bg);
+    padding-block: clamp(4rem, 9vw, 5.5rem);
+  }
+
+  .section-warm {
+    background-color: var(--bg-warm);
+  }
+
+  /* Hairline between consecutive sections for clean visual separation */
+  .section + .section {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Countdown keeps its own tighter rhythm (already set above) */
+  #countdown {
+    padding-top: clamp(3.5rem, 9vw, 5rem);
+    padding-bottom: clamp(3rem, 7vw, 4.5rem);
   }
 }
 
