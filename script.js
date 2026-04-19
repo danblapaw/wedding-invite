@@ -249,7 +249,7 @@ const TRANSLATIONS = {
 /* ============================================================
    STATE
    ============================================================ */
-let currentLang = 'es';
+let currentLang = (typeof window.SITE_LANG !== 'undefined') ? window.SITE_LANG : 'es';
 let countdownTimer = null;
 
 /* ============================================================
