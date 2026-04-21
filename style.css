@@ -719,8 +719,8 @@ iframe { border: 0; }
 }
 
 @keyframes dressMarquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translateX(-25%); }
+  100% { transform: translateX(-75%); }
 }
 
 .dresscode-image {
