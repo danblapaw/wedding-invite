@@ -38,11 +38,6 @@ html {
 
 body {
   background-color: var(--bg);
-  background-image: url('assets/venue-10.png');
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font-serif);
   font-weight: 400;
@@ -701,6 +696,7 @@ iframe { border: 0; }
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 1.5rem;
 }
 
 .dresscode-scroll-wrap {
@@ -725,11 +721,12 @@ iframe { border: 0; }
 
 .dresscode-image {
   display: block;
-  width: clamp(1000px, 180vw, 2400px);
-  height: auto;
+  width: clamp(500px, 85vw, 1200px);
+  height: clamp(380px, 50vh, 600px);
   flex-shrink: 0;
   max-width: none;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── FAQ ─────────────────────────────────────────────────── */
@@ -1225,66 +1222,50 @@ iframe { border: 0; }
 
 /* ── Mobile: lace + paper composition ────────────────────── */
 @media (max-width: 640px) {
-  body {
-    background-image: none;
-  }
-
-  /*
-   * venue-10.png (846 × 1095 px) is used as a paper-on-lace frame.
-   * background-size: 100% 100% stretches the image to fill the container.
-   * Fixed padding (5.5rem ≈ 93px) exceeds the lace inset under all realistic
-   * content heights, keeping everything inside the white paper area.
-   */
   .hero {
-    background-image: url('assets/venue-10.png');
-    background-size: 100% 100%;
-    background-position: center top;
-    background-repeat: no-repeat;
     background-color: var(--bg);
-    min-height: unset;
-    overflow: visible;
-    padding: 5.5rem clamp(3rem, 9vw, 5rem) 5.5rem;
+    min-height: 100svh;
+    overflow: hidden;
+    padding: clamp(4rem, 10vw, 6rem) clamp(1.5rem, 6vw, 2.5rem) clamp(4rem, 8vw, 5rem);
     justify-content: center;
   }
 
-  /* Scroll indicator: keep well inside the white paper area */
   .hero-scroll {
     bottom: 2rem;
   }
 
-  /* ── Hero content: scale down so everything fits inside the white paper ── */
   .hero-inner {
-    gap: 0.5rem;
+    gap: 1.2rem;
   }
 
   .hero-names {
-    font-size: 1.75rem;
+    font-size: clamp(2.6rem, 9vw, 3.5rem);
   }
 
   .name-amp {
-    margin-block: 0.1em;
+    margin-block: 0.2em;
   }
 
   .hero-content {
-    gap: 0.45rem;
+    gap: 0.75rem;
   }
 
   .hero-rule {
-    width: min(130px, 30vw);
+    width: min(150px, 34vw);
   }
 
   .hero-location {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
   }
 
   .intro-prose {
-    gap: 0.35rem;
+    gap: 0.75rem;
     padding-inline: 1.5rem;
   }
 
   .intro-prose p {
-    font-size: 0.54rem;
-    line-height: 1.6;
+    font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+    line-height: 1.8;
   }
 
   /* ── Timeline: tighten time column slightly on narrow screens ── */
@@ -1317,45 +1298,29 @@ iframe { border: 0; }
     border-top: 1px solid var(--border);
   }
 
-  /*
-   * Paper-card: individual sections displayed as venue-10 paper-on-lace frames.
-   * Fixed padding (5.5 rem ≈ 93 px) reliably exceeds the lace inset at any
-   * realistic content height so nothing bleeds over the decorative border.
-   */
   .paper-card {
-    background-image: url('assets/venue-10.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
     background-color: var(--bg);
-    padding: 5.5rem 2.5rem;
+    padding: 2.5rem 1.75rem;
     margin-top: 0.35rem;
     border-top: none !important;
   }
 
-  /* Countdown: preserve venue-10 original proportions */
   #countdown.paper-card {
-    aspect-ratio: 846 / 1095;
-    background-size: 100% 100%;
-    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3.5rem 2.5rem;
+    padding: 2.5rem 1.75rem;
   }
 
   #countdown.paper-card .section-header {
     margin-bottom: 1.5rem;
   }
 
-  /* Program: same venue-10 proportions — content compacted to fit */
   #program.paper-card {
-    aspect-ratio: 846 / 1095;
-    background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3.5rem 2.5rem;
-    overflow: hidden;
+    padding: 2.5rem 1.75rem;
   }
 
   #program.paper-card .section-header {
@@ -1387,18 +1352,9 @@ iframe { border: 0; }
     margin-top: 0.35rem;
   }
 
-  /*
-   * Paper-duo: two sections (accommodation + transport) share one lace frame.
-   * The outer div carries the background; inner sections are stripped of their
-   * own backgrounds and borders so they merge visually into one card.
-   */
   .paper-duo {
-    background-image: url('assets/venue-10.png');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
     background-color: var(--bg);
-    aspect-ratio: 846 / 1095;
-    padding: 4rem 2.5rem;
+    padding: 2rem 1.75rem;
     margin-top: 0.35rem;
     display: flex;
     flex-direction: column;
@@ -1438,7 +1394,7 @@ iframe { border: 0; }
     margin-top: 0.35rem;
   }
 
-  /* ── Dress code: large horizontally-scrollable image ── */
+  /* ── Dress code: carrusel automático en móvil ── */
   #dresscode .container--narrow {
     padding-inline: 0;
     overflow: visible;
@@ -1448,36 +1404,33 @@ iframe { border: 0; }
     padding-inline: 1.5rem;
   }
 
-  /* Reset the desktop full-bleed trick so the block sits centered
-     naturally in the mobile flow without any rightward offset. */
   .dresscode-wrapper {
     width: 100%;
     position: static;
     left: auto;
     transform: none;
+    margin-top: 1.25rem;
   }
 
   .dresscode-scroll-wrap {
     width: 100%;
     overflow: hidden;
-    margin: 0 auto;
   }
 
   .dresscode-image {
     width: 100vw;
-    height: 56vw;
+    height: clamp(260px, 72vw, 440px);
     object-fit: cover;
-    object-position: center center;
+    object-position: center;
     flex-shrink: 0;
   }
 
   .dresscode-track {
-    animation: none;
-    transform: none;
+    animation: dressMarquee 28s linear infinite;
   }
 
   .dresscode-image ~ .dresscode-image {
-    display: none;
+    display: block;
   }
 
   /* PDF iframe version (language pages) */

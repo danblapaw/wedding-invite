@@ -657,6 +657,25 @@ function initDresscodeMarquee() {
 }
 
 /* ============================================================
+   VIDEO AUTOPLAY
+   ============================================================ */
+function initVideoAutoplay() {
+  const video = document.querySelector('.video-hero-bg');
+  if (!video) return;
+
+  const attempt = video.play();
+  if (attempt !== undefined) {
+    attempt.catch(() => {
+      const retry = () => {
+        video.play().catch(() => {});
+      };
+      document.addEventListener('touchstart', retry, { once: true });
+      document.addEventListener('click', retry, { once: true });
+    });
+  }
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -667,6 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAudio();
   initSlideshow();
   initDresscodeMarquee();
+  initVideoAutoplay();
 
   // Small delay so the newly-built timeline/faq elements are in the DOM
   requestAnimationFrame(() => {
