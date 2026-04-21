@@ -731,6 +731,7 @@ iframe { border: 0; }
 }
 
 /* ── RSVP Form ───────────────────────────────────────────── */
+.hidden,
 .rsvp-honeypot {
   display: none;
 }

@@ -228,14 +228,14 @@
 
         <form
           class="rsvp-form"
-          id="rsvpForm"
+          id="rsvp-form"
           name="rsvp"
+          method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          novalidate
         >
           <input type="hidden" name="form-name" value="rsvp" />
-          <p class="rsvp-honeypot" aria-hidden="true">
+          <p class="hidden">
             <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </p>
 
@@ -255,12 +255,12 @@
             <span class="rsvp-label">Confirmación</span>
             <div class="rsvp-radio-group" role="radiogroup" aria-label="Confirmación de asistencia">
               <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="Sí, asistiré al evento" required />
+                <input type="radio" name="asistencia" value="si" required />
                 <span class="rsvp-radio-custom" aria-hidden="true"></span>
                 <span class="rsvp-radio-text">Sí, asistiré al evento</span>
               </label>
               <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="No, no asistiré al evento" />
+                <input type="radio" name="asistencia" value="no" />
                 <span class="rsvp-radio-custom" aria-hidden="true"></span>
                 <span class="rsvp-radio-text">No, no asistiré al evento</span>
               </label>

@@ -557,33 +557,35 @@ function initVideoAutoplay() {
    RSVP FORM — fetch submit, no redirect
    ============================================================ */
 function initRsvp() {
-  const form    = document.getElementById('rsvpForm');
+  const form    = document.getElementById('rsvp-form');
   const success = document.getElementById('rsvpSuccess');
-  if (!form || !success) return;
+  if (!form) return;
 
-  form.addEventListener('submit', async e => {
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const btn = form.querySelector('.rsvp-btn');
-    btn.disabled = true;
+    const formData = new FormData(form);
 
     try {
-      const res = await fetch('/', {
-        method:  'POST',
+      const response = await fetch('/', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body:    new URLSearchParams(new FormData(form)).toString(),
+        body: new URLSearchParams(formData).toString(),
       });
 
-      if (res.ok) {
-        form.hidden    = true;
-        success.hidden = false;
+      if (response.ok) {
+        if (success) {
+          form.hidden    = true;
+          success.hidden = false;
+        } else {
+          alert('Gracias por confirmar ❤️');
+          form.reset();
+        }
       } else {
-        btn.disabled = false;
-        alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+        alert('No se pudo enviar el formulario.');
       }
-    } catch {
-      btn.disabled = false;
-      alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+    } catch (error) {
+      alert('No se pudo enviar el formulario.');
     }
   });
 }
