@@ -1279,7 +1279,7 @@ iframe { border: 0; }
 
   .intro-prose {
     gap: 0.35rem;
-    padding-inline: 0.75rem;
+    padding-inline: 1.5rem;
   }
 
   .intro-prose p {
@@ -1448,16 +1448,26 @@ iframe { border: 0; }
     padding-inline: 1.5rem;
   }
 
+  /* Reset the desktop full-bleed trick so the block sits centered
+     naturally in the mobile flow without any rightward offset. */
+  .dresscode-wrapper {
+    width: 100%;
+    position: static;
+    left: auto;
+    transform: none;
+  }
+
   .dresscode-scroll-wrap {
     width: 100%;
     overflow: hidden;
+    margin: 0 auto;
   }
 
   .dresscode-image {
     width: 100vw;
     height: 56vw;
     object-fit: cover;
-    object-position: left center;
+    object-position: center center;
     flex-shrink: 0;
   }
 
@@ -1482,6 +1492,13 @@ iframe { border: 0; }
   /* CTA link (language pages) — keep inside the normal container */
   .dresscode-cta {
     padding-inline: 1.5rem;
+  }
+
+  /* ── Paper-card / paper-duo: protect prose from lace edges ── */
+  .paper-card .section-prose,
+  .paper-duo .section-prose {
+    padding-inline: 1.75rem;
+    box-sizing: border-box;
   }
 }
 
