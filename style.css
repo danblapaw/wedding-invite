@@ -702,7 +702,7 @@ iframe { border: 0; }
 
 .dresscode-track {
   display: flex;
-  animation: dressMarquee 22s linear infinite;
+  animation: dressMarquee 30s linear infinite;
   will-change: transform;
 }
 
@@ -717,7 +717,7 @@ iframe { border: 0; }
 
 .dresscode-image {
   display: block;
-  width: clamp(320px, 85vw, 700px);
+  width: clamp(480px, 88vw, 960px);
   height: auto;
   flex-shrink: 0;
   max-width: none;
@@ -1233,9 +1233,11 @@ iframe { border: 0; }
     background-position: center top;
     background-repeat: no-repeat;
     background-color: var(--bg);
+    aspect-ratio: 846 / 1095;
     min-height: unset;
     overflow: hidden;
-    padding: 7.5rem 3.5rem 6.5rem;
+    padding: 4.5rem 3rem 3.5rem;
+    justify-content: center;
   }
 
   /* Scroll indicator: keep well inside the white paper area */
@@ -1245,19 +1247,19 @@ iframe { border: 0; }
 
   /* ── Hero content: scale down so everything fits inside the white paper ── */
   .hero-inner {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .hero-names {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
   }
 
   .name-amp {
-    margin-block: 0.15em;
+    margin-block: 0.1em;
   }
 
   .hero-content {
-    gap: 0.6rem;
+    gap: 0.45rem;
   }
 
   .hero-rule {
@@ -1265,17 +1267,17 @@ iframe { border: 0; }
   }
 
   .hero-location {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .intro-prose {
-    gap: 0.55rem;
+    gap: 0.35rem;
     padding-inline: 0;
   }
 
   .intro-prose p {
-    font-size: 0.6rem;
-    line-height: 1.7;
+    font-size: 0.54rem;
+    line-height: 1.6;
   }
 
   /* ── Timeline: tighten time column slightly on narrow screens ── */
@@ -1296,7 +1298,7 @@ iframe { border: 0; }
   /* Base section solid backgrounds */
   .section {
     background-color: var(--bg);
-    padding-block: clamp(4rem, 9vw, 5.5rem);
+    padding-block: clamp(3rem, 8vw, 4.5rem);
   }
 
   .section-warm {
@@ -1319,28 +1321,46 @@ iframe { border: 0; }
     background-repeat: no-repeat;
     background-color: var(--bg);
     padding: 5.5rem 2.5rem;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     border-top: none !important;
   }
 
   /* Countdown: preserve venue-10 original proportions */
   #countdown.paper-card {
     aspect-ratio: 846 / 1095;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: 3.5rem;
+    padding: 3.5rem 2.5rem;
   }
 
   #countdown.paper-card .section-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  /* Program / timeline has more content — needs taller inset */
+  /* Program: same venue-10 proportions — content compacted to fit */
   #program.paper-card {
-    padding-block: 5rem;
+    aspect-ratio: 846 / 1095;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 2.5rem;
+    overflow: hidden;
+  }
+
+  #program.paper-card .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  #program .timeline-item {
+    padding-bottom: 1.2rem;
+  }
+
+  #program .tl-name {
+    font-size: 0.92rem;
   }
 
   /* Suppress warm tint; the paper frame is its own visual context */
@@ -1357,7 +1377,7 @@ iframe { border: 0; }
   .paper-card + .section,
   .paper-card + .paper-duo {
     border-top: none;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
   }
 
   /*
@@ -1370,8 +1390,12 @@ iframe { border: 0; }
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: var(--bg);
-    padding: 5.5rem 2.5rem;
-    margin-top: 2.5rem;
+    aspect-ratio: 846 / 1095;
+    padding: 4rem 2.5rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .paper-duo > .section {
@@ -1383,19 +1407,28 @@ iframe { border: 0; }
 
   /* Elegant divider between the two sections inside the duo card */
   .paper-duo > .section + .section {
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
     border-top: 1px solid rgba(226, 221, 214, 0.6) !important;
   }
 
   .paper-duo .section-header {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .paper-duo .section-title {
+    font-size: 1.5rem;
+  }
+
+  .paper-duo .section-prose {
+    font-size: 0.82rem;
+    line-height: 1.65;
   }
 
   /* Clean gap after the duo wrapper before the next section */
   .paper-duo + .section {
     border-top: none;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
   }
 
   /* ── Dress code: large horizontally-scrollable image ── */
@@ -1414,7 +1447,7 @@ iframe { border: 0; }
   }
 
   .dresscode-image {
-    width: clamp(280px, 88vw, 480px);
+    width: clamp(360px, 95vw, 640px);
   }
 
   /* PDF iframe version (language pages) */
