@@ -1241,10 +1241,9 @@ iframe { border: 0; }
     background-position: center top;
     background-repeat: no-repeat;
     background-color: var(--bg);
-    aspect-ratio: 846 / 1095;
     min-height: unset;
-    overflow: hidden;
-    padding: 5.5rem clamp(3rem, 9vw, 5rem) 4.5rem;
+    overflow: visible;
+    padding: 5.5rem clamp(3rem, 9vw, 5rem) 5.5rem;
     justify-content: center;
   }
 
@@ -1455,7 +1454,20 @@ iframe { border: 0; }
   }
 
   .dresscode-image {
-    width: clamp(700px, 180vw, 1200px);
+    width: 100vw;
+    height: 56vw;
+    object-fit: cover;
+    object-position: left center;
+    flex-shrink: 0;
+  }
+
+  .dresscode-track {
+    animation: none;
+    transform: none;
+  }
+
+  .dresscode-image ~ .dresscode-image {
+    display: none;
   }
 
   /* PDF iframe version (language pages) */
