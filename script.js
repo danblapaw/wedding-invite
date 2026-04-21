@@ -637,6 +637,26 @@ function initSlideshow() {
 }
 
 /* ============================================================
+   DRESS CODE MARQUEE — pause on touch
+   ============================================================ */
+function initDresscodeMarquee() {
+  const track = document.querySelector('.dresscode-track');
+  if (!track) return;
+
+  track.addEventListener('touchstart', () => {
+    track.style.animationPlayState = 'paused';
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    track.style.animationPlayState = 'running';
+  }, { passive: true });
+
+  track.addEventListener('touchcancel', () => {
+    track.style.animationPlayState = 'running';
+  }, { passive: true });
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -646,6 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initIntro();
   initAudio();
   initSlideshow();
+  initDresscodeMarquee();
 
   // Small delay so the newly-built timeline/faq elements are in the DOM
   requestAnimationFrame(() => {
