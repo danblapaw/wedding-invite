@@ -730,6 +730,175 @@ iframe { border: 0; }
   object-position: center;
 }
 
+/* ── RSVP Form ───────────────────────────────────────────── */
+.rsvp-honeypot {
+  display: none;
+}
+
+.rsvp-form {
+  max-width: 440px;
+  margin-inline: auto;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.rsvp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.rsvp-label {
+  font-family: var(--font-sc);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+}
+
+.rsvp-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  padding: 0.45em 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.22s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.rsvp-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.55;
+  font-style: italic;
+}
+
+.rsvp-input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.rsvp-textarea {
+  resize: none;
+  line-height: 1.65;
+}
+
+.rsvp-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 0.2rem;
+}
+
+.rsvp-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.rsvp-radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rsvp-radio-custom {
+  width: 13px;
+  height: 13px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.rsvp-radio-custom::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.rsvp-radio-label input[type="radio"]:checked ~ .rsvp-radio-custom {
+  border-color: var(--accent);
+}
+
+.rsvp-radio-label input[type="radio"]:checked ~ .rsvp-radio-custom::after {
+  opacity: 1;
+}
+
+.rsvp-radio-label:hover .rsvp-radio-custom {
+  border-color: rgba(107, 31, 42, 0.5);
+}
+
+.rsvp-radio-text {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.rsvp-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.4rem;
+}
+
+.rsvp-btn {
+  font-family: var(--font-sc);
+  font-size: 0.58rem;
+  letter-spacing: 0.38em;
+  padding-left: 0.38em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--text);
+  padding: 0.95em 2.8em;
+  cursor: pointer;
+  transition: background 0.22s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.rsvp-btn:hover {
+  background: var(--accent);
+}
+
+.rsvp-btn:focus-visible {
+  outline: 1px solid rgba(107, 31, 42, 0.4);
+  outline-offset: 4px;
+}
+
+.rsvp-success {
+  max-width: 440px;
+  margin-inline: auto;
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.rsvp-success p {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
 /* ── Footer ──────────────────────────────────────────────── */
 .footer {
   padding-block: 3.5rem;
@@ -828,7 +997,8 @@ iframe { border: 0; }
 .section.fade-in .countdown-grid,
 .section.fade-in .location-layout,
 .section.fade-in .dresscode-wrapper,
-.section.fade-in .hotel-list {
+.section.fade-in .hotel-list,
+.section.fade-in .rsvp-form {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -877,6 +1047,12 @@ iframe { border: 0; }
   opacity: 1;
   transform: none;
   transition-delay: 0.28s;
+}
+
+.section.fade-in.visible .rsvp-form {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.50s;
 }
 
 /*
@@ -1383,6 +1559,7 @@ iframe { border: 0; }
   .section.fade-in .location-layout,
   .section.fade-in .dresscode-wrapper,
   .section.fade-in .hotel-list,
+  .section.fade-in .rsvp-form,
   .timeline-item.fade-in,
   .footer.fade-in .footer-inner {
     opacity: 1;
@@ -1398,6 +1575,7 @@ iframe { border: 0; }
 #accommodation,
 #transport,
 #location,
+#rsvp,
 #dresscode {
   scroll-snap-align: start;
 }
@@ -1406,6 +1584,7 @@ iframe { border: 0; }
 #program,
 #accommodation,
 #transport,
+#rsvp,
 #dresscode {
   min-height: 100svh;
   display: flex;

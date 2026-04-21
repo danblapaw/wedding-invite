@@ -554,6 +554,41 @@ function initVideoAutoplay() {
 }
 
 /* ============================================================
+   RSVP FORM — fetch submit, no redirect
+   ============================================================ */
+function initRsvp() {
+  const form    = document.getElementById('rsvpForm');
+  const success = document.getElementById('rsvpSuccess');
+  if (!form || !success) return;
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const btn = form.querySelector('.rsvp-btn');
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body:    new URLSearchParams(new FormData(form)).toString(),
+      });
+
+      if (res.ok) {
+        form.hidden    = true;
+        success.hidden = false;
+      } else {
+        btn.disabled = false;
+        alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+      }
+    } catch {
+      btn.disabled = false;
+      alert('Ha ocurrido un error. Por favor, inténtalo de nuevo.');
+    }
+  });
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -565,6 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
   initDresscodeMarquee();
   initVideoAutoplay();
+  initRsvp();
 
   // Small delay so the newly-built timeline/faq elements are in the DOM
   requestAnimationFrame(() => {
