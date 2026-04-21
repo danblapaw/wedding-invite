@@ -38,7 +38,7 @@ html {
 }
 
 body {
-  background-color: var(--bg);
+  background-color: transparent;
   color: var(--text);
   font-family: var(--font-serif);
   font-weight: 400;
@@ -55,6 +55,25 @@ iframe { border: 0; }
 @keyframes pageFade {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+/* ── Site-wide venue background — fixed, behind all content ── */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url('assets/venue-12.jpeg') center 35% / cover no-repeat;
+  pointer-events: none;
+}
+
+/* Warm overlay for readability — sits between photo and content */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(250, 250, 248, 0.55);
+  pointer-events: none;
 }
 
 /* ── Page border — removed ── */
@@ -682,7 +701,7 @@ iframe { border: 0; }
 
 /* ── Dress Code ──────────────────────────────────────────── */
 #dresscode {
-  background-color: var(--bg-warm);
+  background-color: transparent;
 }
 
 #dresscode .container--narrow {
@@ -1370,14 +1389,14 @@ iframe { border: 0; }
 /* ── Mobile: section rhythm + paper-card lace compositions ─── */
 @media (max-width: 640px) {
 
-  /* Base section solid backgrounds */
+  /* Sections: transparent so venue background shows through */
   .section {
-    background-color: var(--bg);
+    background-color: transparent;
     padding-block: clamp(1.5rem, 4vw, 2.5rem);
   }
 
   .section-warm {
-    background-color: var(--bg-warm);
+    background-color: transparent;
   }
 
   /* Hairline between plain consecutive sections */
@@ -1386,9 +1405,9 @@ iframe { border: 0; }
   }
 
   .paper-card {
-    background-color: var(--bg);
+    background-color: transparent;
     padding: 2.5rem 1.75rem;
-    margin-top: 0.35rem;
+    margin-top: 0;
     border-top: none !important;
   }
 
@@ -1422,9 +1441,8 @@ iframe { border: 0; }
     font-size: 0.92rem;
   }
 
-  /* Suppress warm tint; the paper frame is its own visual context */
   .paper-card.section-warm {
-    background-color: var(--bg);
+    background-color: transparent;
   }
 
   /* Tighten section-header spacing inside paper cards */
@@ -1432,17 +1450,16 @@ iframe { border: 0; }
     margin-bottom: 2rem;
   }
 
-  /* Remove the plain-section border that would otherwise appear after a paper card */
   .paper-card + .section,
   .paper-card + .paper-duo {
     border-top: none;
-    margin-top: 0.35rem;
+    margin-top: 0;
   }
 
   .paper-duo {
-    background-color: var(--bg);
+    background-color: transparent;
     padding: 2rem 1.75rem;
-    margin-top: 0.35rem;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1475,10 +1492,9 @@ iframe { border: 0; }
     line-height: 1.65;
   }
 
-  /* Clean gap after the duo wrapper before the next section */
   .paper-duo + .section {
     border-top: none;
-    margin-top: 0.35rem;
+    margin-top: 0;
   }
 
   /* ── Dress code: carrusel automático en móvil ── */

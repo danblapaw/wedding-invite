@@ -13,6 +13,9 @@
 </head>
 <body>
 
+  <!-- Fixed venue background — sits behind all content -->
+  <div class="site-bg" aria-hidden="true"></div>
+
   <!-- Prevent intro flash on return visits — runs before first paint -->
   <script>if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-skip');</script>
 
