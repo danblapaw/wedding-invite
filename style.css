@@ -1199,12 +1199,10 @@ iframe { border: 0; }
   }
 
   /*
-   * Image is 846 × 1095 px. We lock the hero to that exact aspect ratio
-   * and fill it with background-size: 100% 100% so the lace frame is never
-   * cropped or letterboxed. min-height is cleared so the viewport height no
-   * longer pushes content below the paper boundary.
-   * Padding percentages correspond to the lace border depth in the image
-   * (~13–15 % of image height on each side).
+   * venue-10.png (846 × 1095 px) is used as a paper-on-lace frame.
+   * background-size: 100% 100% stretches the image to fill the container.
+   * Fixed padding (5.5rem ≈ 93px) exceeds the lace inset under all realistic
+   * content heights, keeping everything inside the white paper area.
    */
   .hero {
     background-image: url('assets/venue-10.png');
@@ -1213,55 +1211,48 @@ iframe { border: 0; }
     background-repeat: no-repeat;
     background-color: var(--bg);
     min-height: unset;
-    aspect-ratio: 846 / 1095;
-    overflow: visible;
-    padding-top: 15%;
-    padding-bottom: 14%;
+    /* No fixed aspect-ratio — content determines height; lace stretches gracefully */
+    overflow: hidden;
+    padding: 5.5rem 2.5rem;
   }
 
-  /* Scroll indicator sits in the lower paper area, above the lace hem */
+  /* Scroll indicator: keep well inside the white paper area */
   .hero-scroll {
-    bottom: clamp(1.5rem, 4vw, 2.5rem);
+    bottom: 2rem;
   }
 
   /* ── Hero content: scale down so everything fits inside the white paper ── */
   .hero-inner {
-    gap: 1rem;
+    gap: 0.9rem;
   }
 
   .hero-names {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .name-amp {
-    margin-block: 0.18em;
+    margin-block: 0.15em;
   }
 
   .hero-content {
-    gap: 0.65rem;
+    gap: 0.6rem;
   }
 
   .hero-rule {
-    width: min(140px, 32vw);
+    width: min(130px, 30vw);
   }
 
   .hero-location {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 
   .intro-prose {
-    gap: 0.35rem;
+    gap: 0.3rem;
   }
 
   .intro-prose p {
-    font-size: 0.65rem;
+    font-size: 0.63rem;
     line-height: 1.5;
-  }
-
-  /* ── Countdown: deliberate top spacing for a clean visual break ── */
-  #countdown {
-    padding-top: clamp(3.5rem, 9vw, 5rem);
-    padding-bottom: clamp(3rem, 7vw, 4.5rem);
   }
 
   /* ── Timeline: tighten time column slightly on narrow screens ── */
@@ -1276,14 +1267,10 @@ iframe { border: 0; }
   }
 }
 
-/* ── Mobile: section rhythm — each section reads as its own panel ── */
+/* ── Mobile: section rhythm + paper-card lace compositions ─── */
 @media (max-width: 640px) {
 
-  /*
-   * Sections are transparent by default (desktop lets the page background
-   * show through). On mobile we give each section a solid background so
-   * they feel like distinct blocks as the user scrolls down.
-   */
+  /* Base section solid backgrounds */
   .section {
     background-color: var(--bg);
     padding-block: clamp(4rem, 9vw, 5.5rem);
@@ -1293,15 +1280,128 @@ iframe { border: 0; }
     background-color: var(--bg-warm);
   }
 
-  /* Hairline between consecutive sections for clean visual separation */
+  /* Hairline between plain consecutive sections */
   .section + .section {
     border-top: 1px solid var(--border);
   }
 
-  /* Countdown keeps its own tighter rhythm (already set above) */
-  #countdown {
-    padding-top: clamp(3.5rem, 9vw, 5rem);
-    padding-bottom: clamp(3rem, 7vw, 4.5rem);
+  /*
+   * Paper-card: individual sections displayed as venue-10 paper-on-lace frames.
+   * Fixed padding (5.5 rem ≈ 93 px) reliably exceeds the lace inset at any
+   * realistic content height so nothing bleeds over the decorative border.
+   */
+  .paper-card {
+    background-image: url('assets/venue-10.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+    padding: 5.5rem 2.5rem;
+    margin-top: 2.5rem;
+    border-top: none !important;
+  }
+
+  /* Program / timeline has more content — needs taller inset */
+  #program.paper-card {
+    padding-block: 6rem;
+  }
+
+  /* Suppress warm tint; the paper frame is its own visual context */
+  .paper-card.section-warm {
+    background-color: var(--bg);
+  }
+
+  /* Tighten section-header spacing inside paper cards */
+  .paper-card .section-header {
+    margin-bottom: 2rem;
+  }
+
+  /* Remove the plain-section border that would otherwise appear after a paper card */
+  .paper-card + .section,
+  .paper-card + .paper-duo {
+    border-top: none;
+    margin-top: 2.5rem;
+  }
+
+  /*
+   * Paper-duo: two sections (accommodation + transport) share one lace frame.
+   * The outer div carries the background; inner sections are stripped of their
+   * own backgrounds and borders so they merge visually into one card.
+   */
+  .paper-duo {
+    background-image: url('assets/venue-10.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+    padding: 5.5rem 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .paper-duo > .section {
+    background: transparent !important;
+    padding-block: 0;
+    border-top: none !important;
+    margin: 0;
+  }
+
+  /* Elegant divider between the two sections inside the duo card */
+  .paper-duo > .section + .section {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(226, 221, 214, 0.6) !important;
+  }
+
+  .paper-duo .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  /* Clean gap after the duo wrapper before the next section */
+  .paper-duo + .section {
+    border-top: none;
+    margin-top: 2.5rem;
+  }
+
+  /* ── Dress code: large horizontally-scrollable image ── */
+  #dresscode .container--narrow {
+    padding-inline: 0;
+    overflow: visible;
+  }
+
+  #dresscode .section-header {
+    padding-inline: 1.5rem;
+  }
+
+  .dresscode-scroll-wrap {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+  }
+
+  .dresscode-scroll-wrap:active {
+    cursor: grabbing;
+  }
+
+  /* Image: extend to 170 % of the container so the user can scroll to inspect details */
+  .dresscode-image {
+    display: block;
+    width: 170%;
+    max-width: none;
+    height: auto;
+  }
+
+  /* PDF iframe version (language pages) */
+  .dresscode-frame {
+    display: block;
+    width: 170%;
+    max-width: none;
+    height: 60vw;
+    min-height: 260px;
+  }
+
+  /* CTA link (language pages) — keep inside the normal container */
+  .dresscode-cta {
+    padding-inline: 1.5rem;
   }
 }
 

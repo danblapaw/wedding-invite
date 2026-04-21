@@ -89,7 +89,7 @@
     </section>
 
     <!-- ── Countdown ── -->
-    <section id="countdown" class="section section-warm fade-in">
+    <section id="countdown" class="section section-warm fade-in paper-card">
       <div class="container">
         <header class="section-header">
           <span class="section-label" data-i18n="countdown.label"></span>
@@ -120,7 +120,7 @@
     </section>
 
     <!-- ── Program ── -->
-    <section id="program" class="section fade-in">
+    <section id="program" class="section fade-in paper-card">
       <div class="container">
         <header class="section-header">
           <span class="section-label" data-i18n="program.label"></span>
@@ -174,6 +174,9 @@
       </div>
     </section>
 
+    <!-- ── Accommodation + Transport — shared paper card on mobile ── -->
+    <div class="paper-duo">
+
     <!-- ── Accommodation ── -->
     <section id="accommodation" class="section fade-in">
       <div class="container container--narrow">
@@ -196,6 +199,8 @@
       </div>
     </section>
 
+    </div><!-- /.paper-duo -->
+
     <!-- ── Dress Code ── -->
     <section id="dresscode" class="section section-warm fade-in">
       <div class="container container--narrow">
@@ -204,12 +209,14 @@
           <h2 class="section-title" data-i18n="dresscode.title"></h2>
         </header>
         <div class="dresscode-wrapper">
-          <img
-            class="dresscode-image"
-            src="assets/venue-11.jpg"
-            alt="Dress Code"
-            loading="lazy"
-          />
+          <div class="dresscode-scroll-wrap">
+            <img
+              class="dresscode-image"
+              src="assets/venue-11.jpg"
+              alt="Dress Code"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>
