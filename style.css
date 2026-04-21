@@ -719,8 +719,8 @@ iframe { border: 0; }
 }
 
 @keyframes dressMarquee {
-  0%   { transform: translateX(-25%); }
-  100% { transform: translateX(-75%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .dresscode-image {
@@ -1244,7 +1244,7 @@ iframe { border: 0; }
     aspect-ratio: 846 / 1095;
     min-height: unset;
     overflow: hidden;
-    padding: 4.5rem 3rem 3.5rem;
+    padding: 5.5rem clamp(3rem, 9vw, 5rem) 4.5rem;
     justify-content: center;
   }
 
@@ -1280,7 +1280,7 @@ iframe { border: 0; }
 
   .intro-prose {
     gap: 0.35rem;
-    padding-inline: 0;
+    padding-inline: 0.75rem;
   }
 
   .intro-prose p {
