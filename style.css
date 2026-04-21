@@ -15,7 +15,7 @@
   --font-serif:  'Cormorant Garamond', Georgia, serif;
   --font-sc:     'Cormorant SC', Georgia, serif;
 
-  --section-pad: clamp(5rem, 9vw, 8rem);
+  --section-pad: clamp(2rem, 3.5vw, 3rem);
   --container:   900px;
   --narrow:      620px;
 
@@ -89,7 +89,7 @@ iframe { border: 0; }
 /* ── Section header ─────────────────────────────────────── */
 .section-header {
   text-align: center;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(1.2rem, 2.5vw, 2rem);
 }
 
 .section-label {
@@ -689,10 +689,18 @@ iframe { border: 0; }
   background-color: var(--bg-warm);
 }
 
+#dresscode .container--narrow {
+  max-width: var(--container);
+}
+
 .dresscode-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .dresscode-scroll-wrap {
@@ -717,7 +725,7 @@ iframe { border: 0; }
 
 .dresscode-image {
   display: block;
-  width: clamp(480px, 88vw, 960px);
+  width: clamp(1000px, 180vw, 2400px);
   height: auto;
   flex-shrink: 0;
   max-width: none;
@@ -1298,7 +1306,7 @@ iframe { border: 0; }
   /* Base section solid backgrounds */
   .section {
     background-color: var(--bg);
-    padding-block: clamp(3rem, 8vw, 4.5rem);
+    padding-block: clamp(1.5rem, 4vw, 2.5rem);
   }
 
   .section-warm {
@@ -1321,7 +1329,7 @@ iframe { border: 0; }
     background-repeat: no-repeat;
     background-color: var(--bg);
     padding: 5.5rem 2.5rem;
-    margin-top: 1rem;
+    margin-top: 0.35rem;
     border-top: none !important;
   }
 
@@ -1377,7 +1385,7 @@ iframe { border: 0; }
   .paper-card + .section,
   .paper-card + .paper-duo {
     border-top: none;
-    margin-top: 1rem;
+    margin-top: 0.35rem;
   }
 
   /*
@@ -1392,7 +1400,7 @@ iframe { border: 0; }
     background-color: var(--bg);
     aspect-ratio: 846 / 1095;
     padding: 4rem 2.5rem;
-    margin-top: 1rem;
+    margin-top: 0.35rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1428,7 +1436,7 @@ iframe { border: 0; }
   /* Clean gap after the duo wrapper before the next section */
   .paper-duo + .section {
     border-top: none;
-    margin-top: 1rem;
+    margin-top: 0.35rem;
   }
 
   /* ── Dress code: large horizontally-scrollable image ── */
@@ -1447,7 +1455,7 @@ iframe { border: 0; }
   }
 
   .dresscode-image {
-    width: clamp(360px, 95vw, 640px);
+    width: clamp(700px, 180vw, 1200px);
   }
 
   /* PDF iframe version (language pages) */
