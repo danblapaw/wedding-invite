@@ -32,6 +32,7 @@
 html {
   font-size: 17px;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -339,21 +340,21 @@ iframe { border: 0; }
 
 /* ── Intro Prose — first content in hero ─────────────────── */
 .intro-prose {
-  max-width: 460px;
+  max-width: 560px;
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding-inline: 1rem;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
 }
 
 .intro-prose p {
   font-family: var(--font-serif);
-  font-size: clamp(0.84rem, 2vw, 0.92rem);
+  font-size: clamp(1.62rem, 3.5vw, 1.82rem);
   font-weight: 400;
   font-style: italic;
-  line-height: 2.05;
+  line-height: 1.75;
   color: #191411;
   letter-spacing: 0.012em;
 }
@@ -706,7 +707,7 @@ iframe { border: 0; }
 
 .dresscode-track {
   display: flex;
-  animation: dressMarquee 30s linear infinite;
+  animation: dressMarquee 15s linear infinite;
   will-change: transform;
 }
 
@@ -727,98 +728,6 @@ iframe { border: 0; }
   max-width: none;
   object-fit: cover;
   object-position: center;
-}
-
-/* ── FAQ ─────────────────────────────────────────────────── */
-#faq {
-  background-color: var(--bg);
-  position: relative;
-  z-index: 1;
-}
-
-.faq-list {
-  border-top: 1px solid var(--border);
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--border);
-}
-
-.faq-btn {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.3rem 0;
-  font-family: var(--font-serif);
-  font-size: 1.02rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--text);
-  text-align: left;
-  gap: 1.2rem;
-  transition: color 0.2s ease;
-  line-height: 1.4;
-}
-
-.faq-btn:hover {
-  color: var(--accent);
-}
-
-.faq-icon {
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  position: relative;
-  color: var(--accent);
-}
-
-.faq-icon::before,
-.faq-icon::after {
-  content: '';
-  position: absolute;
-  background: currentColor;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.faq-icon::before {
-  width: 100%;
-  height: 1px;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-
-.faq-icon::after {
-  width: 1px;
-  height: 100%;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-}
-
-.faq-item.open .faq-icon::after {
-  transform: translateX(-50%) rotate(90deg);
-  opacity: 0;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.38s cubic-bezier(0, 1, 0, 1);
-}
-
-.faq-item.open .faq-answer {
-  max-height: 600px;
-  transition: max-height 0.5s ease-in-out;
-}
-
-.faq-answer-body {
-  padding-bottom: 1.3rem;
-  font-size: 0.97rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.9;
 }
 
 /* ── Footer ──────────────────────────────────────────────── */
@@ -919,7 +828,7 @@ iframe { border: 0; }
 .section.fade-in .countdown-grid,
 .section.fade-in .location-layout,
 .section.fade-in .dresscode-wrapper,
-.section.fade-in .faq-list {
+.section.fade-in .hotel-list {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -964,7 +873,7 @@ iframe { border: 0; }
   transition-delay: 0.28s;
 }
 
-.section.fade-in.visible .faq-list {
+.section.fade-in.visible .hotel-list {
   opacity: 1;
   transform: none;
   transition-delay: 0.28s;
@@ -1259,13 +1168,14 @@ iframe { border: 0; }
   }
 
   .intro-prose {
-    gap: 0.75rem;
+    gap: 1rem;
     padding-inline: 1.5rem;
+    max-width: 100%;
   }
 
   .intro-prose p {
-    font-size: clamp(0.78rem, 2.5vw, 0.88rem);
-    line-height: 1.8;
+    font-size: clamp(1.22rem, 4.5vw, 1.5rem);
+    line-height: 1.65;
   }
 
   /* ── Timeline: tighten time column slightly on narrow screens ── */
@@ -1426,7 +1336,7 @@ iframe { border: 0; }
   }
 
   .dresscode-track {
-    animation: dressMarquee 28s linear infinite;
+    animation: dressMarquee 14s linear infinite;
   }
 
   .dresscode-image ~ .dresscode-image {
@@ -1472,10 +1382,105 @@ iframe { border: 0; }
   .section.fade-in .countdown-grid,
   .section.fade-in .location-layout,
   .section.fade-in .dresscode-wrapper,
-  .section.fade-in .faq-list,
+  .section.fade-in .hotel-list,
   .timeline-item.fade-in,
   .footer.fade-in .footer-inner {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ── Scroll-snap — full-page sections ────────────────────── */
+.video-hero,
+#hero,
+#countdown,
+#program,
+#accommodation,
+#transport,
+#location,
+#dresscode {
+  scroll-snap-align: start;
+}
+
+#countdown,
+#program,
+#accommodation,
+#transport,
+#dresscode {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#location {
+  min-height: 100svh;
+}
+
+/* ── Hotel List (Accommodation) ───────────────────────────── */
+.hotel-list {
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.hotel-list-intro {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: #4A4540;
+  line-height: 1.85;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.hotel-group {
+  margin-bottom: 1.6rem;
+}
+
+.hotel-group:last-child {
+  margin-bottom: 0;
+}
+
+.hotel-area {
+  font-family: var(--font-sc);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hotel-distance {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: none;
+  font-style: italic;
+}
+
+.hotel-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hotel-items a {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  border-bottom: 1px solid rgba(107, 31, 42, 0.18);
+  padding-bottom: 0.08em;
+  transition: color 0.22s ease, border-color 0.22s ease;
+  text-decoration: none;
+}
+
+.hotel-items a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }

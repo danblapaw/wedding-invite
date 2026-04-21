@@ -84,28 +84,6 @@ const TRANSLATIONS = {
     footer: {
       closing: 'Esperamos compartir este momento con vosotros',
     },
-    faq: {
-      label: 'Preguntas',
-      title: 'Preguntas Frecuentes',
-      items: [
-        {
-          q: '¿Cuál es el código de vestimenta?',
-          a: 'Próximamente compartiremos todos los detalles sobre el código de vestimenta.',
-        },
-        {
-          q: '¿Puedo traer a mis hijos?',
-          a: 'Próximamente os informaremos sobre la política de niños en la celebración.',
-        },
-        {
-          q: '¿Habrá opciones para alergias o intolerancias?',
-          a: 'Por supuesto. Al confirmar vuestra asistencia, podréis indicarnos cualquier restricción alimentaria.',
-        },
-        {
-          q: '¿Cómo confirmo mi asistencia?',
-          a: 'Próximamente os enviaremos todos los detalles para confirmar vuestra asistencia.',
-        },
-      ],
-    },
   },
 
   de: {
@@ -159,28 +137,6 @@ const TRANSLATIONS = {
     },
     footer: {
       closing: 'Wir freuen uns, diesen Moment mit euch zu teilen',
-    },
-    faq: {
-      label: 'Fragen',
-      title: 'Häufige Fragen',
-      items: [
-        {
-          q: 'Welchen Dresscode gibt es?',
-          a: 'Details zum Dresscode werden in Kürze bekannt gegeben.',
-        },
-        {
-          q: 'Darf ich meine Kinder mitbringen?',
-          a: 'Informationen zur Kinderregelung folgen in Kürze.',
-        },
-        {
-          q: 'Gibt es Optionen für Allergiker?',
-          a: 'Selbstverständlich. Bitte teilt uns beim Zusagen alle Ernährungseinschränkungen mit.',
-        },
-        {
-          q: 'Wie kann ich zusagen?',
-          a: 'Die Informationen zur Rückmeldung werden in Kürze zugeschickt.',
-        },
-      ],
     },
   },
 
@@ -236,28 +192,6 @@ const TRANSLATIONS = {
     footer: {
       closing: 'Bu anı sizinle paylaşmaktan mutluluk duyacağız',
     },
-    faq: {
-      label: 'Sorular',
-      title: 'Sık Sorulan Sorular',
-      items: [
-        {
-          q: 'Kıyafet kodu nedir?',
-          a: 'Kıyafet kodu detayları yakında paylaşılacaktır.',
-        },
-        {
-          q: 'Çocuklarımı getirebilir miyim?',
-          a: 'Çocuklara ilişkin bilgiler yakında paylaşılacaktır.',
-        },
-        {
-          q: 'Alerji durumunda menü seçeneği var mı?',
-          a: 'Elbette. Katılım onayınızda diyet kısıtlamalarınızı belirtebilirsiniz.',
-        },
-        {
-          q: 'Katılımımı nasıl onaylayabilirim?',
-          a: 'Katılım onayına dair bilgiler yakında paylaşılacaktır.',
-        },
-      ],
-    },
   },
 };
 
@@ -295,7 +229,6 @@ function applyTranslations(lang) {
 
   // Rebuild dynamically-generated sections
   buildTimeline(lang);
-  buildFaq(lang);
 
   // HTML lang attribute
   document.documentElement.lang = lang;
@@ -351,61 +284,6 @@ function buildTimeline(lang) {
 
   // Re-observe new elements
   observeFadeIns();
-}
-
-/* ============================================================
-   FAQ — build accordion from translation data
-   ============================================================ */
-function buildFaq(lang) {
-  const container = document.getElementById('faqList');
-  if (!container) return;
-
-  const items = TRANSLATIONS[lang].faq.items;
-
-  container.innerHTML = items.map((item, i) => `
-    <div class="faq-item">
-      <button
-        class="faq-btn"
-        aria-expanded="false"
-        aria-controls="faq-answer-${i}"
-        id="faq-btn-${i}"
-      >
-        <span>${item.q}</span>
-        <span class="faq-icon" aria-hidden="true"></span>
-      </button>
-      <div
-        class="faq-answer"
-        id="faq-answer-${i}"
-        role="region"
-        aria-labelledby="faq-btn-${i}"
-      >
-        <p class="faq-answer-body">${item.a}</p>
-      </div>
-    </div>
-  `).join('');
-
-  initAccordion();
-}
-
-function initAccordion() {
-  document.querySelectorAll('.faq-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item    = btn.closest('.faq-item');
-      const isOpen  = item.classList.contains('open');
-
-      // Collapse all items
-      document.querySelectorAll('.faq-item').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
-      });
-
-      // Open clicked item if it was closed
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
 }
 
 /* ============================================================
