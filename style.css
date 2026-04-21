@@ -62,7 +62,7 @@ iframe { border: 0; }
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: url('assets/venue-12.jpeg') center 35% / cover no-repeat;
+  background: url('assets/venue-16.jpeg') center 35% / cover no-repeat;
   pointer-events: none;
 }
 
@@ -95,6 +95,28 @@ body::before {
 
 .section {
   padding-block: var(--section-pad);
+}
+
+/* ── Section photo dividers top/bottom ──────────────────── */
+.section-img-divider {
+  display: block;
+  width: 100%;
+  height: clamp(90px, 18vw, 220px);
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.82;
+}
+
+.section-img-program {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  margin: 2rem auto 0;
+  height: clamp(160px, 25vw, 340px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 2px;
+  opacity: 0.88;
 }
 
 .section-warm {
