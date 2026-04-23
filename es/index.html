@@ -13,6 +13,9 @@
 </head>
 <body>
 
+  <!-- Fixed venue background — sits behind all content -->
+  <div class="site-bg" aria-hidden="true"></div>
+
   <!-- Prevent intro flash on return visits — runs before first paint -->
   <script>if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-skip');</script>
 
@@ -209,6 +212,78 @@
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RSVP ── -->
+    <section id="rsvp" class="section section-warm fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label">Invitación</span>
+          <h2 class="section-title">Confirmación de Asistencia</h2>
+        </header>
+        <p class="section-prose">Podréis confirmar vuestra asistencia hasta el 10 de agosto.</p>
+
+        <form
+          class="rsvp-form"
+          id="rsvp-form"
+          name="rsvp-es"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="rsvp-es" />
+          <p class="hidden">
+            <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-name">Nombre completo</label>
+            <input
+              class="rsvp-input"
+              type="text"
+              id="rsvp-name"
+              name="nombre"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="rsvp-field">
+            <span class="rsvp-label">Confirmación</span>
+            <div class="rsvp-radio-group" role="radiogroup" aria-label="Confirmación de asistencia">
+              <label class="rsvp-radio-label">
+                <input type="radio" name="asistencia" value="si" required />
+                <span class="rsvp-radio-custom" aria-hidden="true"></span>
+                <span class="rsvp-radio-text">Sí, asistiré</span>
+              </label>
+              <label class="rsvp-radio-label">
+                <input type="radio" name="asistencia" value="no" />
+                <span class="rsvp-radio-custom" aria-hidden="true"></span>
+                <span class="rsvp-radio-text">No, no podré asistir</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-allergies">Intolerancias o alergias</label>
+            <textarea
+              class="rsvp-input rsvp-textarea"
+              id="rsvp-allergies"
+              name="alergias"
+              rows="3"
+              placeholder="Si tienes alguna, escríbela aquí"
+            ></textarea>
+          </div>
+
+          <div class="rsvp-footer">
+            <button class="rsvp-btn" type="submit">Enviar</button>
+          </div>
+        </form>
+
+        <div class="rsvp-success" id="rsvpSuccess" aria-live="polite" hidden>
+          <p>Gracias por confirmar ❤️</p>
         </div>
       </div>
     </section>
