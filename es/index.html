@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cansu & Daniel — 11 Octubre 2026 — Mas de Sant Lleí, Barcelona" />
+  <meta name="description" content="Cansu & Daniel — 11. Oktober 2026 — Mas de Sant Lleí, Barcelona" />
   <title>Cansu &amp; Daniel — 11 · X · 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,23 +23,14 @@
   <div class="page-lace-border" aria-hidden="true"></div>
 
   <!-- ── Fullscreen Envelope Intro ── -->
-  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Wedding invitation">
+  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Hochzeitseinladung">
     <!-- Base: full-screen envelope photo (always visible) -->
     <div class="env-hero-base" aria-hidden="true"></div>
     <!-- Wax seal ring — subtle pulse over the real seal in the photo -->
     <div class="env-wax-ring" aria-hidden="true"></div>
     <!-- OPEN CTA — minimal, printed-text feel -->
-    <button class="env-hero-open" id="envHeroCta" aria-label="Abrir la invitación">Abrir</button>
+    <button class="env-hero-open" id="envHeroCta" aria-label="Einladung öffnen">Öffnen</button>
   </div>
-
-  <!-- Language Switcher -->
-  <nav class="lang-switcher" aria-label="Language selector">
-    <a class="lang-btn active" href="/es/" aria-current="page"><img src="../assets/venue-7.png" alt="Español" /></a>
-    <span class="lang-sep" aria-hidden="true">·</span>
-    <a class="lang-btn" href="/de/"><img src="../assets/venue-6.png" alt="Deutsch" /></a>
-    <span class="lang-sep" aria-hidden="true">·</span>
-    <a class="lang-btn" href="/tr/"><img src="../assets/venue-8.png" alt="Türkçe" /></a>
-  </nav>
 
   <main>
 
@@ -55,7 +46,7 @@
     </section>
 
     <!-- ── Hero ── -->
-    <section id="hero" class="hero" aria-label="Hero">
+    <section id="hero" class="hero section-venue16" aria-label="Hero">
       <div class="hero-inner">
 
         <!-- Introduction text — first visible content after opening -->
@@ -86,13 +77,13 @@
           <p class="hero-location animate-in delay-5">Mas de Sant Lleí · Barcelona</p>
         </div>
       </div>
-      <a href="#countdown" class="hero-scroll" aria-label="Desplazarse al contador">
+      <a href="#countdown" class="hero-scroll" aria-label="Zum Countdown scrollen">
         <span class="hero-scroll-line" aria-hidden="true"></span>
       </a>
     </section>
 
     <!-- ── Countdown ── -->
-    <section id="countdown" class="section section-warm fade-in paper-card">
+    <section id="countdown" class="section section-warm fade-in paper-card section-venue16">
       <div class="container">
         <header class="section-header">
           <span class="section-label" data-i18n="countdown.label"></span>
@@ -143,22 +134,22 @@
           <h2 class="section-title" data-i18n="accommodation.title"></h2>
         </header>
         <div class="hotel-list">
-          <p class="hotel-list-intro">Aquí tenéis el listado de hoteles cercanos a Mas de Sant Lleí por si queréis echarles un vistazo.</p>
+          <p class="hotel-list-intro">Hier findet ihr eine Liste der Hotels in der Nähe von Mas de Sant Lleí, falls ihr euch umsehen möchtet.</p>
           <div class="hotel-group">
-            <p class="hotel-area">Vallromanes <span class="hotel-distance">(a 5 minutos)</span></p>
+            <p class="hotel-area">Vallromanes <span class="hotel-distance">(5 Minuten entfernt)</span></p>
             <ul class="hotel-items">
               <li><a href="https://www.massalagros.com/?utm_source=gmb&utm_medium=organic" target="_blank" rel="noopener noreferrer">Mas Salagrós</a></li>
               <li><a href="https://hotelesgolden.com/barcelona" target="_blank" rel="noopener noreferrer">Golden Barcelona</a></li>
             </ul>
           </div>
           <div class="hotel-group">
-            <p class="hotel-area">Vilanova del Vallés <span class="hotel-distance">(a 3 minutos)</span></p>
+            <p class="hotel-area">Vilanova del Vallés <span class="hotel-distance">(3 Minuten entfernt)</span></p>
             <ul class="hotel-items">
               <li><a href="https://www.hotelaugustavalles.com/es/" target="_blank" rel="noopener noreferrer">Hotel Augusta Valles</a></li>
             </ul>
           </div>
           <div class="hotel-group">
-            <p class="hotel-area">Alella <span class="hotel-distance">(a 15 minutos)</span></p>
+            <p class="hotel-area">Alella <span class="hotel-distance">(15 Minuten entfernt)</span></p>
             <ul class="hotel-items">
               <li><a href="https://hotelarreyalella.com/" target="_blank" rel="noopener noreferrer">Hotel Arrey Alella</a></li>
             </ul>
@@ -220,70 +211,70 @@
     <section id="rsvp" class="section section-warm fade-in">
       <div class="container container--narrow">
         <header class="section-header">
-          <span class="section-label">Invitación</span>
-          <h2 class="section-title">Confirmación de Asistencia</h2>
+          <span class="section-label">Einladung</span>
+          <h2 class="section-title">Anmeldebestätigung</h2>
         </header>
-        <p class="section-prose">Podréis confirmar vuestra asistencia hasta el 10 de agosto.</p>
+        <p class="section-prose">Bis zum 10. August könnt ihr eure Teilnahme bestätigen.</p>
 
         <form
           class="rsvp-form"
           id="rsvp-form"
-          name="rsvp-es"
+          name="rsvp-de"
           method="POST"
           data-netlify="true"
           netlify-honeypot="bot-field"
         >
-          <input type="hidden" name="form-name" value="rsvp-es" />
+          <input type="hidden" name="form-name" value="rsvp-de" />
           <p class="hidden">
-            <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            <label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </p>
 
           <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-name">Nombre completo</label>
+            <label class="rsvp-label" for="rsvp-name">Vollständiger Name</label>
             <input
               class="rsvp-input"
               type="text"
               id="rsvp-name"
-              name="nombre"
+              name="name"
               required
               autocomplete="name"
             />
           </div>
 
           <div class="rsvp-field">
-            <span class="rsvp-label">Confirmación</span>
-            <div class="rsvp-radio-group" role="radiogroup" aria-label="Confirmación de asistencia">
+            <span class="rsvp-label">Bestätigung</span>
+            <div class="rsvp-radio-group" role="radiogroup" aria-label="Teilnahmebestätigung">
               <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="si" required />
+                <input type="radio" name="teilnahme" value="ja" required />
                 <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">Sí, asistiré</span>
+                <span class="rsvp-radio-text">Ja, ich werde dabei sein</span>
               </label>
               <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="no" />
+                <input type="radio" name="teilnahme" value="nein" />
                 <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">No, no podré asistir</span>
+                <span class="rsvp-radio-text">Nein, ich kann leider nicht kommen</span>
               </label>
             </div>
           </div>
 
           <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-allergies">Intolerancias o alergias</label>
+            <label class="rsvp-label" for="rsvp-allergies">Unverträglichkeiten oder Allergien</label>
             <textarea
               class="rsvp-input rsvp-textarea"
               id="rsvp-allergies"
-              name="alergias"
+              name="allergien"
               rows="3"
-              placeholder="Si tienes alguna, escríbela aquí"
+              placeholder="Falls du welche hast, schreib sie hier auf"
             ></textarea>
           </div>
 
           <div class="rsvp-footer">
-            <button class="rsvp-btn" type="submit">Enviar</button>
+            <button class="rsvp-btn" type="submit">Absenden</button>
           </div>
         </form>
 
         <div class="rsvp-success" id="rsvpSuccess" aria-live="polite" hidden>
-          <p>Gracias por confirmar ❤️</p>
+          <p>Danke für deine Bestätigung ❤️</p>
         </div>
       </div>
     </section>
@@ -316,7 +307,7 @@
   <audio id="bgAudio" loop preload="none" src="../assets/musica-invitacion.mpeg"></audio>
 
   <!-- Floating audio control — fixed bottom-left, mirrors the lang switcher style -->
-  <button class="audio-btn" id="audioBtn" aria-label="Reproducir música" title="Música">
+  <button class="audio-btn" id="audioBtn" aria-label="Musik abspielen" title="Musik">
     <!-- Play icon: visible when paused -->
     <svg class="audio-icon audio-icon--play" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
       <polygon points="5,3.5 14.5,9 5,14.5" opacity="0.78"/>
@@ -328,7 +319,7 @@
     </svg>
   </button>
 
-  <script>window.SITE_LANG = 'es';</script>
+  <script>window.SITE_LANG = 'de';</script>
   <script src="../script.js"></script>
 </body>
 </html>
