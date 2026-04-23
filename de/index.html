@@ -1,1 +1,342 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cansu & Daniel — 11. Oktober 2026 — Mas de Sant Lleí, Barcelona" />
+  <title>Cansu &amp; Daniel — 11 · X · 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" href="../assets/venue-5.png" as="image" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
 
+  <!-- Fixed venue background — sits behind all content -->
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <!-- Prevent intro flash on return visits — runs before first paint -->
+  <script>if (sessionStorage.getItem('introSeen')) document.documentElement.classList.add('intro-skip');</script>
+
+  <!-- Very subtle lace border frame — fixed, decorative only -->
+  <div class="page-lace-border" aria-hidden="true"></div>
+
+  <!-- ── Fullscreen Envelope Intro ── -->
+  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true" aria-label="Hochzeitseinladung">
+    <!-- Base: full-screen envelope photo (always visible) -->
+    <div class="env-hero-base" aria-hidden="true"></div>
+    <!-- Wax seal ring — subtle pulse over the real seal in the photo -->
+    <div class="env-wax-ring" aria-hidden="true"></div>
+    <!-- OPEN CTA — minimal, printed-text feel -->
+    <button class="env-hero-open" id="envHeroCta" aria-label="Einladung öffnen">Öffnen</button>
+  </div>
+
+  <main>
+
+    <!-- ── Video Hero ── -->
+    <section class="video-hero" aria-label="Video hero">
+      <video class="video-hero-bg" src="../assets/video-invitacion.mp4" autoplay muted loop playsinline></video>
+      <div class="video-hero-overlay" aria-hidden="true"></div>
+      <div class="video-hero-content">
+        <p class="video-hero-title">We Are Getting Married</p>
+        <p class="video-hero-names">Cansu &amp; Daniel</p>
+        <p class="video-hero-date">11 · X · 2026</p>
+      </div>
+    </section>
+
+    <!-- ── Hero ── -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero-inner">
+
+        <!-- Introduction text — first visible content after opening -->
+        <div class="intro-prose animate-in">
+          <p data-i18n="intro.p1"></p>
+          <p data-i18n="intro.p2"></p>
+          <p data-i18n="intro.p3"></p>
+        </div>
+
+        <!-- Monogram — ornamental embossed crest, square & perfectly centred -->
+        <div class="hero-monogram" aria-hidden="true">
+          <div class="hero-monogram-crest">
+            <span class="hero-monogram-text">C · D</span>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-rule animate-in delay-1" aria-hidden="true"></div>
+          <h1 class="hero-names animate-in delay-2">
+            <span class="name-first">Cansu</span>
+            <span class="name-amp" aria-hidden="true">&amp;</span>
+            <span class="name-second">Daniel</span>
+          </h1>
+          <div class="hero-rule animate-in delay-3" aria-hidden="true"></div>
+          <p class="hero-date animate-in delay-4">
+            <time datetime="2026-10-11">11 · X · 2026</time>
+          </p>
+          <p class="hero-location animate-in delay-5">Mas de Sant Lleí · Barcelona</p>
+        </div>
+      </div>
+      <a href="#countdown" class="hero-scroll" aria-label="Zum Countdown scrollen">
+        <span class="hero-scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ── Countdown ── -->
+    <section id="countdown" class="section section-warm fade-in paper-card">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="countdown.label"></span>
+          <h2 class="section-title" data-i18n="countdown.title"></h2>
+        </header>
+        <div class="countdown-grid" aria-live="polite" aria-atomic="true">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">560</span>
+            <span class="countdown-unit" data-i18n="countdown.days"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">00</span>
+            <span class="countdown-unit" data-i18n="countdown.hours"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-minutes">00</span>
+            <span class="countdown-unit" data-i18n="countdown.minutes"></span>
+          </div>
+          <div class="countdown-sep" aria-hidden="true">·</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-seconds">00</span>
+            <span class="countdown-unit" data-i18n="countdown.seconds"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Program ── -->
+    <section id="program" class="section fade-in paper-card">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="program.label"></span>
+          <h2 class="section-title" data-i18n="program.title"></h2>
+        </header>
+        <div class="timeline" id="timeline" role="list">
+          <!-- Built by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Accommodation ── -->
+    <section id="accommodation" class="section fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="accommodation.label"></span>
+          <h2 class="section-title" data-i18n="accommodation.title"></h2>
+        </header>
+        <div class="hotel-list">
+          <p class="hotel-list-intro">Hier findet ihr eine Liste der Hotels in der Nähe von Mas de Sant Lleí, falls ihr euch umsehen möchtet.</p>
+          <div class="hotel-group">
+            <p class="hotel-area">Vallromanes <span class="hotel-distance">(5 Minuten entfernt)</span></p>
+            <ul class="hotel-items">
+              <li><a href="https://www.massalagros.com/?utm_source=gmb&utm_medium=organic" target="_blank" rel="noopener noreferrer">Mas Salagrós</a></li>
+              <li><a href="https://hotelesgolden.com/barcelona" target="_blank" rel="noopener noreferrer">Golden Barcelona</a></li>
+            </ul>
+          </div>
+          <div class="hotel-group">
+            <p class="hotel-area">Vilanova del Vallés <span class="hotel-distance">(3 Minuten entfernt)</span></p>
+            <ul class="hotel-items">
+              <li><a href="https://www.hotelaugustavalles.com/es/" target="_blank" rel="noopener noreferrer">Hotel Augusta Valles</a></li>
+            </ul>
+          </div>
+          <div class="hotel-group">
+            <p class="hotel-area">Alella <span class="hotel-distance">(15 Minuten entfernt)</span></p>
+            <ul class="hotel-items">
+              <li><a href="https://hotelarreyalella.com/" target="_blank" rel="noopener noreferrer">Hotel Arrey Alella</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Transport ── -->
+    <section id="transport" class="section section-warm fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="transport.label"></span>
+          <h2 class="section-title" data-i18n="transport.title"></h2>
+        </header>
+        <p class="section-prose" data-i18n="transport.body"></p>
+      </div>
+    </section>
+
+    <!-- ── Location ── -->
+    <section id="location" class="section section-warm fade-in">
+
+      <!-- Photo slideshow background (populated by script.js) -->
+      <div class="slideshow-bg" id="locationSlideshow" aria-hidden="true">
+        <div class="slideshow-overlay"></div>
+      </div>
+
+      <div class="container">
+        <header class="section-header">
+          <span class="section-label" data-i18n="location.label"></span>
+          <h2 class="section-title" data-i18n="location.title"></h2>
+        </header>
+        <div class="location-layout">
+          <div class="location-info">
+            <h3 class="location-venue">Mas de Sant Lleí</h3>
+            <p class="location-address" data-i18n="location.address"></p>
+            <a
+              class="location-link"
+              href="https://maps.google.com/?q=Mas+de+Sant+Llei+Barcelona"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="location.directions"
+            ></a>
+          </div>
+          <div class="map-wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=Mas+de+Sant+Llei+Barcelona&output=embed"
+              title="Mas de Sant Lleí location"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RSVP ── -->
+    <section id="rsvp" class="section section-warm fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label">Einladung</span>
+          <h2 class="section-title">Anmeldebestätigung</h2>
+        </header>
+        <p class="section-prose">Bis zum 10. August könnt ihr eure Teilnahme bestätigen.</p>
+
+        <form
+          class="rsvp-form"
+          id="rsvp-form"
+          name="rsvp-de"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="rsvp-de" />
+          <p class="hidden">
+            <label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-name">Vollständiger Name</label>
+            <input
+              class="rsvp-input"
+              type="text"
+              id="rsvp-name"
+              name="name"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="rsvp-field">
+            <span class="rsvp-label">Bestätigung</span>
+            <div class="rsvp-radio-group" role="radiogroup" aria-label="Teilnahmebestätigung">
+              <label class="rsvp-radio-label">
+                <input type="radio" name="teilnahme" value="ja" required />
+                <span class="rsvp-radio-custom" aria-hidden="true"></span>
+                <span class="rsvp-radio-text">Ja, ich werde dabei sein</span>
+              </label>
+              <label class="rsvp-radio-label">
+                <input type="radio" name="teilnahme" value="nein" />
+                <span class="rsvp-radio-custom" aria-hidden="true"></span>
+                <span class="rsvp-radio-text">Nein, ich kann leider nicht kommen</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-allergies">Unverträglichkeiten oder Allergien</label>
+            <textarea
+              class="rsvp-input rsvp-textarea"
+              id="rsvp-allergies"
+              name="allergien"
+              rows="3"
+              placeholder="Falls du welche hast, schreib sie hier auf"
+            ></textarea>
+          </div>
+
+          <div class="rsvp-footer">
+            <button class="rsvp-btn" type="submit">Absenden</button>
+          </div>
+        </form>
+
+        <div class="rsvp-success" id="rsvpSuccess" aria-live="polite" hidden>
+          <p>Danke für deine Bestätigung ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Dress Code ── -->
+    <section id="dresscode" class="section section-warm fade-in">
+      <div class="container container--narrow">
+        <header class="section-header">
+          <span class="section-label" data-i18n="dresscode.label"></span>
+          <h2 class="section-title" data-i18n="dresscode.title"></h2>
+        </header>
+        <div class="dresscode-wrapper">
+          <div class="dresscode-scroll-wrap">
+            <iframe
+              class="dresscode-frame"
+              src="../assets/dresscode.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+              title="Dress Code"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="dresscode-cta">
+            <div class="dresscode-rule" aria-hidden="true"></div>
+            <a
+              href="../assets/dresscode.pdf"
+              class="dresscode-open-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="dresscode.viewPdf"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer fade-in">
+    <div class="footer-inner">
+      <p class="footer-names">Cansu &amp; Daniel</p>
+      <p class="footer-date">11 · X · 2026</p>
+      <p class="footer-closing" data-i18n="footer.closing"></p>
+    </div>
+  </footer>
+
+  <!-- Background audio — preload="none" keeps initial load fast -->
+  <audio id="bgAudio" loop preload="none" src="../assets/musica-invitacion.mpeg"></audio>
+
+  <!-- Floating audio control — fixed bottom-left, mirrors the lang switcher style -->
+  <button class="audio-btn" id="audioBtn" aria-label="Musik abspielen" title="Musik">
+    <!-- Play icon: visible when paused -->
+    <svg class="audio-icon audio-icon--play" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+      <polygon points="5,3.5 14.5,9 5,14.5" opacity="0.78"/>
+    </svg>
+    <!-- Pause icon: visible when playing -->
+    <svg class="audio-icon audio-icon--pause" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <line x1="6"  y1="4.5" x2="6"  y2="13.5"/>
+      <line x1="12" y1="4.5" x2="12" y2="13.5"/>
+    </svg>
+  </button>
+
+  <script>window.SITE_LANG = 'de';</script>
+  <script src="../script.js"></script>
+</body>
+</html>
