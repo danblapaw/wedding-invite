@@ -32,15 +32,6 @@
     <button class="env-hero-open" id="envHeroCta" aria-label="Open the invitation">Open</button>
   </div>
 
-  <!-- Language Switcher -->
-  <nav class="lang-switcher" aria-label="Language selector">
-    <button class="lang-btn active" data-lang="es" aria-current="true"><img src="assets/venue-7.png" alt="Español" /></button>
-    <span class="lang-sep" aria-hidden="true">·</span>
-    <button class="lang-btn" data-lang="de"><img src="assets/venue-6.png" alt="Deutsch" /></button>
-    <span class="lang-sep" aria-hidden="true">·</span>
-    <button class="lang-btn" data-lang="tr"><img src="assets/venue-8.png" alt="Türkçe" /></button>
-  </nav>
-
   <main>
 
     <!-- ── Video Hero ── -->
@@ -300,23 +291,7 @@
           <h2 class="section-title" data-i18n="dresscode.title"></h2>
         </header>
         <div class="dresscode-wrapper">
-          <div class="dresscode-scroll-wrap">
-            <div class="dresscode-track">
-              <img
-                class="dresscode-image"
-                src="assets/venue-11.jpg"
-                alt="Dress Code"
-                loading="lazy"
-              />
-              <img
-                class="dresscode-image"
-                src="assets/venue-11.jpg"
-                alt=""
-                loading="lazy"
-                aria-hidden="true"
-              />
-            </div>
-          </div>
+          <img src="assets/venue-11.jpg" alt="Dress Code" class="dresscode-image" />
         </div>
       </div>
     </section>
@@ -348,6 +323,7 @@
     </svg>
   </button>
 
+  <script>window.SITE_LANG = 'es';</script>
   <script src="script.js"></script>
 </body>
 </html>

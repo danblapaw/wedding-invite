@@ -239,12 +239,6 @@ function applyTranslations(lang) {
   // HTML lang attribute
   document.documentElement.lang = lang;
 
-  // Active button state
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    const isActive = btn.dataset.lang === lang;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-current', isActive ? 'true' : 'false');
-  });
 }
 
 /* ============================================================
@@ -360,19 +354,6 @@ function observeFadeIns() {
 
   document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
     scrollObserver.observe(el);
-  });
-}
-
-/* ============================================================
-   LANGUAGE SWITCHER
-   ============================================================ */
-function initLangSwitcher() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.lang === currentLang) return;
-      currentLang = btn.dataset.lang;
-      applyTranslations(currentLang);
-    });
   });
 }
 
@@ -605,7 +586,6 @@ function initRsvp() {
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   applyTranslations(currentLang);
-  initLangSwitcher();
   initCountdown();
   initIntro();
   initAudio();
