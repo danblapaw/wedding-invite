@@ -582,6 +582,47 @@ function initRsvp() {
 }
 
 /* ============================================================
+   RSVP KEYBOARD SCROLL FIX — iOS / iPhone Safari
+   Disables scroll-snap and scrolls the focused field into view
+   so the iOS keyboard never covers the active input or textarea.
+   ============================================================ */
+function initRsvpKeyboardScroll() {
+  const form = document.getElementById('rsvp-form');
+  if (!form) return;
+
+  // Only text-entry fields need this — radio buttons don't trigger the keyboard
+  const fields = form.querySelectorAll(
+    'input:not([type="radio"]):not([type="hidden"]):not([tabindex="-1"]), textarea, select'
+  );
+  if (!fields.length) return;
+
+  const html = document.documentElement;
+
+  fields.forEach(field => {
+    field.addEventListener('focus', () => {
+      html.classList.add('keyboard-open');
+      // Wait ~350 ms for the iOS keyboard animation to finish, then centre the field
+      setTimeout(() => {
+        field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 350);
+    });
+
+    field.addEventListener('blur', () => {
+      // Short delay to let focus move to another field before removing the class
+      setTimeout(() => {
+        const active = document.activeElement;
+        const stillInForm = form.contains(active) &&
+          active !== document.body &&
+          active.tagName !== 'BUTTON';
+        if (!stillInForm) {
+          html.classList.remove('keyboard-open');
+        }
+      }, 150);
+    });
+  });
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -593,6 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDresscodeMarquee();
   initVideoAutoplay();
   initRsvp();
+  initRsvpKeyboardScroll();
 
   // Small delay so the newly-built timeline/faq elements are in the DOM
   requestAnimationFrame(() => {

@@ -1676,3 +1676,13 @@ body::before {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+
+/* ── iOS keyboard fix — disable scroll-snap while a form field is focused ── */
+html.keyboard-open {
+  scroll-snap-type: none;
+}
+
+/* Allow free scrolling so the focused field stays visible above the keyboard */
+html.keyboard-open body {
+  overflow-y: auto;
+}
