@@ -731,11 +731,14 @@ body::before {
 .dresscode-scroll-wrap {
   width: 100%;
   overflow: hidden;
+  height: clamp(320px, 62vw, 580px);
+  position: relative;
 }
 
 .dresscode-track {
   display: flex;
-  animation: dressMarquee 15s linear infinite;
+  height: 100%;
+  animation: dressMarquee 22s linear infinite;
   will-change: transform;
 }
 
@@ -750,10 +753,9 @@ body::before {
 
 .dresscode-image {
   display: block;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  height: auto;
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
   object-fit: contain;
 }
 
@@ -1537,21 +1539,18 @@ body::before {
   .dresscode-scroll-wrap {
     width: 100%;
     overflow: hidden;
-  }
-
-  .dresscode-image {
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    object-fit: contain;
+    height: clamp(280px, 78vw, 460px);
   }
 
   .dresscode-track {
-    animation: dressMarquee 14s linear infinite;
+    animation: dressMarquee 18s linear infinite;
   }
 
-  .dresscode-image ~ .dresscode-image {
-    display: block;
+  .dresscode-image {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+    object-fit: contain;
   }
 
   /* PDF iframe version (language pages) */
