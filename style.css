@@ -804,23 +804,24 @@ body::before {
 
 .rsvp-label {
   font-family: var(--font-sc);
-  font-size: 0.74rem;
+  font-size: 0.85rem;
   letter-spacing: 0.28em;
-  color: var(--accent);
+  color: #000;
   text-transform: uppercase;
   display: block;
+  font-weight: 500;
 }
 
 .rsvp-input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #000;
   border-radius: 0;
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 300;
-  color: var(--text);
+  color: #000;
   padding: 0.45em 0;
   width: 100%;
   outline: none;
@@ -866,9 +867,9 @@ body::before {
 }
 
 .rsvp-radio-custom {
-  width: 13px;
-  height: 13px;
-  border: 1px solid var(--border);
+  width: 18px;
+  height: 18px;
+  border: 2px solid #000;
   border-radius: 50%;
   flex-shrink: 0;
   position: relative;
@@ -880,13 +881,13 @@ body::before {
   position: absolute;
   inset: 3px;
   border-radius: 50%;
-  background: var(--accent);
+  background: #000;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .rsvp-radio-label input[type="radio"]:checked ~ .rsvp-radio-custom {
-  border-color: var(--accent);
+  border-color: #000;
 }
 
 .rsvp-radio-label input[type="radio"]:checked ~ .rsvp-radio-custom::after {
@@ -899,10 +900,10 @@ body::before {
 
 .rsvp-radio-text {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 300;
-  color: var(--text);
+  color: #000;
 }
 
 .rsvp-footer {
@@ -913,12 +914,12 @@ body::before {
 
 .rsvp-btn {
   font-family: var(--font-sc);
-  font-size: 0.58rem;
+  font-size: 0.78rem;
   letter-spacing: 0.38em;
   padding-left: 0.38em;
   text-transform: uppercase;
   color: var(--bg);
-  background: var(--text);
+  background: #000;
   padding: 0.95em 2.8em;
   cursor: pointer;
   transition: background 0.22s ease;
@@ -1707,7 +1708,6 @@ body::before {
 .video-hero,
 #hero,
 #countdown,
-#venue17,
 #program,
 #venue18,
 #accommodation,
@@ -1716,6 +1716,13 @@ body::before {
 #rsvp,
 #dresscode {
   scroll-snap-align: start;
+}
+
+/* venue-17: decorative compact image, not a standalone snap section */
+#venue17 {
+  scroll-snap-align: none;
+  padding-block: 0;
+  min-height: 0;
 }
 
 #countdown,
@@ -1800,6 +1807,17 @@ body::before {
 .hotel-items a:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+
+/* ── RSVP deadline highlight ─────────────────────────────── */
+.rsvp-deadline {
+  color: #000;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
 }
 
 /* ── iOS keyboard fix — disable scroll-snap while a form field is focused ── */
