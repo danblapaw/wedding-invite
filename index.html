@@ -113,6 +113,13 @@
       </div>
     </section>
 
+    <!-- ── Venue Photo — below countdown ── -->
+    <section id="venue17" class="venue-photo-divider fade-in">
+      <div class="container">
+        <img src="assets/venue-17.png" alt="Mas de Sant Lleí" class="venue-divider-img" />
+      </div>
+    </section>
+
     <!-- ── Program ── -->
     <section id="program" class="section fade-in paper-card">
       <div class="container">
@@ -123,6 +130,13 @@
         <div class="timeline" id="timeline" role="list">
           <!-- Built by script.js -->
         </div>
+      </div>
+    </section>
+
+    <!-- ── Venue Photo — between schedule and hotels ── -->
+    <section id="venue18" class="venue-photo-divider fade-in">
+      <div class="container">
+        <img src="assets/venue-18.png" alt="Mas de Sant Lleí" class="venue-divider-img" />
       </div>
     </section>
 
@@ -139,7 +153,6 @@
             <p class="hotel-area">Vallromanes <span class="hotel-distance">(a 5 minutos)</span></p>
             <ul class="hotel-items">
               <li><a href="https://www.massalagros.com/?utm_source=gmb&utm_medium=organic" target="_blank" rel="noopener noreferrer">Mas Salagrós</a></li>
-              <li><a href="https://hotelesgolden.com/barcelona" target="_blank" rel="noopener noreferrer">Golden Barcelona</a></li>
             </ul>
           </div>
           <div class="hotel-group">
@@ -172,16 +185,19 @@
     <!-- ── Location ── -->
     <section id="location" class="section section-warm fade-in">
 
-      <!-- Photo slideshow background (populated by script.js) -->
-      <div class="slideshow-bg" id="locationSlideshow" aria-hidden="true">
-        <div class="slideshow-overlay"></div>
-      </div>
-
       <div class="container">
         <header class="section-header">
           <span class="section-label" data-i18n="location.label"></span>
           <h2 class="section-title" data-i18n="location.title"></h2>
         </header>
+
+        <!-- Inline photo carousel — venue-1/2/3 cycle every 3 s -->
+        <div class="location-carousel" aria-label="Fotos de Mas de Sant Lleí">
+          <img class="lc-slide active" src="assets/venue-1.jpg" alt="Mas de Sant Lleí" />
+          <img class="lc-slide" src="assets/venue-2.jpg" alt="Mas de Sant Lleí" />
+          <img class="lc-slide" src="assets/venue-3.jpg" alt="Mas de Sant Lleí" />
+        </div>
+
         <div class="location-layout">
           <div class="location-info">
             <h3 class="location-venue">Mas de Sant Lleí</h3>

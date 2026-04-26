@@ -472,28 +472,17 @@ function initAudio() {
 }
 
 /* ============================================================
-   LOCATION PHOTO SLIDESHOW
+   LOCATION PHOTO SLIDESHOW — disabled (inline carousel used instead)
    ============================================================ */
 function initSlideshow() {
-  const container = document.getElementById('locationSlideshow');
-  const section   = document.getElementById('location');
+  // Background slideshow replaced by inline location carousel
+}
 
-  if (!container || !section) return;
-  if (SLIDESHOW_IMAGES.length === 0) return; // no images configured
-
-  // Enable the dark-overlay + light-text treatment on the section
-  section.classList.add('has-slideshow');
-
-  // Create one div per image
-  const slides = SLIDESHOW_IMAGES.map((src, i) => {
-    const div = document.createElement('div');
-    div.className = 'slide-frame' + (i === 0 ? ' active' : '');
-    div.style.backgroundImage = `url('${src}')`;
-    container.appendChild(div);
-    return div;
-  });
-
-  // A single image needs no cycling
+/* ============================================================
+   LOCATION INLINE CAROUSEL
+   ============================================================ */
+function initLocationCarousel() {
+  const slides = document.querySelectorAll('.lc-slide');
   if (slides.length < 2) return;
 
   let current = 0;
@@ -502,7 +491,7 @@ function initSlideshow() {
     slides[current].classList.remove('active');
     current = (current + 1) % slides.length;
     slides[current].classList.add('active');
-  }, SLIDESHOW_INTERVAL_MS);
+  }, 3000);
 }
 
 /* ============================================================
@@ -631,6 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initIntro();
   initAudio();
   initSlideshow();
+  initLocationCarousel();
   initDresscodeMarquee();
   initVideoAutoplay();
   initRsvp();

@@ -122,7 +122,7 @@ body::before {
 .section-label {
   display: block;
   font-family: var(--font-sc);
-  font-size: 0.62rem;
+  font-size: 0.78rem;
   letter-spacing: 0.32em;
   color: var(--accent);
   text-transform: uppercase;
@@ -141,10 +141,10 @@ body::before {
 
 .section-prose {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.18rem;
   font-style: italic;
   font-weight: 300;
-  color: #4A4540;
+  color: #2A2520;
   line-height: 2;
   text-align: center;
 }
@@ -494,12 +494,12 @@ body::before {
 
 .countdown-unit {
   font-family: var(--font-sc);
-  font-size: 0.55rem;
+  font-size: 0.72rem;
   letter-spacing: 0.18em;
-  color: var(--text-muted);
+  color: var(--text);
   text-transform: uppercase;
   white-space: nowrap;
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .countdown-sep {
@@ -559,9 +559,9 @@ body::before {
   padding-right: 0;
   padding-top: 0.18em;
   font-family: var(--font-sc);
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
-  color: rgba(107, 31, 42, 0.82);
+  color: var(--accent);
   line-height: 1;
 }
 
@@ -605,10 +605,10 @@ body::before {
 
 .tl-icon {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   color: var(--accent);
-  opacity: 0.62;
+  opacity: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -621,7 +621,7 @@ body::before {
 
 .tl-name {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.18rem;
   font-style: italic;
   font-weight: 400;
   color: var(--text);
@@ -630,12 +630,12 @@ body::before {
 }
 
 .tl-desc {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: #3A3430;
   margin-top: 0.12rem;
-  padding-left: calc(20px + 0.55rem);
-  opacity: 0.9;
+  padding-left: calc(22px + 0.55rem);
+  opacity: 1;
 }
 
 /* ── Location ────────────────────────────────────────────── */
@@ -665,16 +665,16 @@ body::before {
 
 .location-address {
   font-family: var(--font-sc);
-  font-size: 0.65rem;
+  font-size: 0.82rem;
   letter-spacing: 0.2em;
-  color: var(--text-muted);
+  color: var(--text);
   margin-bottom: 1.1rem;
 }
 
 .location-link {
   display: inline-block;
   font-family: var(--font-sc);
-  font-size: 0.62rem;
+  font-size: 0.78rem;
   letter-spacing: 0.22em;
   color: var(--accent);
   border-bottom: 1px solid currentColor;
@@ -731,7 +731,7 @@ body::before {
 .dresscode-scroll-wrap {
   width: 100%;
   overflow: hidden;
-  height: clamp(320px, 62vw, 580px);
+  height: clamp(560px, 82vw, 920px);
   position: relative;
 }
 
@@ -782,7 +782,7 @@ body::before {
 
 .rsvp-label {
   font-family: var(--font-sc);
-  font-size: 0.58rem;
+  font-size: 0.74rem;
   letter-spacing: 0.28em;
   color: var(--accent);
   text-transform: uppercase;
@@ -877,7 +877,7 @@ body::before {
 
 .rsvp-radio-text {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-style: italic;
   font-weight: 300;
   color: var(--text);
@@ -1025,6 +1025,7 @@ body::before {
 .section.fade-in .section-title,
 .section.fade-in .section-prose,
 .section.fade-in .countdown-grid,
+.section.fade-in .location-carousel,
 .section.fade-in .location-layout,
 .section.fade-in .dresscode-wrapper,
 .section.fade-in .hotel-list,
@@ -1061,10 +1062,16 @@ body::before {
   transition-delay: 0.28s;
 }
 
+.section.fade-in.visible .location-carousel {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.15s;
+}
+
 .section.fade-in.visible .location-layout {
   opacity: 1;
   transform: none;
-  transition-delay: 0.28s;
+  transition-delay: 0.38s;
 }
 
 .section.fade-in.visible .dresscode-wrapper {
@@ -1459,7 +1466,7 @@ body::before {
   }
 
   #program .tl-name {
-    font-size: 0.92rem;
+    font-size: 1.05rem;
   }
 
   .paper-card.section-warm {
@@ -1539,7 +1546,7 @@ body::before {
   .dresscode-scroll-wrap {
     width: 100%;
     overflow: hidden;
-    height: clamp(280px, 78vw, 460px);
+    height: clamp(480px, 95vw, 700px);
   }
 
   .dresscode-track {
@@ -1590,6 +1597,7 @@ body::before {
   .section.fade-in .section-title,
   .section.fade-in .section-prose,
   .section.fade-in .countdown-grid,
+  .section.fade-in .location-carousel,
   .section.fade-in .location-layout,
   .section.fade-in .dresscode-wrapper,
   .section.fade-in .hotel-list,
@@ -1601,11 +1609,55 @@ body::before {
   }
 }
 
+/* ── Venue Photo Dividers ─────────────────────────────────── */
+.venue-photo-divider {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.venue-divider-img {
+  width: 100%;
+  max-width: 840px;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+}
+
+/* ── Location Inline Carousel ─────────────────────────────── */
+.location-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.lc-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.lc-slide.active {
+  opacity: 1;
+}
+
 /* ── Scroll-snap — full-page sections ────────────────────── */
 .video-hero,
 #hero,
 #countdown,
+#venue17,
 #program,
+#venue18,
 #accommodation,
 #transport,
 #location,
@@ -1638,10 +1690,10 @@ body::before {
 
 .hotel-list-intro {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   font-style: italic;
   font-weight: 300;
-  color: #4A4540;
+  color: #2A2520;
   line-height: 1.85;
   margin-bottom: 2rem;
   max-width: 480px;
@@ -1658,7 +1710,7 @@ body::before {
 
 .hotel-area {
   font-family: var(--font-sc);
-  font-size: 0.6rem;
+  font-size: 0.78rem;
   letter-spacing: 0.28em;
   color: var(--accent);
   text-transform: uppercase;
@@ -1667,9 +1719,9 @@ body::before {
 
 .hotel-distance {
   font-family: var(--font-serif);
-  font-size: 0.78rem;
+  font-size: 0.94rem;
   letter-spacing: 0.04em;
-  color: var(--text-muted);
+  color: #2A2520;
   text-transform: none;
   font-style: italic;
 }
@@ -1683,7 +1735,7 @@ body::before {
 
 .hotel-items a {
   font-family: var(--font-serif);
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   font-style: italic;
   font-weight: 300;
   color: var(--text);
