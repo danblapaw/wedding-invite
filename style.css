@@ -916,6 +916,7 @@ body::before {
   display: flex;
   justify-content: center;
   padding-top: 0.4rem;
+  padding-bottom: max(4rem, env(safe-area-inset-bottom));
 }
 
 .rsvp-btn {
@@ -931,6 +932,8 @@ body::before {
   transition: background 0.22s ease;
   -webkit-appearance: none;
   appearance: none;
+  position: relative;
+  z-index: 10;
 }
 
 .rsvp-btn:hover {
@@ -1756,6 +1759,14 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#rsvp {
+  padding-bottom: max(7rem, calc(5rem + env(safe-area-inset-bottom)));
+}
+
+#rsvp .container {
+  padding-bottom: 2rem;
 }
 
 #countdown {
