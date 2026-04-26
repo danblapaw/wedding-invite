@@ -1642,8 +1642,6 @@ body::before {
   .animate-in { opacity: 1; }
   .fade-in    { opacity: 1; transform: none; }
   .dresscode-track { animation: none; }
-  .champagne-stream,
-  .champagne-sparkle { animation: none !important; opacity: 0 !important; }
   /* Section children: always visible, no animation */
   .section.fade-in .section-label,
   .section.fade-in .section-title,
@@ -1689,27 +1687,19 @@ body::before {
   display: block;
   margin-inline: auto;
   mix-blend-mode: multiply;
+  background: transparent;
 }
 
-/* venue-17 / venue-18: section must stay at opacity:1 so mix-blend-mode
-   works against the real page background (not an isolated stacking context) */
-.venue-photo-divider.fade-in {
-  opacity: 1;
-  transform: none;
-  transition: none;
+.venue-photo-divider {
+  background: transparent;
 }
 
-.venue-photo-divider.fade-in .venue-divider-img {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity  1.1s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+.venue-photo-divider .container {
+  background: transparent;
 }
 
-.venue-photo-divider.fade-in.visible .venue-divider-img {
-  opacity: 1;
-  transform: none;
+.venue-18-wrapper {
+  background: transparent !important;
 }
 
 /* ── Location Inline Carousel ─────────────────────────────── */
@@ -1866,68 +1856,6 @@ body::before {
   line-height: 1.6;
 }
 
-/* ── Champagne animation — venue-18 ─────────────────────── */
-.champagne-anim {
-  position: relative;
-  display: block;
-  max-width: 840px;
-  margin-inline: auto;
-}
-
-.champagne-anim .venue-divider-img {
-  display: block;
-  width: 100%;
-  margin-inline: 0;
-}
-
-.champagne-stream {
-  position: absolute;
-  top: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 20%;
-  background: linear-gradient(
-    to bottom,
-    rgba(210, 175, 110, 0),
-    rgba(210, 175, 110, 0.55),
-    rgba(210, 175, 110, 0)
-  );
-  border-radius: 2px;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: champStream 3.2s ease-in-out infinite;
-  transform-origin: top center;
-}
-
-@keyframes champStream {
-  0%   { opacity: 0;   transform: translateX(-50%) scaleY(0.15); }
-  20%  { opacity: 0.85; transform: translateX(-50%) scaleY(1); }
-  65%  { opacity: 0.65; transform: translateX(-50%) scaleY(1); }
-  100% { opacity: 0;   transform: translateX(-50%) scaleY(1) translateY(8px); }
-}
-
-.champagne-sparkle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(218, 185, 118, 0.9);
-  pointer-events: none;
-  mix-blend-mode: screen;
-  animation: champSparkle 2.6s ease-in-out infinite;
-}
-
-.sparkle-1 { top: 30%; left: 37%; animation-delay: 0s;    animation-duration: 2.3s; }
-.sparkle-2 { top: 26%; left: 56%; animation-delay: 0.8s;  animation-duration: 2.9s; }
-.sparkle-3 { top: 35%; left: 49%; animation-delay: 1.4s;  animation-duration: 2.5s; }
-.sparkle-4 { top: 22%; left: 43%; animation-delay: 2.0s;  animation-duration: 3.1s; }
-
-@keyframes champSparkle {
-  0%, 100% { opacity: 0;    transform: scale(0.4) translateY(0); }
-  40%       { opacity: 0.85; transform: scale(1.8) translateY(-3px); }
-  70%       { opacity: 0.45; transform: scale(1.2) translateY(-6px); }
-}
 
 /* ── iOS keyboard fix — disable scroll-snap while a form field is focused ── */
 html.keyboard-open {
