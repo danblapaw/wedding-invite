@@ -799,7 +799,7 @@ body::before {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 1.1rem;
 }
 
 .rsvp-field {
@@ -915,8 +915,8 @@ body::before {
 .rsvp-footer {
   display: flex;
   justify-content: center;
-  padding-top: 0.4rem;
-  padding-bottom: max(4rem, env(safe-area-inset-bottom));
+  padding-top: 0.2rem;
+  padding-bottom: max(3rem, env(safe-area-inset-bottom));
 }
 
 .rsvp-btn {
@@ -932,8 +932,9 @@ body::before {
   transition: background 0.22s ease;
   -webkit-appearance: none;
   appearance: none;
+  margin-top: 0;
   position: relative;
-  z-index: 10;
+  z-index: 20;
 }
 
 .rsvp-btn:hover {
@@ -1258,7 +1259,7 @@ body::before {
   padding-left: 0.38em; /* compensate trailing letter-spacing */
   text-transform: uppercase;
   font-weight: 700;
-  color: rgba(43, 35, 31, 0.9);
+  color: rgba(25, 20, 17, 0.95);
   background: none;
   border: none;
   outline: none;
@@ -1763,7 +1764,7 @@ body::before {
 }
 
 #rsvp {
-  padding-bottom: max(7rem, calc(5rem + env(safe-area-inset-bottom)));
+  padding-bottom: max(4rem, calc(2rem + env(safe-area-inset-bottom)));
 }
 
 #rsvp .container {
