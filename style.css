@@ -1253,11 +1253,12 @@ body::before {
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-sc);
-  font-size: clamp(0.56rem, 1.6vw, 0.64rem);
-  letter-spacing: 0.48em;
-  padding-left: 0.48em; /* compensate trailing letter-spacing */
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  letter-spacing: 0.38em;
+  padding-left: 0.38em; /* compensate trailing letter-spacing */
   text-transform: uppercase;
-  color: rgba(43, 35, 31, 0.84);
+  font-weight: 700;
+  color: rgba(43, 35, 31, 0.9);
   background: none;
   border: none;
   outline: none;
