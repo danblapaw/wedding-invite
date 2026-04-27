@@ -254,78 +254,6 @@
       </div>
     </section>
 
-    <!-- ── RSVP ── -->
-    <section id="rsvp" class="section section-warm fade-in">
-      <div class="container container--narrow">
-        <header class="section-header">
-          <span class="section-label">Invitación</span>
-          <h2 class="section-title">Confirmación de Asistencia</h2>
-        </header>
-        <p class="section-prose rsvp-deadline"><strong>PODRÉIS CONFIRMAR VUESTRA ASISTENCIA HASTA EL 10 DE AGOSTO.</strong></p>
-
-        <form
-          class="rsvp-form"
-          id="rsvp-form"
-          name="rsvp-es"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="rsvp-es" />
-          <p class="hidden">
-            <label>No completar: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
-
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-name">Nombre completo</label>
-            <input
-              class="rsvp-input"
-              type="text"
-              id="rsvp-name"
-              name="nombre"
-              required
-              autocomplete="name"
-            />
-          </div>
-
-          <div class="rsvp-field">
-            <span class="rsvp-label">Confirmación</span>
-            <div class="rsvp-radio-group" role="radiogroup" aria-label="Confirmación de asistencia">
-              <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="si" required />
-                <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">Sí, asistiré</span>
-              </label>
-              <label class="rsvp-radio-label">
-                <input type="radio" name="asistencia" value="no" />
-                <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">No, no podré asistir</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-allergies">Intolerancias o alergias</label>
-            <textarea
-              class="rsvp-input rsvp-textarea"
-              id="rsvp-allergies"
-              name="alergias"
-              rows="3"
-              placeholder="Si tienes alguna, escríbela aquí"
-            ></textarea>
-          </div>
-
-          <div class="rsvp-footer">
-            <button class="rsvp-btn" type="submit">Enviar</button>
-          </div>
-        </form>
-
-        <div class="rsvp-success" id="rsvpSuccess" aria-live="polite" hidden>
-          <p>Gracias por confirmar ❤️</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ── Welcome Party ── -->
     <section id="welcome-party" class="section section-warm fade-in">
       <div class="container container--narrow">
@@ -338,8 +266,17 @@
           <p class="event-hours">Comenzará a las 19:00 &nbsp;·&nbsp; Finalizará a la 01:00</p>
           <p class="section-prose">Nos encantaría compartir con vosotros una noche especial antes de la boda, en un ambiente relajado, bonito y lleno de buenos momentos.</p>
           <p class="event-location">Brunch and the City</p>
+          <p class="event-address">Carrer d'Aragó, 103, Eixample, 08015 Barcelona</p>
           <a class="event-link" href="http://www.brunchandthecity.es/" target="_blank" rel="noopener noreferrer">VER UBICACIÓN</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ── Welcome Party Photos ── -->
+    <section class="event-carousel-section" aria-label="Fotos Welcome Party">
+      <div class="event-carousel" id="carousel-welcome">
+        <img class="ec-slide active" src="../assets/venue-19.png" alt="Welcome Party" />
+        <img class="ec-slide" src="../assets/venue-20.png" alt="Welcome Party" />
       </div>
     </section>
 
@@ -355,13 +292,24 @@
           <p class="event-hours">Comenzará a las 15:00 &nbsp;·&nbsp; Finalizará a las 20:00</p>
           <p class="section-prose">Queremos disfrutar con vosotros del día previo a nuestra boda en un lugar especial, rodeados de vino, naturaleza y buena compañía.</p>
           <p class="event-location">Celler Can Roda</p>
+          <p class="event-address">BV-5006, 08106 Santa Maria de Martorelles, Barcelona</p>
           <a class="event-link" href="https://cellercanroda.cat/ca/" target="_blank" rel="noopener noreferrer">VER UBICACIÓN</a>
         </div>
       </div>
     </section>
 
+    <!-- ── Pre-Wedding Photos ── -->
+    <section class="event-carousel-section" aria-label="Fotos Pre-Wedding">
+      <div class="event-carousel" id="carousel-prewedding">
+        <img class="ec-slide active" src="../assets/venue-21.png" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-22.jpeg" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-23.jpeg" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-24.jpeg" alt="Pre-Wedding" />
+      </div>
+    </section>
+
     <!-- ── Formulario Final ── -->
-    <section id="final-form" class="section section-warm fade-in google-form-section">
+    <section id="final-form" class="section section-warm fade-in google-form-section google-form-burdeaux">
       <div class="container container--narrow">
         <header class="section-header">
           <span class="section-label">CONFIRMACIÓN FINAL</span>
@@ -412,5 +360,22 @@
 
   <script>window.SITE_LANG = 'es';</script>
   <script src="../script.js"></script>
+  <script>
+    (function(){
+      function initCarousel(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var slides = el.querySelectorAll('.ec-slide');
+        var i = 0;
+        setInterval(function() {
+          slides[i].classList.remove('active');
+          i = (i + 1) % slides.length;
+          slides[i].classList.add('active');
+        }, 3000);
+      }
+      initCarousel('carousel-welcome');
+      initCarousel('carousel-prewedding');
+    })();
+  </script>
 </body>
 </html>
