@@ -245,78 +245,6 @@
       </div>
     </section>
 
-    <!-- ── RSVP ── -->
-    <section id="rsvp" class="section section-warm fade-in">
-      <div class="container container--narrow">
-        <header class="section-header">
-          <span class="section-label">Einladung</span>
-          <h2 class="section-title">Anmeldebestätigung</h2>
-        </header>
-        <p class="section-prose rsvp-deadline"><strong>BITTE BESTÄTIGT EURE TEILNAHME BIS ZUM 10. AUGUST.</strong></p>
-
-        <form
-          class="rsvp-form"
-          id="rsvp-form"
-          name="rsvp-de"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="rsvp-de" />
-          <p class="hidden">
-            <label>Nicht ausfüllen: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-          </p>
-
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-name">Vollständiger Name</label>
-            <input
-              class="rsvp-input"
-              type="text"
-              id="rsvp-name"
-              name="name"
-              required
-              autocomplete="name"
-            />
-          </div>
-
-          <div class="rsvp-field">
-            <span class="rsvp-label">Bestätigung</span>
-            <div class="rsvp-radio-group" role="radiogroup" aria-label="Teilnahmebestätigung">
-              <label class="rsvp-radio-label">
-                <input type="radio" name="teilnahme" value="ja" required />
-                <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">Ja, ich werde dabei sein</span>
-              </label>
-              <label class="rsvp-radio-label">
-                <input type="radio" name="teilnahme" value="nein" />
-                <span class="rsvp-radio-custom" aria-hidden="true"></span>
-                <span class="rsvp-radio-text">Nein, ich kann leider nicht kommen</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvp-allergies">Unverträglichkeiten oder Allergien</label>
-            <textarea
-              class="rsvp-input rsvp-textarea"
-              id="rsvp-allergies"
-              name="allergien"
-              rows="3"
-              placeholder="Falls du welche hast, schreib sie hier auf"
-            ></textarea>
-          </div>
-
-          <div class="rsvp-footer">
-            <button class="rsvp-btn" type="submit">Absenden</button>
-          </div>
-        </form>
-
-        <div class="rsvp-success" id="rsvpSuccess" aria-live="polite" hidden>
-          <p>Danke für deine Bestätigung ❤️</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ── Welcome Party ── -->
     <section id="welcome-party" class="section section-warm fade-in">
       <div class="container container--narrow">
@@ -329,8 +257,17 @@
           <p class="event-hours">Beginn um 19:00 Uhr &nbsp;·&nbsp; Ende um 01:00 Uhr</p>
           <p class="section-prose">Wir würden uns sehr freuen, mit euch einen besonderen Abend vor der Hochzeit zu verbringen – in entspannter, schöner Atmosphäre und mit vielen unvergesslichen Momenten.</p>
           <p class="event-location">Brunch and the City</p>
+          <p class="event-address">Carrer d'Aragó, 103, Eixample, 08015 Barcelona</p>
           <a class="event-link" href="http://www.brunchandthecity.es/" target="_blank" rel="noopener noreferrer">ORT ANZEIGEN</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ── Welcome Party Photos ── -->
+    <section class="event-carousel-section" aria-label="Welcome Party Fotos">
+      <div class="event-carousel" id="carousel-welcome">
+        <img class="ec-slide active" src="../assets/venue-19.png" alt="Welcome Party" />
+        <img class="ec-slide" src="../assets/venue-20.png" alt="Welcome Party" />
       </div>
     </section>
 
@@ -346,13 +283,24 @@
           <p class="event-hours">Beginn um 15:00 Uhr &nbsp;·&nbsp; Ende um 20:00 Uhr</p>
           <p class="section-prose">Wir möchten den Tag vor unserer Hochzeit an einem besonderen Ort mit euch genießen – umgeben von Wein, Natur und schöner Gesellschaft.</p>
           <p class="event-location">Celler Can Roda</p>
+          <p class="event-address">BV-5006, 08106 Santa Maria de Martorelles, Barcelona</p>
           <a class="event-link" href="https://cellercanroda.cat/ca/" target="_blank" rel="noopener noreferrer">ORT ANZEIGEN</a>
         </div>
       </div>
     </section>
 
+    <!-- ── Pre-Wedding Photos ── -->
+    <section class="event-carousel-section" aria-label="Pre-Wedding Fotos">
+      <div class="event-carousel" id="carousel-prewedding">
+        <img class="ec-slide active" src="../assets/venue-21.png" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-22.jpeg" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-23.jpeg" alt="Pre-Wedding" />
+        <img class="ec-slide" src="../assets/venue-24.jpeg" alt="Pre-Wedding" />
+      </div>
+    </section>
+
     <!-- ── Abschlussformular ── -->
-    <section id="final-form" class="section section-warm fade-in google-form-section">
+    <section id="final-form" class="section section-warm fade-in google-form-section google-form-burdeaux">
       <div class="container container--narrow">
         <header class="section-header">
           <span class="section-label">ABSCHLUSSBESTÄTIGUNG</span>
@@ -403,5 +351,22 @@
 
   <script>window.SITE_LANG = 'de';</script>
   <script src="../script.js"></script>
+  <script>
+    (function(){
+      function initCarousel(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var slides = el.querySelectorAll('.ec-slide');
+        var i = 0;
+        setInterval(function() {
+          slides[i].classList.remove('active');
+          i = (i + 1) % slides.length;
+          slides[i].classList.add('active');
+        }, 3000);
+      }
+      initCarousel('carousel-welcome');
+      initCarousel('carousel-prewedding');
+    })();
+  </script>
 </body>
 </html>
