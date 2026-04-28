@@ -1796,7 +1796,8 @@ body::before {
 #transport,
 #location,
 #rsvp,
-#dresscode {
+#dresscode,
+#final-form {
   scroll-snap-align: start;
 }
 
@@ -1935,6 +1936,11 @@ body::before {
 
 /* ── Google Form embed section ───────────────────────────── */
 .google-form-section {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(3rem, 5vw, 5rem);
   padding-bottom: max(4rem, calc(2rem + env(safe-area-inset-bottom)));
 }
 
