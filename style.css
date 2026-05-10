@@ -2167,6 +2167,120 @@ body::before {
   }
 }
 
+/* ── Wine Tasting Letter Section ────────────────────────── */
+.wine-tasting-letter {
+  max-width: 540px;
+  margin-inline: auto;
+  text-align: center;
+  padding-inline: 0.5rem;
+}
+
+.wine-tasting-letter p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.8vw, 1.12rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #2A2520;
+  line-height: 2;
+  margin-bottom: 1.25rem;
+}
+
+.wine-tasting-letter p:first-child {
+  font-size: clamp(1.05rem, 3vw, 1.2rem);
+  margin-bottom: 1.5rem;
+}
+
+.wine-tasting-program-title {
+  font-family: var(--font-sc) !important;
+  font-size: 0.76rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.26em;
+  color: var(--accent) !important;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  margin-bottom: 0.9rem !important;
+}
+
+.wine-tasting-program {
+  list-style: none;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0;
+}
+
+.wine-tasting-program li {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #2A2520;
+  line-height: 1.8;
+}
+
+.wine-tasting-program li::before {
+  content: '·';
+  color: var(--accent);
+  margin-right: 0.55em;
+  font-style: normal;
+}
+
+.wine-tasting-iban {
+  font-family: var(--font-sc) !important;
+  font-size: 0.9rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.16em;
+  color: var(--text) !important;
+  margin-top: 0.25rem;
+  margin-bottom: 0.6rem !important;
+}
+
+.wine-tasting-ref {
+  font-family: var(--font-sc) !important;
+  font-size: 0.8rem !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.24em;
+  color: var(--accent) !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.wine-tasting-sign {
+  font-family: var(--font-serif) !important;
+  font-size: clamp(1.1rem, 3vw, 1.3rem) !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  color: var(--text) !important;
+  margin-top: 0.25rem;
+  line-height: 1.75 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Scroll-reveal: wine-tasting-letter */
+.section.fade-in .wine-tasting-letter {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity  1.0s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.0s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section.fade-in.visible .wine-tasting-letter {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.38s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section.fade-in .wine-tasting-letter {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ── iOS keyboard fix — disable scroll-snap while a form field is focused ── */
 html.keyboard-open {
   scroll-snap-type: none;
