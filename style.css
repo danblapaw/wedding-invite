@@ -2333,3 +2333,16 @@ html.keyboard-open {
 html.keyboard-open body {
   overflow-y: auto;
 }
+
+.transport-route {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.transport-note {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
